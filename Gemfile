@@ -46,6 +46,11 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'debugger', group: [:development, :test]
 
 gem 'figaro'
+gem 'devise'
+gem 'omniauth'
+gem 'uuidtools'
+gem 'omniauth-facebook'
+gem 'cancan'
 
 group :development, :test do
   gem 'better_errors'
@@ -53,6 +58,7 @@ group :development, :test do
   gem 'meta_request'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'letter_opener'
 end
 
 group :test do
