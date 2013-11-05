@@ -51,6 +51,7 @@ gem 'omniauth'
 gem 'uuidtools'
 gem 'omniauth-facebook'
 gem 'cancan'
+gem 'twitter-bootstrap-rails'
 
 group :development, :test do
   gem 'better_errors'
