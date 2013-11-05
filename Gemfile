@@ -58,12 +58,12 @@ group :development, :test do
   gem 'meta_request'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'launchy'
   gem 'letter_opener'
 end
 
 group :test do
   gem 'capybara'
   gem 'guard-rspec'
-  gem 'launchy'
   gem 'shoulda-matchers'
 end
