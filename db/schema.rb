@@ -11,10 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131105215138) do
+ActiveRecord::Schema.define(version: 20131106012250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "contests", force: true do |t|
+    t.string   "name",           default: "", null: false
+    t.text     "desc",           default: "", null: false
+    t.integer  "points_cap",     default: 0,  null: false
+    t.integer  "entry_fee",      default: 0,  null: false
+    t.integer  "payout_type_id",              null: false
+    t.integer  "payout_amount"
+    t.integer  "category_id"
+    t.integer  "user_id"
+    t.integer  "battle_id",                   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "contests", ["battle_id"], name: "index_contests_on_battle_id", using: :btree
+  add_index "contests", ["category_id"], name: "index_contests_on_category_id", using: :btree
+  add_index "contests", ["entry_fee"], name: "index_contests_on_entry_fee", using: :btree
+  add_index "contests", ["name"], name: "index_contests_on_name", using: :btree
+  add_index "contests", ["payout_amount"], name: "index_contests_on_payout_amount", using: :btree
+  add_index "contests", ["payout_type_id"], name: "index_contests_on_payout_type_id", using: :btree
+  add_index "contests", ["user_id"], name: "index_contests_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
