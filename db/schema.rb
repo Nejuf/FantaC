@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131106024837) do
+ActiveRecord::Schema.define(version: 20131106194518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,31 @@ ActiveRecord::Schema.define(version: 20131106024837) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "categories", ["name"], name: "index_categories_on_name", unique: true, using: :btree
+
+  create_table "characters", force: true do |t|
+    t.string   "name",        default: "", null: false
+    t.text     "desc",        default: "", null: false
+    t.integer  "user_id"
+    t.integer  "affinity_id", default: 0,  null: false
+    t.integer  "tier_id",     default: 0,  null: false
+    t.integer  "stat_hp",     default: 0,  null: false
+    t.integer  "stat_str",    default: 0,  null: false
+    t.integer  "stat_def",    default: 0,  null: false
+    t.integer  "stat_spd",    default: 0,  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "characters", ["affinity_id"], name: "index_characters_on_affinity_id", using: :btree
+  add_index "characters", ["name"], name: "index_characters_on_name", using: :btree
+  add_index "characters", ["stat_def"], name: "index_characters_on_stat_def", using: :btree
+  add_index "characters", ["stat_hp"], name: "index_characters_on_stat_hp", using: :btree
+  add_index "characters", ["stat_spd"], name: "index_characters_on_stat_spd", using: :btree
+  add_index "characters", ["stat_str"], name: "index_characters_on_stat_str", using: :btree
+  add_index "characters", ["tier_id"], name: "index_characters_on_tier_id", using: :btree
+  add_index "characters", ["user_id"], name: "index_characters_on_user_id", using: :btree
 
   create_table "contests", force: true do |t|
     t.string   "name",           default: "", null: false
@@ -70,6 +95,14 @@ ActiveRecord::Schema.define(version: 20131106024837) do
   add_index "entries", ["contest_id"], name: "index_entries_on_contest_id", using: :btree
   add_index "entries", ["user_id", "contest_id"], name: "index_entries_on_user_id_and_contest_id", unique: true, using: :btree
   add_index "entries", ["user_id"], name: "index_entries_on_user_id", using: :btree
+
+  create_table "tiers", force: true do |t|
+    t.string   "name",       default: "", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tiers", ["name"], name: "index_tiers_on_name", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
