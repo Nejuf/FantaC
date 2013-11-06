@@ -11,4 +11,6 @@ class Contest < ActiveRecord::Base
   belongs_to :category
 
   has_many :entries
+  has_many :contest_positions
+  has_many :positions, through: :contest_positions
 end

@@ -2,14 +2,24 @@ class Character < ActiveRecord::Base
 
   validates :name, :desc, :affinity_id, :tier_id,
     :stat_hp, :stat_str, :stat_def,
-    :stat_spd, presence: true
+    :stat_spd, :stat_int, :stat_luck presence: true
 
   validates :name, length: { in: 1..40 }
 
   validates  :stat_hp, :stat_str, :stat_def,
     :stat_spd, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
+  after_initialize :ensure_defaults
+
   belongs_to :user
   belongs_to :tier
   belongs_to :affinity
+
+  private
+  def ensure_defaults
+    self.stat_hp ||= 0
+    self.stat_str ||= 0
+    self.stat_def ||= 0
+    self.stat_spd ||= 0
+  end
 end

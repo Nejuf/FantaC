@@ -10,6 +10,8 @@ class CreateCharacters < ActiveRecord::Migration
       t.integer :stat_str, null: false, default: 0
       t.integer :stat_def, null: false, default: 0
       t.integer :stat_spd, null: false, default: 0
+      t.integer :stat_int, null: false, default: 0
+      t.integer :stat_luck, null: false, default: 0
 
       t.timestamps
     end
@@ -22,5 +24,7 @@ class CreateCharacters < ActiveRecord::Migration
     add_index :characters, :stat_str
     add_index :characters, :stat_def
     add_index :characters, :stat_spd
+    add_index :characters, :stat_int
+    add_index :characters, :stat_luck
   end
 end
