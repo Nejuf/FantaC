@@ -2,7 +2,8 @@ class Character < ActiveRecord::Base
 
   validates :name, :desc, :affinity_id, :tier_id,
     :stat_hp, :stat_str, :stat_def,
-    :stat_spd, :stat_int, :stat_luck presence: true
+    :stat_spd, :stat_int, :stat_luck,
+    presence: true
 
   validates :name, length: { in: 1..40 }
 

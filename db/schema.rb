@@ -11,10 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131106194518) do
+ActiveRecord::Schema.define(version: 20131106221042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "affinities", force: true do |t|
+    t.string   "name",       default: "", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "affinities", ["name"], name: "index_affinities_on_name", unique: true, using: :btree
+
+  create_table "battle_rosters", force: true do |t|
+    t.integer  "battle_id",        null: false
+    t.integer  "character_id",     null: false
+    t.integer  "character_points"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "battle_rosters", ["battle_id", "character_id"], name: "index_battle_rosters_on_battle_id_and_character_id", unique: true, using: :btree
+  add_index "battle_rosters", ["battle_id"], name: "index_battle_rosters_on_battle_id", using: :btree
+  add_index "battle_rosters", ["character_id"], name: "index_battle_rosters_on_character_id", using: :btree
+  add_index "battle_rosters", ["character_points"], name: "index_battle_rosters_on_character_points", using: :btree
 
   create_table "battles", force: true do |t|
     t.string   "name",       default: "", null: false
@@ -38,6 +59,20 @@ ActiveRecord::Schema.define(version: 20131106194518) do
 
   add_index "categories", ["name"], name: "index_categories_on_name", unique: true, using: :btree
 
+  create_table "character_entries", force: true do |t|
+    t.integer  "character_id", null: false
+    t.integer  "entry_id",     null: false
+    t.integer  "position_id",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "character_entries", ["character_id"], name: "index_character_entries_on_character_id", using: :btree
+  add_index "character_entries", ["entry_id", "character_id"], name: "index_character_entries_on_entry_id_and_character_id", unique: true, using: :btree
+  add_index "character_entries", ["entry_id", "position_id"], name: "index_character_entries_on_entry_id_and_position_id", unique: true, using: :btree
+  add_index "character_entries", ["entry_id"], name: "index_character_entries_on_entry_id", using: :btree
+  add_index "character_entries", ["position_id"], name: "index_character_entries_on_position_id", using: :btree
+
   create_table "characters", force: true do |t|
     t.string   "name",        default: "", null: false
     t.text     "desc",        default: "", null: false
@@ -48,6 +83,8 @@ ActiveRecord::Schema.define(version: 20131106194518) do
     t.integer  "stat_str",    default: 0,  null: false
     t.integer  "stat_def",    default: 0,  null: false
     t.integer  "stat_spd",    default: 0,  null: false
+    t.integer  "stat_int",    default: 0,  null: false
+    t.integer  "stat_luck",   default: 0,  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -56,10 +93,23 @@ ActiveRecord::Schema.define(version: 20131106194518) do
   add_index "characters", ["name"], name: "index_characters_on_name", using: :btree
   add_index "characters", ["stat_def"], name: "index_characters_on_stat_def", using: :btree
   add_index "characters", ["stat_hp"], name: "index_characters_on_stat_hp", using: :btree
+  add_index "characters", ["stat_int"], name: "index_characters_on_stat_int", using: :btree
+  add_index "characters", ["stat_luck"], name: "index_characters_on_stat_luck", using: :btree
   add_index "characters", ["stat_spd"], name: "index_characters_on_stat_spd", using: :btree
   add_index "characters", ["stat_str"], name: "index_characters_on_stat_str", using: :btree
   add_index "characters", ["tier_id"], name: "index_characters_on_tier_id", using: :btree
   add_index "characters", ["user_id"], name: "index_characters_on_user_id", using: :btree
+
+  create_table "contest_positions", force: true do |t|
+    t.integer  "contest_id",  null: false
+    t.integer  "position_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "contest_positions", ["contest_id", "position_id"], name: "index_contest_positions_on_contest_id_and_position_id", unique: true, using: :btree
+  add_index "contest_positions", ["contest_id"], name: "index_contest_positions_on_contest_id", using: :btree
+  add_index "contest_positions", ["position_id"], name: "index_contest_positions_on_position_id", using: :btree
 
   create_table "contests", force: true do |t|
     t.string   "name",           default: "", null: false
@@ -95,6 +145,22 @@ ActiveRecord::Schema.define(version: 20131106194518) do
   add_index "entries", ["contest_id"], name: "index_entries_on_contest_id", using: :btree
   add_index "entries", ["user_id", "contest_id"], name: "index_entries_on_user_id_and_contest_id", unique: true, using: :btree
   add_index "entries", ["user_id"], name: "index_entries_on_user_id", using: :btree
+
+  create_table "payout_types", force: true do |t|
+    t.string   "name",       default: "", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "payout_types", ["name"], name: "index_payout_types_on_name", unique: true, using: :btree
+
+  create_table "positions", force: true do |t|
+    t.string   "name",       default: "", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "positions", ["name"], name: "index_positions_on_name", unique: true, using: :btree
 
   create_table "tiers", force: true do |t|
     t.string   "name",       default: "", null: false
