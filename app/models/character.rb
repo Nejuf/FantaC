@@ -15,6 +15,13 @@ class Character < ActiveRecord::Base
   belongs_to :tier
   belongs_to :affinity
 
+  has_many :battle_rosters
+  has_many :battles, through: :battle_rosters
+
+  has_many :character_entries
+  has_many :entries, through: :character_entries
+  # has_many :positions, through: :character_entries
+
   private
   def ensure_defaults
     self.stat_hp ||= 0

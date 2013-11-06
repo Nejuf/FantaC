@@ -6,4 +6,6 @@ class Battle < ActiveRecord::Base
   belongs_to :user
 
   has_many :contests
+  has_many :battle_rosters
+  has_many :characters, through: :battle_rosters
 end

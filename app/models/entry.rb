@@ -4,4 +4,8 @@ class Entry < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :contest
+
+  has_many :character_entries
+  has_many :characters, through: :character_entries
+  has_many :positions, through: :character_entries
 end
