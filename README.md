@@ -22,3 +22,8 @@ Production Host: Heroku (http://fantac.herokuapp.com)
 *Create your own contests
 *Featured contests
 *Entry selection helpers
+*Detailed character information and statistics
+*Mobile-friendly
+*User chat
+*Support FAQ/Wiki
+*Social media tie-in (e.g. Twitter, Facebook)
