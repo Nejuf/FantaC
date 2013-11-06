@@ -9,5 +9,9 @@ class CreateBattles < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :battles, :name
+    add_index :battles, :start_date
+    add_index :battles, :end_date
   end
 end

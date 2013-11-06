@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131106024338) do
+ActiveRecord::Schema.define(version: 20131106024837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,10 @@ ActiveRecord::Schema.define(version: 20131106024338) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "battles", ["end_date"], name: "index_battles_on_end_date", using: :btree
+  add_index "battles", ["name"], name: "index_battles_on_name", using: :btree
+  add_index "battles", ["start_date"], name: "index_battles_on_start_date", using: :btree
 
   create_table "categories", force: true do |t|
     t.string   "name",       default: "", null: false
@@ -53,6 +57,19 @@ ActiveRecord::Schema.define(version: 20131106024338) do
   add_index "contests", ["payout_amount"], name: "index_contests_on_payout_amount", using: :btree
   add_index "contests", ["payout_type_id"], name: "index_contests_on_payout_type_id", using: :btree
   add_index "contests", ["user_id"], name: "index_contests_on_user_id", using: :btree
+
+  create_table "entries", force: true do |t|
+    t.string   "name",       default: ""
+    t.text     "desc",       default: ""
+    t.integer  "user_id",                 null: false
+    t.integer  "contest_id",              null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "entries", ["contest_id"], name: "index_entries_on_contest_id", using: :btree
+  add_index "entries", ["user_id", "contest_id"], name: "index_entries_on_user_id_and_contest_id", unique: true, using: :btree
+  add_index "entries", ["user_id"], name: "index_entries_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

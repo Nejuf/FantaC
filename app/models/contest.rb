@@ -7,4 +7,5 @@ class Contest < ActiveRecord::Base
   belongs_to :battle
   belongs_to :category
 
+  has_many :entries
 end
