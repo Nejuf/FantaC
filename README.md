@@ -8,4 +8,17 @@ Database: PostgreSQL
 Server: WEBrick
 Production Host: Heroku (http://fantac.herokuapp.com)
 
+##Feature List:
+*User sign-up/sign-in/sign-out with authentication
+*User password reset via email
+*User account locking
 
+##Upcoming Features:
+*Contests
+*Characters
+*Entries (team selection)
+*Contest results and payouts
+*Challenge friends
+*Create your own contests
+*Featured contests
+*Entry selection helpers
