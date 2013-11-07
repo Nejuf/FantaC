@@ -54,6 +54,12 @@ gem 'cancan'
 gem 'twitter-bootstrap-rails'
 gem 'simple_form'
 
+#Twitter Bootstrap Rails
+gem 'therubyracer'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
+gem 'simple_form'
+
 group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
