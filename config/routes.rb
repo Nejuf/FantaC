@@ -1,4 +1,6 @@
 Fantac::Application.routes.draw do
+  resources :positions
+
   resources :payout_types
 
   resources :entries
