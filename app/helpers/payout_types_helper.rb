@@ -1,0 +1,2 @@
+module PayoutTypesHelper
+end
