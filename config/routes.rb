@@ -1,4 +1,6 @@
 Fantac::Application.routes.draw do
+  resources :characters
+
   root to: "info#index"
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

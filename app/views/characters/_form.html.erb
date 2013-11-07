@@ -1,0 +1,18 @@
+<%= simple_form_for @character, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name %>
+  <%= f.input :desc %>
+  <%= f.input :user_id %>
+  <%= f.input :affinity_id %>
+  <%= f.input :tier_id %>
+  <%= f.input :stat_hp %>
+  <%= f.input :stat_str %>
+  <%= f.input :stat_def %>
+  <%= f.input :stat_spd %>
+  <%= f.input :stat_int %>
+  <%= f.input :stat_luck %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                characters_path, :class => 'btn' %>
+  </div>
+<% end %>

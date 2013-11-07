@@ -1,0 +1,56 @@
+<%- model_class = Character -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:desc) %></th>
+      <th><%= model_class.human_attribute_name(:user_id) %></th>
+      <th><%= model_class.human_attribute_name(:affinity_id) %></th>
+      <th><%= model_class.human_attribute_name(:tier_id) %></th>
+      <th><%= model_class.human_attribute_name(:stat_hp) %></th>
+      <th><%= model_class.human_attribute_name(:stat_str) %></th>
+      <th><%= model_class.human_attribute_name(:stat_def) %></th>
+      <th><%= model_class.human_attribute_name(:stat_spd) %></th>
+      <th><%= model_class.human_attribute_name(:stat_int) %></th>
+      <th><%= model_class.human_attribute_name(:stat_luck) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @characters.each do |character| %>
+      <tr>
+        <td><%= link_to character.id, character_path(character) %></td>
+        <td><%= character.name %></td>
+        <td><%= character.desc %></td>
+        <td><%= character.user_id %></td>
+        <td><%= character.affinity_id %></td>
+        <td><%= character.tier_id %></td>
+        <td><%= character.stat_hp %></td>
+        <td><%= character.stat_str %></td>
+        <td><%= character.stat_def %></td>
+        <td><%= character.stat_spd %></td>
+        <td><%= character.stat_int %></td>
+        <td><%= character.stat_luck %></td>
+        <td><%=l character.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_character_path(character), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      character_path(character),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_character_path,
+            :class => 'btn btn-primary' %>
