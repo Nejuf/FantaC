@@ -55,8 +55,8 @@ gem 'twitter-bootstrap-rails'
 gem 'simple_form'
 
 #Twitter Bootstrap Rails
-gem 'therubyracer'
-gem 'less-rails'
+# gem 'therubyracer'
+# gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'simple_form'
 
