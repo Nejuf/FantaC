@@ -1,4 +1,6 @@
 Fantac::Application.routes.draw do
+  resources :battles
+
   resources :characters
 
   root to: "info#index"
