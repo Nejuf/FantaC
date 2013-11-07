@@ -1,4 +1,6 @@
 Fantac::Application.routes.draw do
+  resources :battle_rosters
+
   resources :affinities
 
   resources :contests
