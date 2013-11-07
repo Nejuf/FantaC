@@ -1,4 +1,6 @@
 Fantac::Application.routes.draw do
+  resources :character_entries
+
   resources :categories
 
   resources :battle_rosters
