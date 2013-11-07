@@ -2,7 +2,7 @@ class CreateCharacters < ActiveRecord::Migration
   def change
     create_table :characters do |t|
       t.string :name, null: false, default: ""
-      t.text :desc, null: false, default: ""
+      t.text :desc, default: ""
       t.integer :user_id
       t.integer :affinity_id, null: false, default: 0
       t.integer :tier_id, null: false, default: 0

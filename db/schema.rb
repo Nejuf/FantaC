@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20131106221042) do
 
   create_table "characters", force: true do |t|
     t.string   "name",        default: "", null: false
-    t.text     "desc",        default: "", null: false
+    t.text     "desc",        default: ""
     t.integer  "user_id"
     t.integer  "affinity_id", default: 0,  null: false
     t.integer  "tier_id",     default: 0,  null: false

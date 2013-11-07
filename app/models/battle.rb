@@ -1,7 +1,7 @@
 class Battle < ActiveRecord::Base
   validates :name, :desc, :start_date, :end_date, presence: true
 
-  validates :name, length: { in: 4..40 }
+  validates :name, length: { in: 4..80 }
 
   belongs_to :user
 

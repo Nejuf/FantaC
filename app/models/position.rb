@@ -1,5 +1,5 @@
 class Position < ActiveRecord::Base
-  validates :name, presence: true, uniqueness: true, length: { in: 2..30 }
+  validates :name, presence: true, uniqueness: true, length: { in: 2..40 }
 
   has_many :contest_positions
   # has_many :contests, through: :contest_positions
