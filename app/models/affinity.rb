@@ -14,6 +14,7 @@ class Affinity < ActiveRecord::Base
   end
 
   def normalize
+    name ||= ""
     name = name.downcase
   end
 end
