@@ -41,7 +41,13 @@
     <%= menu_group do %>
       <%= menu_item "Battles", battles_path %>
       <%= menu_item "Contests", contests_path %>
-      <%= menu_item "Characters", characters_path %>
+      <%= drop_down "Characters" do %>
+        <%#= menu_item "All", characters_path %><!-- with current page being determined by url, All gets set as the current page every time -->
+        <%#= drop_down_divider %>
+        <%= menu_item "Book", characters_path + "?affinity=book" %>
+        <%= menu_item "Film", characters_path + "?affinity=film" %>
+        <%= menu_item "Game", characters_path + "?affinity=game" %>
+      <% end %>
 
       <% if user_signed_in? %>
         <%= menu_item "My Entries", entries_path %>

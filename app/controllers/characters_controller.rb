@@ -4,7 +4,14 @@ class CharactersController < ApplicationController
   # GET /characters
   # GET /characters.json
   def index
-    @characters = Character.all
+    aff_id = Affinity.getIDByName(params[:affinity])
+    @affinity_name = ""
+    if aff_id
+      @characters = Character.where(affinity_id: aff_id)
+      @affinity_name = params[:affinity].capitalize
+    else
+      @characters = Character.all
+    end
   end
 
   # GET /characters/1
