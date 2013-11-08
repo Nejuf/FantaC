@@ -8,6 +8,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= nav_bar static: :top, brand: "FantaC", brand_link: "/", responsive: true do%>
+    <%= menu_group do %>
+      <%= menu_item "Battles", battles_path %>
+      <%= menu_item "Contests", contests_path %>
+      <%= menu_item "Characters", characters_path %>
+      <%= menu_item "My Entries", entries_path %>
+      <%= menu_item "My Account", edit_user_registration_path %>
+    <% end %>
+  <% end %>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
