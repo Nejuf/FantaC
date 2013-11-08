@@ -26,10 +26,6 @@ Fantac::Application.routes.draw do
   root to: "info#index"
   devise_for :users
 
-  resources :users , only: [:show] do
-    collection do
-      get "index"
-    end
-  end
+  resources :users , only: [:index, :show]
 
 end
