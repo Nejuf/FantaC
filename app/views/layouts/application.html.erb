@@ -14,11 +14,11 @@
       <%= menu_item "Contests", contests_path %>
       <%= menu_item "Characters", characters_path %>
       <%= menu_item "My Entries", entries_path %>
+      <%= menu_divider %>
       <%= menu_item "My Account", edit_user_registration_path %>
     <% end %>
   <% end %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <%= bootstrap_flash %>
 
 <%= yield %>
 
