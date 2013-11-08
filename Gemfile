@@ -51,14 +51,15 @@ gem 'omniauth'
 gem 'uuidtools'
 gem 'omniauth-facebook'
 gem 'cancan'
-gem 'twitter-bootstrap-rails'
-gem 'simple_form'
 
 #Twitter Bootstrap Rails
 # gem 'therubyracer'
 # gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'simple_form'
+
+#Heroku https://devcenter.heroku.com/articles/rails4
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'better_errors'
