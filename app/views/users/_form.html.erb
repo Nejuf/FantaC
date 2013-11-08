@@ -1,10 +1,24 @@
-<%= simple_form_for(@user) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-  </div>
-
+<%= simple_form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :email %>
+  <%= f.input :encrypted_password %>
+  <%= f.input :reset_password_token %>
+  <%= f.input :reset_password_sent_at %>
+  <%= f.input :remember_created_at %>
+  <%= f.input :current_sign_in_at %>
+  <%= f.input :last_sign_in_at %>
+  <%= f.input :current_sign_in_ip %>
+  <%= f.input :last_sign_in_ip %>
+  <%= f.input :confirmation_token %>
+  <%= f.input :confirmed_at %>
+  <%= f.input :confirmation_sent_at %>
+  <%= f.input :unconfirmed_email %>
+  <%= f.input :failed_attempts %>
+  <%= f.input :unlock_token %>
+  <%= f.input :locked_at %>
+  <%= f.input :username %>
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                users_path, :class => 'btn' %>
   </div>
 <% end %>
