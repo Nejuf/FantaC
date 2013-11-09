@@ -10,8 +10,10 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//could not get it to load the fancyCountdown responsive css
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require turbolinks
+//= require jquery.fancyCountdown
 //= require_tree .

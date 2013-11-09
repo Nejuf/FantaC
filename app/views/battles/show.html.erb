@@ -1,8 +1,8 @@
 <%- model_class = Battle -%>
+
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
-
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @battle.name %></dd>
@@ -12,8 +12,8 @@
   <dd><%= @battle.start_date %></dd>
   <dt><strong><%= model_class.human_attribute_name(:end_date) %>:</strong></dt>
   <dd><%= @battle.end_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-  <dd><%= @battle.user_id %></dd>
+  <!-- <dt><strong><%#= model_class.human_attribute_name(:user_id) %>:</strong></dt> -->
+  <!-- <dd><%#= @battle.user_id %></dd> -->
 </dl>
 
 <div class="form-actions">
@@ -27,3 +27,38 @@
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
 </div>
+
+<div id="fancyCountdown"><div>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+  <% date = DateTime.parse(@battle.end_date) %>
+  $('#fancyCountdown').fancyCountdown({
+    year: <%= date.year %>,
+    month: <%= date.month %>,
+    day: <%= date.day %>,
+    hour: <%= date.hour %>,
+    minute: <%= date.minute %>,
+    second: <%= date.second %>,
+    timezone: 1,
+    dayDigitsAmount: 2,
+    digits: { days:false, hours:true, minutes:true, seconds:true },
+    callback: onTargetReached,
+    overlayImageUrl: window.location.origin+"/assets/fancyCountdown/overlay.png"
+  });
+
+  function onTargetReached(){
+    $(window).off('blur', $.fancyCountdown.stop);
+    $(window).off('focus',$.fancyCountdown.start);
+    console.log("target time reached");
+  }
+  // $('#start').click(function(){
+  //   $.fancyCountdown.start();
+  // });
+  //
+  // $('#stop').click(function(){
+  //   $.fancyCountdown.stop();
+  // });
+});
+</script>

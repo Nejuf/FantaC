@@ -1,0 +1,111 @@
+/*
+* Fancy Countdown - Responsive Layout
+*
+*/
+
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+
+	.fc-panel .fc-width {
+		width: 18px; /* The width for the digits */
+	}
+	
+	.fc-panel .fc-height {
+		height: 35px; /* The height for the digits and colon */
+		line-height: 35px; /* When change height, change also line-height to the same value */
+	}
+	
+	.fc-panel .fc-colon-width {
+		width: 14px; /* The width for the colon */
+	}
+	
+	.fc-panel .fc-font {
+		font-size: 20px; /* The size for the font */
+	}
+	
+	.fc-panel .fc-digit-offset {
+		top: 14px; /* The top offset between the digits, in previous versions it was the topDigitOffset option */
+		bottom: 14px; /* The bottom offset between the digits, in previous versions it was the bottomDigitOffset option */
+	}
+
+	.fc-panel .fc-digitUnit, .fc-panel .fc-colon {
+		border-width: 2px;
+		margin-right: 2px;
+	}
+	
+	.fc-panel .fc-captions {
+		margin-top: 0px;
+		font-size: 8px;
+	}
+	
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+	
+	.fc-panel .fc-width {
+		width: 55px; /* The width for the digits */
+	}
+	
+	.fc-panel .fc-height {
+		height: 75px; /* The height for the digits and colon */
+		line-height: 75px; /* When change height, change also line-height to the same value */
+	}
+	
+	.fc-panel .fc-colon-width {
+		width: 15px; /* The width for the colon */
+	}
+	
+	.fc-panel .fc-font {
+		font-size: 45px; /* The size for the font */
+	}
+	
+	.fc-panel .fc-digit-offset {
+		top: 28px; /* The top offset between the digits, in previous versions it was the topDigitOffset option */
+		bottom: 28px; /* The bottom offset between the digits, in previous versions it was the bottomDigitOffset option */
+	}
+	
+	.fc-panel .fc-captions {
+		margin-top: 5px;
+		font-size: 16px;
+	}
+	
+}
+
+/* Desktops and laptops ----------- */
+@media only screen
+and (min-width : 1224px) {
+	
+	.fc-panel .fc-width {
+		width: 70px; /* The width for the digits */
+	}
+	
+	.fc-panel .fc-height {
+		height: 85px; /* The height for the digits and colon */
+		line-height: 85px; /* When change height, change also line-height to the same value */
+	}
+	
+	.fc-panel .fc-colon-width {
+		width: 20px; /* The width for the colon */
+	}
+	
+	.fc-panel .fc-font {
+		font-size: 57px; /* The size for the font */
+	}
+	
+	.fc-panel .fc-digit-offset {
+		top: 30px; /* The top offset between the digits, in previous versions it was the topDigitOffset option */
+		bottom: 30px; /* The bottom offset between the digits, in previous versions it was the bottomDigitOffset option */
+	}
+	
+	.fc-panel .fc-captions {
+		margin-top: 10px;
+		font-size: 22px;
+	}
+
+}
