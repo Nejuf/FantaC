@@ -66,14 +66,17 @@ gem 'simple_form'
 gem 'rails_12factor', group: :production
 
 group :development, :test do
+  gem 'awesome_print'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'bullet'
   gem 'meta_request'
   gem 'rspec-rails'
+  gem 'faker'
   gem 'factory_girl_rails'
   gem 'launchy'
   gem 'letter_opener'
-  gem 'awesome_print'
+  gem 'rails-footnotes'
 end
 
 group :test do

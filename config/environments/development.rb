@@ -16,7 +16,8 @@ Fantac::Application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { host: 'localhost:3000'} #from devise
-
+  config.action_mailer.delivery_method = :letter_opener
+  
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -27,4 +28,24 @@ Fantac::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  #Bullet
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+    Bullet.bullet_logger = true
+    Bullet.console = true
+    # Bullet.growl = true
+    # Bullet.xmpp = { :account  => 'bullets_account@jabber.org',
+    #                 :password => 'bullets_password_for_jabber',
+    #                 :receiver => 'your_account@jabber.org',
+    #                 :show_online_status => true }
+    # Bullet.rails_logger = true
+    Bullet.airbrake = true
+    Bullet.add_footer = true
+    Bullet.raise = true
+    # Bullet.add_whitelist :type => :n_plus_one_query, :class_name => "Post", :association => :comments
+    # Bullet.add_whitelist :type => :unused_eager_loading, :class_name => "Post", :association => :comments
+    # Bullet.add_whitelist :type => :counter_cache, :class_name => "Country", :association => :cities
+  end
 end

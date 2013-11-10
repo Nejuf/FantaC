@@ -64,7 +64,7 @@ Fantac::Application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { host: 'http://fantac.herokuapp.com'}
+  config.action_mailer.default_url_options = { host: 'http://www.fantac.net'}
   #TODO Change to final host URL
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
