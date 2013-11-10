@@ -24,6 +24,10 @@ class Character < ActiveRecord::Base
   # has_many :positions, through: :character_entries
 
 
+  def image_tag
+    %q(<img alt="Naruto opening01 222" src="http://upload.wikimedia.org/wikipedia/en/6/65/Naruto-Opening01_222.jpg">).html_safe
+  end
+
   def ensure_defaults
     self.name ||= ""
     self.desc ||= ""
