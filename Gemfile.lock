@@ -29,6 +29,10 @@ GEM
     arel (4.0.1)
     atomic (1.1.14)
     awesome_print (1.2.0)
+    aws-sdk (1.11.1)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
+      uuidtools (~> 2.1)
     bcrypt-ruby (3.1.2)
     bcrypt-ruby (3.1.2-x86-mingw32)
     better_errors (1.0.1)
@@ -275,6 +279,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
+  aws-sdk
   bcrypt-ruby (~> 3.1.2)
   better_errors
   binding_of_caller

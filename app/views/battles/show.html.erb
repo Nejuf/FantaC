@@ -33,6 +33,7 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
+  debugger
   <% date = DateTime.parse(@battle.end_date) %>
   $('#fancyCountdown').fancyCountdown({
     year: <%= date.year %>,
@@ -45,7 +46,7 @@ $(document).ready(function(){
     dayDigitsAmount: 2,
     digits: { days:false, hours:true, minutes:true, seconds:true },
     callback: onTargetReached,
-    overlayImageUrl: window.location.origin+"/assets/fancyCountdown/overlay.png"
+    overlayImageUrl: gon.global.APP_ASSET_HOST+"fancyCountdown/overlay.png"
   });
 
   function onTargetReached(){

@@ -48,4 +48,19 @@ Fantac::Application.configure do
     # Bullet.add_whitelist :type => :unused_eager_loading, :class_name => "Post", :association => :comments
     # Bullet.add_whitelist :type => :counter_cache, :class_name => "Country", :association => :cities
   end
+
+  # config.paperclip_defaults = {
+  #   :storage => :s3,
+  #   :s3_credentials => {
+  #     :bucket => 'fantac-public',
+  #     :access_key_id => Figaro.env.AWS_FANTAC_ACCESS_KEY_ID,
+  #     :secret_access_key => Figaro.env.AWS_FANTAC_ACCESS_KEY_SECRET,
+  #     :s3_host_name => 's3-us-west-2.amazonaws.com'
+  #   }
+  # }
+
+  ENV['APP_ASSET_HOST'] = "https://s3-us-west-2.amazonaws.com/fantac-app/"
+  ENV['PUBLIC_ASSET_HOST'] = "https://s3-us-west-2.amazonaws.com/fantac-public/"
+  Gon.global.APP_ASSET_HOST = ENV['APP_ASSET_HOST']
+  Gon.global.PUBLIC_ASSET_HOST = ENV['PUBLIC_ASSET_HOST']
 end
