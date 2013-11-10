@@ -36,5 +36,9 @@ module Fantac
 
       g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
+
+    AWS.config(access_key_id: Figaro.env.AWS_FANTAC_ACCESS_KEY_ID, 
+        secret_access_key: Figaro.env.AWS_FANTAC_ACCESS_KEY_SECRET, 
+        region: Figaro.env.AWS_REGION)
   end
 end
