@@ -13,6 +13,7 @@
 //could not get it to load the fancyCountdown responsive css
 //= require jquery
 //= require jquery_ujs
+//= require js-routes
 //= require twitter/bootstrap
 //= require turbolinks
 //= require jquery.fancyCountdown

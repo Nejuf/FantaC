@@ -52,6 +52,8 @@ gem 'omniauth'
 gem 'uuidtools'
 gem 'omniauth-facebook'
 gem 'cancan'
+gem 'gon'
+gem 'js-routes'
 
 #Twitter Bootstrap Rails
 # gem 'therubyracer'
@@ -70,6 +72,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'launchy'
   gem 'letter_opener'
+  gem 'awesome_print'
 end
 
 group :test do
