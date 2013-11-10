@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= include_gon(init: true) %>
   <title><%= content_for?(:title) ? yield(:title) : "FantaC" %></title>
   <%= csrf_meta_tags %>
 
@@ -56,16 +57,19 @@
       <% end %>
     <% end %>
     <%= menu_group pull: :right do %>
-      <% if user_signed_in? %>
+      <% if user_signed_in? -%>
+        <li><%= gravatar_image_tag(current_user.email, class: 'navbar-avatar', gravatar: { size: 30 }) %></li>
         <%= menu_item "Sign Out", destroy_user_session_path, method: "delete" %>
-      <% else %>
+      <% else -%>
         <% @user ||= User.new %>
-        <%= form_for @user, url: user_session_path, html: {class: "navbar-form pull-right"} do |f| -%>
-          <%= f.text_field :email, placeholder: "email" %>
-          <%= f.password_field :password, placeholder: "password" %>
-          <%= f.submit "Sign in" %>
-        <% end -%>
-      <% end %>
+        <li>
+          <%= form_for @user, url: user_session_path, html: {class: "navbar-form pull-right"} do |f| -%>
+            <%= f.text_field :email, placeholder: "email" %>
+            <%= f.password_field :password, placeholder: "password" %>
+            <%= f.submit "Sign in" %>
+          <% end -%>
+        </li>
+      <% end -%>
     <% end %>
   <% end %>
   <%= bootstrap_flash %>

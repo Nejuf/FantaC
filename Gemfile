@@ -54,6 +54,7 @@ gem 'omniauth-facebook'
 gem 'cancan'
 gem 'gon'
 gem 'js-routes'
+gem 'gravatar_image_tag'
 
 #Twitter Bootstrap Rails
 # gem 'therubyracer'

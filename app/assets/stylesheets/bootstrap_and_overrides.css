@@ -12,3 +12,8 @@
 #user_email {
   width: 180px;
 }
+
+.navbar-avatar {
+	float: none;
+	padding: 5px 15px 5px;
+}
