@@ -46,21 +46,21 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 # Use debugger
 gem 'debugger', group: [:development, :test]
 
-gem 'figaro'
-gem 'devise'
-gem 'omniauth'
-gem 'uuidtools'
-gem 'omniauth-facebook'
 gem 'cancan'
+gem 'devise'
+gem 'figaro'
 gem 'gon'
-gem 'js-routes'
 gem 'gravatar_image_tag'
+gem 'js-routes'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'uuidtools'
 
 #Twitter Bootstrap Rails
-# gem 'therubyracer'
 # gem 'less-rails'
-gem 'twitter-bootstrap-rails'
+# gem 'therubyracer'
 gem 'simple_form'
+gem 'twitter-bootstrap-rails'
 
 #Heroku https://devcenter.heroku.com/articles/rails4
 gem 'rails_12factor', group: :production
@@ -70,13 +70,13 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'bullet'
-  gem 'meta_request'
-  gem 'rspec-rails'
-  gem 'faker'
   gem 'factory_girl_rails'
+  gem 'faker'
   gem 'launchy'
   gem 'letter_opener'
+  gem 'meta_request'
   gem 'rails-footnotes'
+  gem 'rspec-rails'
 end
 
 group :test do
