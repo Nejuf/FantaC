@@ -72,6 +72,8 @@ group :development, :test do
   gem 'bullet'
   gem 'factory_girl_rails'
   gem 'faker'
+  # gem 'jslint_on_rails'
+  gem 'jshint_on_rails'
   gem 'launchy'
   gem 'letter_opener'
   gem 'meta_request'
