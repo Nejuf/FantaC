@@ -18,42 +18,49 @@
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
-              battles_path, :class => 'btn'  %>
+  battles_path, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_battle_path(@battle), :class => 'btn' %>
+  edit_battle_path(@battle), :class => 'btn' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              battle_path(@battle),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+  battle_path(@battle),
+  :method => 'delete',
+  :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+  :class => 'btn btn-danger' %>
 </div>
 
 <div id="fancyCountdown"><div>
-
+<div id="battle-roster">
+  <ul>
+    <% @battle.battle_rosters.includes(:character).each do |roster| %>
+    <li><%= label('Gut!', :success) %><%= glyph(:pencil) %> <%= badge(12, :warning) %>
+      <%= link_to roster.character.name, character_path(roster.character) %>
+      <%= roster.character.image_tag 50, 50 %>
+    </li>
+    <% end %>
+  </ul>
+</div>
 <script type="text/javascript">
+  $(document).ready(function(){
+    <% date = DateTime.parse(@battle.end_date) %>
+    $('#fancyCountdown').fancyCountdown({
+      year: <%= date.year %>,
+      month: <%= date.month %>,
+      day: <%= date.day %>,
+      hour: <%= date.hour %>,
+      minute: <%= date.minute %>,
+      second: <%= date.second %>,
+      timezone: 1,
+      dayDigitsAmount: 2,
+      digits: { days:false, hours:true, minutes:true, seconds:true },
+      callback: onTargetReached,
+      overlayImageUrl: gon.global.APP_ASSET_HOST+"fancyCountdown/overlay.png"
+    });
 
-$(document).ready(function(){
-  debugger
-  <% date = DateTime.parse(@battle.end_date) %>
-  $('#fancyCountdown').fancyCountdown({
-    year: <%= date.year %>,
-    month: <%= date.month %>,
-    day: <%= date.day %>,
-    hour: <%= date.hour %>,
-    minute: <%= date.minute %>,
-    second: <%= date.second %>,
-    timezone: 1,
-    dayDigitsAmount: 2,
-    digits: { days:false, hours:true, minutes:true, seconds:true },
-    callback: onTargetReached,
-    overlayImageUrl: gon.global.APP_ASSET_HOST+"fancyCountdown/overlay.png"
-  });
-
-  function onTargetReached(){
-    $(window).off('blur', $.fancyCountdown.stop);
-    $(window).off('focus',$.fancyCountdown.start);
-    console.log("target time reached");
-  }
+    function onTargetReached(){
+      $(window).off('blur', $.fancyCountdown.stop);
+      $(window).off('focus',$.fancyCountdown.start);
+      console.log("target time reached");
+    }
   // $('#start').click(function(){
   //   $.fancyCountdown.start();
   // });

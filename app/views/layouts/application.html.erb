@@ -44,6 +44,7 @@
       <%= menu_item "Battles", battles_path %>
       <%= menu_item "Contests", contests_path %>
       <%= drop_down "Characters" do %>
+        <!-- Acts strange on mobile.  Maybe wrap in <div class="btn-group"></div> for "proper rendering"-->
         <%#= menu_item "All", characters_path %><!-- with current page being determined by url, All gets set as the current page every time -->
         <%#= drop_down_divider %>
         <%= menu_item "Book", characters_path + "?affinity=book" %>
@@ -52,15 +53,24 @@
       <% end %>
 
       <% if user_signed_in? %>
-        <%= menu_item "My Entries", entries_path %>
         <%= menu_divider %>
-        <%= menu_item "My Account", edit_user_registration_path %>
+        <%= menu_item "My Entries", entries_path %>
       <% end %>
     <% end %>
     <%= menu_group pull: :right do %>
       <% if user_signed_in? -%>
         <li><%= gravatar_image_tag(current_user.email, class: 'navbar-avatar', gravatar: { size: 30 }) %></li>
-        <%= menu_item "Sign Out", destroy_user_session_path, method: "delete" %>
+        <li>
+          <div class="btn-group">
+            <a class="btn" data-method="delete" href=<%= destroy_user_session_path %> rel="nofollow">Sign Out</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <%= glyph(:cog) %>
+            </button>
+            <ul class="dropdown-menu">
+              <%= menu_item "My Account", edit_user_registration_path %>
+            </ul>
+          </div>
+        </li>
       <% else -%>
         <% @user ||= User.new %>
         <li>

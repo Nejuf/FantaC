@@ -24,8 +24,23 @@ class Character < ActiveRecord::Base
   # has_many :positions, through: :character_entries
 
 
-  def image_tag
-    %q(<img alt="Naruto opening01 222" src="http://upload.wikimedia.org/wikipedia/en/6/65/Naruto-Opening01_222.jpg">).html_safe
+  def image_tag(width=0,height=0)
+    alt = "Naruto opening01 222"
+    src = "http://upload.wikimedia.org/wikipedia/en/6/65/Naruto-Opening01_222.jpg"
+
+    #TODO
+    str = '<img'
+    if width > 0
+      str << " width=\"#{width}\""
+    end
+    if height > 0
+      str << " height=\"#{height}\""
+    end
+    str << " alt=\"#{alt}\""
+    str << " src=\"#{src}\""
+    str << '>'
+
+    str.html_safe
   end
 
   def ensure_defaults
