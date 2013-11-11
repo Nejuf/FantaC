@@ -56,6 +56,7 @@ gem 'gravatar_image_tag'
 gem 'js-routes'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'paperclip'
 gem 'uuidtools'
 
 #Twitter Bootstrap Rails

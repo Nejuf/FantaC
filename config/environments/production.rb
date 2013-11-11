@@ -80,15 +80,15 @@ Fantac::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  # config.paperclip_defaults = {
-  #   :storage => :s3,
-  #   :s3_credentials => {
-  #     :bucket => 'fantac-public',
-  #     :access_key_id => Figaro.env.AWS_FANTAC_ACCESS_KEY_ID,
-  #     :secret_access_key => Figaro.env.AWS_FANTAC_ACCESS_KEY_SECRET,
-  #     :s3_host_name => 's3-us-west-2.amazonaws.com'
-  #   }
-  # }
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => Figaro.env.AWS_FANTAC_PUBLIC_BUCKET_NAME,
+      :access_key_id => Figaro.env.AWS_FANTAC_ACCESS_KEY_ID,
+      :secret_access_key => Figaro.env.AWS_FANTAC_ACCESS_KEY_SECRET,
+      :s3_host_name => Figaro.env.AWS_FANTAC_S3_HOST_NAME
+    }
+  }
 
   ENV['APP_ASSET_HOST'] = "https://s3-us-west-2.amazonaws.com/fantac-app/"
   ENV['PUBLIC_ASSET_HOST'] = "https://s3-us-west-2.amazonaws.com/fantac-public/"

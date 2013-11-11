@@ -17,7 +17,7 @@ Fantac::Application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { host: 'localhost:3000'} #from devise
   config.action_mailer.delivery_method = :letter_opener
-  
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -49,15 +49,17 @@ Fantac::Application.configure do
     # Bullet.add_whitelist :type => :counter_cache, :class_name => "Country", :association => :cities
   end
 
-  # config.paperclip_defaults = {
-  #   :storage => :s3,
-  #   :s3_credentials => {
-  #     :bucket => 'fantac-public',
-  #     :access_key_id => Figaro.env.AWS_FANTAC_ACCESS_KEY_ID,
-  #     :secret_access_key => Figaro.env.AWS_FANTAC_ACCESS_KEY_SECRET,
-  #     :s3_host_name => 's3-us-west-2.amazonaws.com'
-  #   }
-  # }
+  Paperclip.options[:command_path] = "/opt/local/bin/convert"
+
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => Figaro.env.AWS_FANTAC_PUBLIC_BUCKET_NAME,
+      :access_key_id => Figaro.env.AWS_FANTAC_ACCESS_KEY_ID,
+      :secret_access_key => Figaro.env.AWS_FANTAC_ACCESS_KEY_SECRET,
+      :s3_host_name => Figaro.env.AWS_FANTAC_S3_HOST_NAME
+    }
+  }
 
   ENV['APP_ASSET_HOST'] = "https://s3-us-west-2.amazonaws.com/fantac-app/"
   ENV['PUBLIC_ASSET_HOST'] = "https://s3-us-west-2.amazonaws.com/fantac-public/"
