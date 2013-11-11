@@ -9,7 +9,7 @@
   <div class="row"><div id="fancyCountdown" class="pagination-centered offset4 span6"></div></div>
 </div>
 
-<% if @battle.user_id == current_user.id %>
+<% if user_signed_in? && @battle.user_id == current_user.id %>
   <div class="form-actions">
     <%= link_to t('.edit', :default => t("helpers.links.edit")),
     edit_battle_path(@battle), :class => 'btn' %>
@@ -25,7 +25,7 @@
   <div class="row">
     <ul class="thumbnails">
       <% @battle.battle_rosters.includes(:character => :affinity).each do |roster| %>
-        <li class="span3"> 
+        <li class="span3">
               <div class="thumbnail pagination-centered">
                 <%= roster.character.image_tag 80, 80 %>
                 <div class="caption">
