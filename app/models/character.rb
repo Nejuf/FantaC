@@ -43,6 +43,20 @@ class Character < ActiveRecord::Base
     str.html_safe
   end
 
+  def glyph
+    str = case affinity.name
+      when "film"
+        "film"
+      when "game"
+        "gamepad"
+      when "book"
+        "book"
+      else
+        "question-sign"
+    end
+    return str
+  end
+
   def ensure_defaults
     self.name ||= ""
     self.desc ||= ""

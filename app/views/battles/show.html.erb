@@ -31,8 +31,9 @@
 <div id="fancyCountdown"><div>
 <div id="battle-roster">
   <ul>
-    <% @battle.battle_rosters.includes(:character).each do |roster| %>
-    <li><%= label('Gut!', :success) %><%= glyph(:pencil) %> <%= badge(12, :warning) %>
+    <% @battle.battle_rosters.includes(:character => :affinity).each do |roster| %>
+    <li> 
+      <%= glyph(roster.character.glyph.to_s) %>
       <%= link_to roster.character.name, character_path(roster.character) %>
       <%= roster.character.image_tag 50, 50 %>
     </li>
