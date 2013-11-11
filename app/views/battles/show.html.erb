@@ -30,15 +30,25 @@
 
 <div id="fancyCountdown"><div>
 <div id="battle-roster">
-  <ul>
-    <% @battle.battle_rosters.includes(:character => :affinity).each do |roster| %>
-    <li> 
-      <%= glyph(roster.character.glyph.to_s) %>
-      <%= link_to roster.character.name, character_path(roster.character) %>
-      <%= roster.character.image_tag 50, 50 %>
-    </li>
-    <% end %>
-  </ul>
+  <div class="row">
+    <ul>
+      <% @battle.battle_rosters.includes(:character => :affinity).each do |roster| %>
+      <li class="span4"> 
+        <ul class="thumbnails">
+          <li class="span3">
+            <div class="thumbnail pagination-centered">
+              <%= roster.character.image_tag 80, 80 %>
+              <div class="caption">
+                <%= glyph(roster.character.glyph.to_s) %>
+                <%= link_to roster.character.name, character_path(roster.character) %>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
 <script type="text/javascript">
   $(document).ready(function(){

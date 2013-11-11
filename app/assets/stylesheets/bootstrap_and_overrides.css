@@ -17,3 +17,9 @@
 	float: none;
 	padding: 5px 15px 5px;
 }
+
+/*Needs !important to have an effect*/
+/*body {
+	background-color: #000000; 
+	color: #000000;
+}*/
