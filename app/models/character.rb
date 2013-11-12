@@ -23,7 +23,11 @@ class Character < ActiveRecord::Base
   has_many :entries, through: :character_entries
   # has_many :positions, through: :character_entries
 
-  has_attached_file :portrait
+  has_many :portraits
+
+  def portrait_main
+    this.portraits.first #TODO specify a main portrait
+  end
 
   def image_tag(width=0,height=0)
     alt = "Naruto opening01 222"

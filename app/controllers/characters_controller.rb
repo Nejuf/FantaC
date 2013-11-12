@@ -22,6 +22,7 @@ class CharactersController < ApplicationController
   # GET /characters/new
   def new
     @character = Character.new
+    @portrait = Portrait.new
   end
 
   # GET /characters/1/edit
@@ -35,6 +36,14 @@ class CharactersController < ApplicationController
 
     respond_to do |format|
       if @character.save
+
+        @portrait = Portrait.new
+        @portrait.character_id = @character.id
+        @portrait.focusX = 0;
+        @portrait.focusY = 0;
+        @portrait.portrait_image = params[:character][:portrait_image]
+        @portrait.save!
+
         format.html { redirect_to @character, notice: 'Character was successfully created.' }
         format.json { render action: 'show', status: :created, location: @character }
       else
@@ -76,6 +85,7 @@ class CharactersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def character_params
-      params[:character]
+      params[:character].permit(:name, :desc, :affinity_id, :tier_id, :stat_hp,
+      :stat_str, :stat_def, :stat_spd, :stat_int, :stat_luck)
     end
 end

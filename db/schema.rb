@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131111175416) do
+ActiveRecord::Schema.define(version: 20131111180657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,23 +74,19 @@ ActiveRecord::Schema.define(version: 20131111175416) do
   add_index "character_entries", ["position_id"], name: "index_character_entries_on_position_id", using: :btree
 
   create_table "characters", force: true do |t|
-    t.string   "name",                  default: "", null: false
-    t.text     "desc",                  default: ""
+    t.string   "name",        default: "", null: false
+    t.text     "desc",        default: ""
     t.integer  "user_id"
-    t.integer  "affinity_id",           default: 0,  null: false
-    t.integer  "tier_id",               default: 0,  null: false
-    t.integer  "stat_hp",               default: 0,  null: false
-    t.integer  "stat_str",              default: 0,  null: false
-    t.integer  "stat_def",              default: 0,  null: false
-    t.integer  "stat_spd",              default: 0,  null: false
-    t.integer  "stat_int",              default: 0,  null: false
-    t.integer  "stat_luck",             default: 0,  null: false
+    t.integer  "affinity_id", default: 0,  null: false
+    t.integer  "tier_id",     default: 0,  null: false
+    t.integer  "stat_hp",     default: 0,  null: false
+    t.integer  "stat_str",    default: 0,  null: false
+    t.integer  "stat_def",    default: 0,  null: false
+    t.integer  "stat_spd",    default: 0,  null: false
+    t.integer  "stat_int",    default: 0,  null: false
+    t.integer  "stat_luck",   default: 0,  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "portrait_file_name"
-    t.string   "portrait_content_type"
-    t.integer  "portrait_file_size"
-    t.datetime "portrait_updated_at"
   end
 
   add_index "characters", ["affinity_id"], name: "index_characters_on_affinity_id", using: :btree
@@ -157,6 +153,20 @@ ActiveRecord::Schema.define(version: 20131111175416) do
   end
 
   add_index "payout_types", ["name"], name: "index_payout_types_on_name", unique: true, using: :btree
+
+  create_table "portraits", force: true do |t|
+    t.integer  "focusX",                      default: 0
+    t.integer  "focusY",                      default: 0
+    t.integer  "character_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "portrait_image_file_name"
+    t.string   "portrait_image_content_type"
+    t.integer  "portrait_image_file_size"
+    t.datetime "portrait_image_updated_at"
+  end
+
+  add_index "portraits", ["character_id"], name: "index_portraits_on_character_id", using: :btree
 
   create_table "positions", force: true do |t|
     t.string   "name",       default: "", null: false

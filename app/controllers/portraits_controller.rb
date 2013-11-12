@@ -1,0 +1,2 @@
+class PortraitsController < ApplicationController
+end
