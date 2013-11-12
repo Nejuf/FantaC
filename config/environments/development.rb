@@ -49,7 +49,8 @@ Fantac::Application.configure do
     # Bullet.add_whitelist :type => :counter_cache, :class_name => "Country", :association => :cities
   end
 
-  Paperclip.options[:command_path] = "/opt/local/bin/convert"
+  # Paperclip.options[:command_path] = "/opt/local/bin/convert"
+  Paperclip.options[:command_path] = "C:/Program Files (x86)/ImageMagick-6.8.7-Q16"
 
   config.paperclip_defaults = {
     :storage => :s3,

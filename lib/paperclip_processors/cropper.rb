@@ -10,8 +10,9 @@ module Paperclip
 
     def crop_command
       target = @attachment.instance
-      debugger
-        " -crop #{target.crop_w}x#{target.crop_h}+#{target.crop_x}+#{target.crop_y}"
+      crop_width = target.image_width
+      crop_height = target.image_height
+        " -crop #{crop_width}x#{crop_height}+#{target.crop_x}+#{target.crop_y}"
     end
   end
 end
