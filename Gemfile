@@ -56,6 +56,8 @@ gem 'gravatar_image_tag'
 gem 'js-routes'
 gem 'omniauth'
 gem 'omniauth-facebook'
+# gem "paperclip", :git => "http://github.com/Nejuf/paperclip.git"
+# gem 'paperclip', :path => "~/Desktop/Nejuf/paperclip"
 gem 'paperclip'
 gem 'uuidtools'
 

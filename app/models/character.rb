@@ -26,12 +26,13 @@ class Character < ActiveRecord::Base
   has_many :portraits
 
   def portrait_main
-    this.portraits.first #TODO specify a main portrait
+    self.portraits.first #TODO specify a main portrait
   end
 
   def image_tag(width=0,height=0)
     alt = "Naruto opening01 222"
-    src = "http://upload.wikimedia.org/wikipedia/en/6/65/Naruto-Opening01_222.jpg"
+    # src = "http://upload.wikimedia.org/wikipedia/en/6/65/Naruto-Opening01_222.jpg"
+    src = portrait_main.portrait_image.url(:small)
 
     #TODO
     str = '<img'

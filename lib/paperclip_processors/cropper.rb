@@ -2,17 +2,32 @@ module Paperclip
   class Cropper < Thumbnail
     def transformation_command
       if crop_command
-        crop_command + super.sub(/ -crop \S+/, '')
+        # crop_command + super.sub(/ -crop \S+/, '')
+        c = crop_command
       else
-        super
+        c = super
       end
+      c
     end
 
     def crop_command
-      target = @attachment.instance
-      crop_width = target.image_width
-      crop_height = target.image_height
-        " -crop #{crop_width}x#{crop_height}+#{target.crop_x}+#{target.crop_y}"
+      # target = @attachment.instance
+      # debugger
+      if options[:geometry][-1,1] == '#'
+        match = options[:geometry].match /(\d+)x(\d+)\+(-*\d+)\+(-*\d+)/
+        captures = match.captures
+        crop_width = captures[0].to_i
+        crop_height = captures[1].to_i
+        crop_x = captures[2].to_i
+        crop_y = captures[3].to_i
+
+        crop_width = [1, crop_width].max
+        crop_height = [1, crop_height].max
+        crop_x = [0, crop_x].max
+        crop_y = [0, crop_y].max
+
+        " -crop #{crop_width}x#{crop_height}+#{crop_x}+#{crop_y}"
+      end
     end
   end
 end
