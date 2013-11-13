@@ -44,7 +44,7 @@ class CharactersController < ApplicationController
         @portrait.portrait_image = params[:character][:portrait_image]
         @portrait.save!
 
-        format.html { redirect_to @character, notice: 'Character was successfully created.' }
+        format.html { redirect_to @portrait, notice: 'Character was successfully created.' }
         format.json { render action: 'show', status: :created, location: @character }
       else
         format.html { render action: 'new' }

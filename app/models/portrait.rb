@@ -31,14 +31,32 @@ class Portrait < ActiveRecord::Base
   before_save :save_image_dimensions
 
   def save_image_dimensions
-    geo = Paperclip::Geometry.from_file(portrait_image.queued_for_write[:original])
-    self.image_width = geo.width.floor
-    self.image_height = geo.height.floor
-    self.focusX ||= 0
-    self.focusY ||= 0
+    if(portrait_image.queued_for_write[:original])
+      geo = Paperclip::Geometry.from_file(portrait_image.queued_for_write[:original])
+      self.image_width = geo.width.floor
+      self.image_height = geo.height.floor
+    end
+    self.focusX ||= (self.image_width/2).floor
+    self.focusY ||= (self.image_height/2).floor
     self.focusX = self.focusX.floor
     self.focusY = self.focusY.floor
   end
 # http://stackoverflow.com/questions/4065295/paperclip-saving-the-images-dimensions-width-height
 # http://stackoverflow.com/questions/4578603/how-do-you-crop-a-specific-area-with-paperclip-in-rails-3
+
+  def image_tag(size=:small, width=0, height=0)
+    alt = character.name
+    src = portrait_image.url(size)
+
+    str = '<img'
+    if width > 0
+      str << " width=\"#{width}\""
+    end
+    if height > 0
+      str << " height=\"#{height}\""
+    end
+    str << " alt=\"#{alt}\""
+    str << " src=\"#{src}\""
+    str << '>'
+  end
 end

@@ -29,12 +29,14 @@ class Character < ActiveRecord::Base
     self.portraits.first #TODO specify a main portrait
   end
 
-  def image_tag(width=0,height=0)
-    alt = "Naruto opening01 222"
-    # src = "http://upload.wikimedia.org/wikipedia/en/6/65/Naruto-Opening01_222.jpg"
-    src = portrait_main.portrait_image.url(:small)
+  def image_tag(size=:small, width=0, height=0)
+    alt = name
+    if portrait_main && portrait_main.portrait_image
+      src = portrait_main.portrait_image.url(size)
+    else
+      src = "http://images1.wikia.nocookie.net/__cb20120413002834/creepypasta/images/1/19/Missingno..png"
+    end
 
-    #TODO
     str = '<img'
     if width > 0
       str << " width=\"#{width}\""
@@ -45,6 +47,7 @@ class Character < ActiveRecord::Base
     str << " alt=\"#{alt}\""
     str << " src=\"#{src}\""
     str << '>'
+require File.dirname(__FILE__) + '/../../spec/spec_helper'
 
     str.html_safe
   end

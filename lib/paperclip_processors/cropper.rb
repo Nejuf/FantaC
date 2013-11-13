@@ -12,7 +12,7 @@ module Paperclip
 
     def crop_command
       # target = @attachment.instance
-      # debugger
+
       if options[:geometry][-1,1] == '#'
         match = options[:geometry].match /(\d+)x(\d+)\+(-*\d+)\+(-*\d+)/
         captures = match.captures
