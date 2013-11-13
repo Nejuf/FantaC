@@ -71,5 +71,11 @@
       parseInt($('#portrait_focusY').val()),
       parseInt($('#portrait_focusX').val())
     );
+
+    $('.edit-portrait-image img').popover({
+      placement: 'right',
+      content: 'Click on image to reposition focal point.',
+      trigger: 'hover'
+    });
   });
 </script>

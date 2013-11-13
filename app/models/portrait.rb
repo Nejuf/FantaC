@@ -14,7 +14,7 @@ class Portrait < ActiveRecord::Base
         small: "50x50+#{fx-25}+#{fy-25}#",
         medium: "80x80+#{fx-40}+#{fy-40}#",
         large: "100x100+#{fx-50}+#{fy-50}#",
-        profile: "100x250+#{fx-50}+#{fy-175}#"
+        profile: "180x300+#{fx-90}+#{fy-150}#"
       }
     },
     processors: [:cropper]
