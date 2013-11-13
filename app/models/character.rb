@@ -6,11 +6,14 @@ class Character < ActiveRecord::Base
     presence: true
 
   validates :name, length: { in: 1..80 }
+  validates :name, uniqueness: { scope: :affinity_id }
 
   validates  :stat_hp, :stat_str, :stat_def,
     :stat_spd, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   after_initialize :ensure_defaults
+  before_save :on_before_save
+  after_save :on_after_save
 
   belongs_to :user
   belongs_to :tier
@@ -47,7 +50,6 @@ class Character < ActiveRecord::Base
     str << " alt=\"#{alt}\""
     str << " src=\"#{src}\""
     str << '>'
-require File.dirname(__FILE__) + '/../../spec/spec_helper'
 
     str.html_safe
   end
@@ -73,5 +75,22 @@ require File.dirname(__FILE__) + '/../../spec/spec_helper'
     self.stat_str ||= 0
     self.stat_def ||= 0
     self.stat_spd ||= 0
+  end
+
+  def on_before_save
+    #normalize name
+    self.name = self.name.gsub(/^\s+/, "")
+    self.name = self.name.gsub(/\s+$/, "")
+    self.name = self.name.gsub(/[_\s]+/, " ")
+    self.name = self.name.titleize
+  end
+
+  def on_after_save
+    if self.portraits.empty?
+      po = Portrait.new
+      po.character_id = self.id
+      po.load_character_default_image!
+      po.save!
+    end
   end
 end

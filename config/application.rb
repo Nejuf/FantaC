@@ -41,5 +41,8 @@ module Fantac
         secret_access_key: Figaro.env.AWS_FANTAC_ACCESS_KEY_SECRET,
         region: Figaro.env.AWS_REGION)
 
+    ENV['DEFAULT_CHAR_PIC_URL'] = "https://s3-us-west-2.amazonaws.com/fantac-public/default_char_pics/"
+    # https://s3-us-west-2.amazonaws.com/fantac-public/default_char_pics/jack_sparrow_2.JPG
+    # https://s3-us-west-2.amazonaws.com/fantac-public/default_char_pics/link_1.jpg
   end
 end

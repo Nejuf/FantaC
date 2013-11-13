@@ -43,7 +43,7 @@ class PortraitsController < ApplicationController
     respond_to do |format|
 
       if @portrait.update(portrait_params)
-        format.html { redirect_to @portrait, notice: 'Portrait was successfully updated.' }
+        format.html { redirect_to @portrait.character, notice: 'Portrait was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
