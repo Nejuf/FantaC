@@ -10,8 +10,14 @@
   <%= f.input :stat_spd %>
   <%= f.input :stat_int %>
   <%= f.input :stat_luck %>
-  <%= f.label :portrait_image, "Portrait" %>
-  <%= f.file_field :portrait_image %>
+  <% if @character.portrait_main %>
+    <%= @character.image_tag(:original) %>
+    <%= f.label :portrait_image, "Upload New Portrait" %>
+    <%= f.file_field :portrait_image %>
+  <% else %>
+    <%= f.label :portrait_image, "Upload Portrait" %>
+    <%= f.file_field :portrait_image %>
+  <% end %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

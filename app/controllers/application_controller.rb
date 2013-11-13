@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   # before_filter :setup_gon
-
+  #
   # def setup_gon
-  # 	gon.ENV = ENV
+  #   gon.ENV = ENV
   # end
 end
