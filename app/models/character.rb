@@ -90,7 +90,7 @@ class Character < ActiveRecord::Base
       po = Portrait.new
       po.character_id = self.id
       po.load_character_default_image!
-      po.save!
+      po.save
     end
   end
 end

@@ -19,8 +19,8 @@ class Portrait < ActiveRecord::Base
   }
 
   STYLE_ARGS = lambda { |attachment|
-    fx = attachment.instance.focusX
-    fy = attachment.instance.focusY
+    fx = attachment.instance.focusX.to_i
+    fy = attachment.instance.focusY.to_i
     {
       small: attachment.instance.style_command(:small, fx, fy),
       medium: attachment.instance.style_command(:medium, fx, fy),
@@ -64,13 +64,14 @@ class Portrait < ActiveRecord::Base
       self.image_height = 1
     end
 
-    if self.focusX.nil? || self.focusX < 0 || self.focusX > self.image_width
+    if self.focusX.nil? || (self.focusX < 1) || (self.focusX >= self.image_width)
       self.focusX = (image_width/2).floor
     end
 
-    if self.focusY.nil? || self.focusY < 0 || self.focusY > self.image_height
+    if self.focusY.nil? || (self.focusY < 1) || (self.focusY >= self.image_height)
       self.focusY = (self.image_height/4).floor
     end
+
   end
 
   def image_tag(size=:small, width=0, height=0)
@@ -104,18 +105,32 @@ class Portrait < ActiveRecord::Base
         @processing_image = true
         styles = STYLE_ARGS.call self.portrait_image
         style_list = styles.keys
-        portrait_image.reprocess!(*style_list)
+        self.portrait_image.reprocess!(*style_list)
       end
     end
   end
 
   def load_character_default_image!
-    char_name = character.name.downcase || "default_char"
+    char_name = self.character.name.downcase || "default_char"
     char_name = char_name.gsub(/\s+/, "_")
-    affinity = character.affinity_id.to_s || "0"
+    affinity = self.character.affinity_id.to_s || "0"
     url = ENV['DEFAULT_CHAR_PIC_URL'] + char_name + "_" + affinity + '.jpg'
     # io = open(url, 'User-Agent' => 'ruby')
-    self.portrait_image = URI.parse(url)
+    begin
+      self.portrait_image = URI.parse(url)
+      p "Portrait Warning: Could not find image from character name: #{char_name} at #{url}"
+    rescue
+      begin
+        io = open(url)
+        self.portrait_image = io
+        p "Portrait Warning: Could not find image from character name on second attempt: #{char_name} at #{url}"
+      rescue
+        io = open("http://images1.wikia.nocookie.net/__cb20120413002834/creepypasta/images/1/19/Missingno..png")
+        self.portrait_image = io
+      end
+    end
+    self.focusX = 0
+    self.focusY = 0
     return
   end
 end
