@@ -30,10 +30,10 @@ class Portrait < ActiveRecord::Base
   }
 
   STYLE_DEFAULT_URLS = {
-    small: "http://images1.wikia.nocookie.net/__cb20120413002834/creepypasta/images/1/19/Missingno..png",
-    medium: "http://images1.wikia.nocookie.net/__cb20120413002834/creepypasta/images/1/19/Missingno..png",
-    large: "http://images1.wikia.nocookie.net/__cb20120413002834/creepypasta/images/1/19/Missingno..png",
-    profile: "http://images1.wikia.nocookie.net/__cb20120413002834/creepypasta/images/1/19/Missingno..png"
+    small:  ENV['MISSING_CHAR_PIC_URL'],
+    medium:  ENV['MISSING_CHAR_PIC_URL'],
+    large:  ENV['MISSING_CHAR_PIC_URL'],
+    profile:  ENV['MISSING_CHAR_PIC_URL']
   }
 
   def style_command(style, focusX, focusY)
@@ -118,14 +118,14 @@ class Portrait < ActiveRecord::Base
     # io = open(url, 'User-Agent' => 'ruby')
     begin
       self.portrait_image = URI.parse(url)
-      p "Portrait Warning: Could not find image from character name: #{char_name} at #{url}"
     rescue
+      p "Portrait Warning: Could not find image from character name: #{char_name} at #{url}"
       begin
         io = open(url)
         self.portrait_image = io
-        p "Portrait Warning: Could not find image from character name on second attempt: #{char_name} at #{url}"
       rescue
-        io = open("http://images1.wikia.nocookie.net/__cb20120413002834/creepypasta/images/1/19/Missingno..png")
+        p "Portrait Warning: Could not find image from character name on second attempt: #{char_name} at #{url}"
+        io = open( ENV['MISSING_CHAR_PIC_URL'] )
         self.portrait_image = io
       end
     end
