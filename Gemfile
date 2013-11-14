@@ -60,6 +60,7 @@ gem 'omniauth-facebook'
 # gem 'paperclip', :path => "~/Desktop/Nejuf/paperclip"
 gem 'paperclip'
 gem 'uuidtools'
+gem 'redis-rails'
 
 #Twitter Bootstrap Rails
 # gem 'less-rails'

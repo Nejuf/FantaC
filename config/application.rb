@@ -48,13 +48,12 @@ module Fantac
 
     ENV['SSL_CERT_FILE'] = "C:/RailsInstaller/cacert.pem"
 
+    #Heroku
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif,
                                       "fontawesome-webfont.ttf",
                                      "fontawesome-webfont.eot",
                                      "fontawesome-webfont.svg",
                                      "fontawesome-webfont.woff")
-
-
 
     config.assets.precompile << Proc.new do |path|
           if path =~ /\.(css|js)\z/
@@ -71,5 +70,22 @@ module Fantac
             false
           end
         end
+
+
+    #Redis
+    if ENV["REDISTOGO_URL"]
+      config = RedisDemoApp::Application.config
+      uri = URI.parse(ENV["REDISTOGO_URL"])
+
+      config.cache_store = [
+        :redis_store, {
+          :host => uri.host,
+          :port => uri.port,
+          :password => uri.password,
+          :namespace => "cache"
+        }
+      ]
+    end
+
   end
 end

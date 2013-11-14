@@ -32,6 +32,10 @@
                   <%= glyph(roster.character.glyph.to_s) %>
                   <%= link_to roster.character.name, character_path(roster.character) %>
                 </div>
+                <% if @battle.results %>
+                <div>Points: <%= @battle.results[roster.character.name] %>
+                </div>
+                <% end%>
               </div>
         </li>
       <% end %>
@@ -52,14 +56,17 @@
       timezone: 0,
       dayDigitsAmount: 2,
       digits: { days:false, hours:true, minutes:true, seconds:true },
-      callback: onTargetReached,
+      <% if date > DateTime.now %>
+        callback: onTargetReached,
+      <% end %>
       overlayImageUrl: gon.global.APP_ASSET_HOST+"fancyCountdown/overlay.png"
     });
 
     function onTargetReached(){
-     // $(window).off('blur', $.fancyCountdown.stop);
-      //$(window).off('focus',$.fancyCountdown.start);
+      $(window).off('blur', $.fancyCountdown.stop);
+      $(window).off('focus',$.fancyCountdown.start);
       console.log("target time reached");
+      location.reload(true);
     }
   // $('#start').click(function(){
   //   $.fancyCountdown.start();
