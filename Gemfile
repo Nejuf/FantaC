@@ -68,8 +68,10 @@ gem 'simple_form'
 gem 'twitter-bootstrap-rails'
 
 #Heroku https://devcenter.heroku.com/articles/rails4
-gem 'rails_12factor', group: [:production]
-gem 'rails_serve_static_assets', group: [:production]
+#Heroku http://stackoverflow.com/questions/15354539/heroku-does-not-compile-files-under-assets-piplines-in-rails-4
+group :production do
+  gem 'rails_12factor'
+end
 
 group :development, :test do
   gem 'awesome_print'

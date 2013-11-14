@@ -47,5 +47,29 @@ module Fantac
     # https://s3-us-west-2.amazonaws.com/fantac-public/default_char_pics/link_1.jpg
 
     ENV['SSL_CERT_FILE'] = "C:/RailsInstaller/cacert.pem"
+
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif,
+                                      "fontawesome-webfont.ttf",
+                                     "fontawesome-webfont.eot",
+                                     "fontawesome-webfont.svg",
+                                     "fontawesome-webfont.woff")
+
+
+
+    config.assets.precompile << Proc.new do |path|
+          if path =~ /\.(css|js)\z/
+            full_path = Rails.application.assets.resolve(path).to_path
+            app_assets_path = Rails.root.join('app', 'assets').to_path
+            if full_path.starts_with? app_assets_path
+              puts "including asset: " + full_path
+              true
+            else
+              puts "excluding asset: " + full_path
+              false
+            end
+          else
+            false
+          end
+        end
   end
 end
