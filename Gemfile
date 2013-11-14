@@ -70,10 +70,10 @@ gem 'twitter-bootstrap-rails'
 #Heroku https://devcenter.heroku.com/articles/rails4
 gem 'rails_12factor', group: :production
 
-group :development, :test do
-  gem 'awesome_print'
   gem 'better_errors'
   gem 'binding_of_caller'
+group :development, :test do
+  gem 'awesome_print'
   gem 'bullet'
   gem 'factory_girl_rails'
   gem 'faker'
