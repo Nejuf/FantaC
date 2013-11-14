@@ -120,8 +120,7 @@ class Portrait < ActiveRecord::Base
 
           p self.portrait_image.errors
         end
-        print "success " + reprocess_success
-
+        print "success #{reprocess_success}"
         p self.portrait_image.errors
       end
     end

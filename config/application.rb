@@ -45,5 +45,7 @@ module Fantac
     ENV['MISSING_CHAR_PIC_URL'] = 'https://s3-us-west-2.amazonaws.com/fantac-public/default_char_pics/default.png'
     # https://s3-us-west-2.amazonaws.com/fantac-public/default_char_pics/jack_sparrow_2.JPG
     # https://s3-us-west-2.amazonaws.com/fantac-public/default_char_pics/link_1.jpg
+
+    ENV['SSL_CERT_FILE'] = "C:/RailsInstaller/cacert.pem"
   end
 end
