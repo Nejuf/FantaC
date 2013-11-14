@@ -41,6 +41,7 @@
 <script type="text/javascript">
   $(document).ready(function(){
     <% date = DateTime.parse(@battle.end_date) %>
+
     $('#fancyCountdown').fancyCountdown({
       year: <%= date.year %>,
       month: <%= date.month %>,
@@ -48,7 +49,7 @@
       hour: <%= date.hour %>,
       minute: <%= date.minute %>,
       second: <%= date.second %>,
-      timezone: 1,
+      timezone: 0,
       dayDigitsAmount: 2,
       digits: { days:false, hours:true, minutes:true, seconds:true },
       callback: onTargetReached,
@@ -56,8 +57,8 @@
     });
 
     function onTargetReached(){
-      $(window).off('blur', $.fancyCountdown.stop);
-      $(window).off('focus',$.fancyCountdown.start);
+     // $(window).off('blur', $.fancyCountdown.stop);
+      //$(window).off('focus',$.fancyCountdown.start);
       console.log("target time reached");
     }
   // $('#start').click(function(){
