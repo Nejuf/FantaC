@@ -8,4 +8,10 @@ class ApplicationController < ActionController::Base
   # def setup_gon
   #   gon.ENV = ENV
   # end
+
+  check_authorization
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to Rails.root + '401.html', alert: exception.message
+  end
 end

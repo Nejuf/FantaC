@@ -34,7 +34,9 @@ pos = Position.create!(name: "left-wing")
 pos = Position.create!(name: "cook")
 # pos = Position.create!(name: "")
 
-u = User.create!(email: "user1@gmail.com", username: "user1", password: "12341234")
+u = User.new(email: "user1@gmail.com", username: "user1", password: "12341234")
+u.role = "admin"
+u.save!
 u = User.create!(email: "user2@gmail.com", username: "user2", password: "12341234")
 # u = User.create!(email: "user@gmail.com", username: "user", password: "12341234")
 

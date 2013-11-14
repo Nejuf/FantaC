@@ -16,6 +16,9 @@
   <%= f.input :unlock_token %>
   <%= f.input :locked_at %>
   <%= f.input :username %>
+  <% if current_user && current_user.admin? %>
+    <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
+  <% end %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
