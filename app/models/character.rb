@@ -37,7 +37,7 @@ class Character < ActiveRecord::Base
     if portrait_main && portrait_main.portrait_image
       src = portrait_main.portrait_image.url(size)
     else
-      src = "http://images1.wikia.nocookie.net/__cb20120413002834/creepypasta/images/1/19/Missingno..png"
+      src = ENV['MISSING_CHAR_PIC_URL']
     end
 
     str = '<img'
@@ -91,6 +91,10 @@ class Character < ActiveRecord::Base
       po.character_id = self.id
       po.load_character_default_image!
       po.save
+      unless po.errors.messages.empty?
+        debugger
+        p ""
+      end
     end
   end
 end

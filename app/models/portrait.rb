@@ -98,19 +98,43 @@ class Portrait < ActiveRecord::Base
     end
   end
 
-  def check_for_image_reprocess
-    return if @processing_image
+  def check_for_image_reprocess(force=false)
+
+    if @processing_image && !force
+      p "already processing image"
+      return
+    end
     if(self.changed_attributes.key?("focusX") || self.changed_attributes.key?("focusY"))
+
       if self.portrait_image
         @processing_image = true
         styles = STYLE_ARGS.call self.portrait_image
         style_list = styles.keys
-        self.portrait_image.reprocess!(*style_list)
+
+        begin
+          reprocess_success = self.portrait_image.reprocess!(*style_list) #!everything below this never executes
+          #a problem with splat?  reprocess?
+        rescue
+
+          p "Error reprocessing image"
+
+          p self.portrait_image.errors
+        end
+        print "success " + reprocess_success
+
+        p self.portrait_image.errors
       end
     end
   end
 
+  after_save :on_after_save
+  def on_after_save
+    @processing_image = false
+    p "saved portrait #{character.name} #{self.changed_attributes}"
+  end
+
   def load_character_default_image!
+    @processing_image = false
     char_name = self.character.name.downcase || "default_char"
     char_name = char_name.gsub(/\s+/, "_")
     affinity = self.character.affinity_id.to_s || "0"
@@ -129,8 +153,19 @@ class Portrait < ActiveRecord::Base
         self.portrait_image = io
       end
     end
-    self.focusX = 0
-    self.focusY = 0
+    self.save
+    unless(self.errors.messages.empty?)
+      debugger
+    end
+    self.save_image_dimensions
+    unless(self.errors.messages.empty?)
+      debugger
+    end
+    self.check_for_image_reprocess(true)
+    unless(self.errors.messages.empty?)
+      debugger
+    end
+    p self.errors.messages
     return
   end
 end

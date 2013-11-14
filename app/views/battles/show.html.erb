@@ -27,7 +27,7 @@
       <% @battle.battle_rosters.includes(:character => :affinity).each do |roster| %>
         <li class="span3">
               <div class="thumbnail pagination-centered">
-                <%= roster.character.image_tag 80, 80 %>
+                <%= roster.character.image_tag :medium %>
                 <div class="caption">
                   <%= glyph(roster.character.glyph.to_s) %>
                   <%= link_to roster.character.name, character_path(roster.character) %>
