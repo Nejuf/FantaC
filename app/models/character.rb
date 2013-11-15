@@ -13,7 +13,6 @@ class Character < ActiveRecord::Base
 
   after_initialize :ensure_defaults
   before_save :on_before_save
-  after_save :on_after_save
 
   belongs_to :user
   belongs_to :tier
@@ -85,16 +84,4 @@ class Character < ActiveRecord::Base
     self.name = self.name.titleize
   end
 
-  def on_after_save
-    if self.portraits.empty?
-      po = Portrait.new
-      po.character_id = self.id
-      po.load_character_default_image!
-      po.save
-      unless po.errors.messages.empty?
-        debugger
-        p ""
-      end
-    end
-  end
 end

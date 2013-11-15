@@ -44,6 +44,9 @@ class CharactersController < ApplicationController
     respond_to do |format|
       if @character.save
 
+        if portrait_image.nil?
+          portrait_image = Portrait.load_character_default_image!(@character)
+        end
         @portrait = Portrait.create({
           :character_id => @character.id,
           :focusX => 0,

@@ -11,7 +11,7 @@ class Ability
       can :read, :all
       can :create, [Contest, Entry, Character, User, Portrait]
       can :update, [Contest, Entry, Character, User], user_id: user.id
-      can :update, :destroy Portrait do |portrait|
+      can :update, :destroy, Portrait do |portrait|
         portrait.character.user_id == user.id
       end
       can :destroy, [Entry, User], user_id: user.id

@@ -50,6 +50,7 @@ class Portrait < ActiveRecord::Base
 
   before_save :save_image_dimensions
   def save_image_dimensions
+
     if(self.portrait_image.queued_for_write[:original])
       geo = Paperclip::Geometry.from_file(portrait_image.queued_for_write[:original])
       self.image_width = geo.width.floor
@@ -122,49 +123,31 @@ class Portrait < ActiveRecord::Base
         end
         print "success #{reprocess_success}"
         p self.portrait_image.errors
+        debugger
+     p "test"
       end
     end
   end
 
-  after_save :on_after_save
-  def on_after_save
-    @processing_image = false
-    p "saved portrait #{character.name} #{self.changed_attributes}"
-  end
-
-  def load_character_default_image!
-    @processing_image = false
-    char_name = self.character.name.downcase || "default_char"
+  def self.load_character_default_image!(character)
+    char_name = character.name.downcase || "default_char"
     char_name = char_name.gsub(/\s+/, "_")
-    affinity = self.character.affinity_id.to_s || "0"
+    affinity = character.affinity_id.to_s || "0"
     url = ENV['DEFAULT_CHAR_PIC_URL'] + char_name + "_" + affinity + '.jpg'
     # io = open(url, 'User-Agent' => 'ruby')
     begin
-      self.portrait_image = URI.parse(url)
+      portrait_image = URI.parse(url)
     rescue
       p "Portrait Warning: Could not find image from character name: #{char_name} at #{url}"
       begin
         io = open(url)
-        self.portrait_image = io
+        portrait_image = io
       rescue
         p "Portrait Warning: Could not find image from character name on second attempt: #{char_name} at #{url}"
         io = open( ENV['MISSING_CHAR_PIC_URL'] )
-        self.portrait_image = io
+        portrait_image = io
       end
     end
-    self.save
-    unless(self.errors.messages.empty?)
-      debugger
-    end
-    self.save_image_dimensions
-    unless(self.errors.messages.empty?)
-      debugger
-    end
-    self.check_for_image_reprocess(true)
-    unless(self.errors.messages.empty?)
-      debugger
-    end
-    p self.errors.messages
-    return
+    return portrait_image
   end
 end
