@@ -1,14 +1,15 @@
 <%= simple_form_for @character, :html => { :class => 'form-horizontal', multipart: true } do |f| %>
+<%= f.error_notification %>
   <%= f.input :name %>
-  <%= f.input :desc %>
-  <%= f.input :affinity_id %>
-  <%= f.input :tier_id %>
-  <%= f.input :stat_hp %>
-  <%= f.input :stat_str %>
-  <%= f.input :stat_def %>
-  <%= f.input :stat_spd %>
-  <%= f.input :stat_int %>
-  <%= f.input :stat_luck %>
+  <%= f.input :desc, label: "Description" %>
+  <%= f.association :affinity %>
+  <%= f.association :tier %>
+  <%= f.input :stat_hp, label: "Health Points", collection: 0..100 %>
+  <%= f.input :stat_str, label: "Strength", collection: 0..100 %>
+  <%= f.input :stat_def, label: "Defense", collection: 0..100 %>
+  <%= f.input :stat_spd, label: "Speed", collection: 0..100 %>
+  <%= f.input :stat_int, label: "Intelligence", collection: 0..100 %>
+  <%= f.input :stat_luck, label: "Luck", collection: 0..100 %>
   <% if @character.portrait_main %>
     <%= @character.image_tag(:original) %>
     <%= f.label :portrait_image, "Upload New Portrait" %>
@@ -17,6 +18,7 @@
     <%= f.label :portrait_image, "Upload Portrait" %>
     <%= f.file_field :portrait_image %>
   <% end %>
+  <%= f.error :base %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

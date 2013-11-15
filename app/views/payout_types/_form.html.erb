@@ -1,5 +1,7 @@
 <%= simple_form_for @payout_type, :html => { :class => 'form-horizontal' } do |f| %>
+<%= f.error_notification %>
   <%= f.input :name %>
+  <%= f.error :base %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

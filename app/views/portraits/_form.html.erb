@@ -1,4 +1,5 @@
 <%= simple_form_for @portrait, :html => { :class => 'form-horizontal' } do |f| %>
+<%= f.error_notification %>
 <div class="control-group integer optional portrait_focusX">
   <label class="integer optional control-label" for="portrait_focusX">Focus X</label>
   <div class="controls">
@@ -28,6 +29,7 @@
       <i class="icon-circle-blank"></i>
     </img>
   </div>
+  <%= f.error :base %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

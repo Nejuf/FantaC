@@ -1,4 +1,5 @@
 <%= simple_form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.error_notification %>
   <%= f.input :email %>
   <%= f.input :encrypted_password %>
   <%= f.input :reset_password_token %>
@@ -19,6 +20,7 @@
   <% if current_user && current_user.admin? %>
     <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
   <% end %>
+  <%= f.error :base %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
