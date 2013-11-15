@@ -3,11 +3,19 @@
 <div class="hero-unit text-center">
   <h1 class='text-center'><%= @battle.name.titleize %></h1>
   <p class="lead"><%= @battle.desc %></p>
+  <%= link_to "Create Contest", new_contest_url(battle_id: @battle.id), class: "btn btn-primary" %>
+  <%= link_to "Enter Contest", contests_url(battle_id: @battle.id), class: "btn btn-primary" %>
+  <div class="text-center">
+    <h2>Battle Time</h2>
+  </div>
+    <div class="row">
+      <div class="span6 centred">
+        <div id="fancyCountdown">
+        </div>
+      </div>
+    </div>
 </div>
-<div class="text-center">
-  <h1>Battle Time</h1>
-  <div class="row"><div id="fancyCountdown" class="pagination-centered offset4 span6"></div></div>
-</div>
+
 
 <% if user_signed_in? && @battle.user_id == current_user.id %>
   <div class="form-actions">
