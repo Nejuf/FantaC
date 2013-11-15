@@ -1,9 +1,13 @@
+<% @entry.contest ||= @contest %>
 <%= simple_form_for @entry, :html => { :class => 'form-horizontal' } do |f| %>
 	<%= f.error_notification %>
   <%= f.input :name, label: "Team Name" %>
   <%= f.input :desc, label: "Description" %>
-  <%= f.association :positions %>
-  <%= f.association :characters %>
+
+  <!-- <label class="text">Positions</label> -->
+  <% @entry.contest.positions.each do |position| %>
+    <%= f.association :characters, label: position.name %>
+  <% end %>
   <%= f.error :base %>
   <input type="hidden" name="entry[contest_id]" value="<%= params[:contest_id] %>">
   <div class="form-actions">
