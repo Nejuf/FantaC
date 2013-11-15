@@ -9,6 +9,11 @@ class Battle < ActiveRecord::Base
   has_many :battle_rosters
   has_many :characters, through: :battle_rosters
 
+  def self.featured
+    # TODO get designated featured or next upcoming battle
+    self.first
+  end
+
   #Returns a hash with each participating character's points { "char name": char_points }
   def results
     return {} unless end_passed?

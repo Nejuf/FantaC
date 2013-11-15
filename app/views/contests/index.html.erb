@@ -5,42 +5,40 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:desc) %></th>
+      <th>Description</th>
       <th><%= model_class.human_attribute_name(:points_cap) %></th>
       <th><%= model_class.human_attribute_name(:entry_fee) %></th>
-      <th><%= model_class.human_attribute_name(:payout_type_id) %></th>
+      <th><%= model_class.human_attribute_name(:payout_type) %></th>
       <th><%= model_class.human_attribute_name(:payout_amount) %></th>
-      <th><%= model_class.human_attribute_name(:category_id) %></th>
-      <th><%= model_class.human_attribute_name(:user_id) %></th>
-      <th><%= model_class.human_attribute_name(:battle_id) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th><%= model_class.human_attribute_name(:category) %></th>
+      <th>Battle</th>
     </tr>
   </thead>
   <tbody>
-    <% @contests.each do |contest| %>
+    <% contests = params[:battle_id] ? @contests.where(battle_id: params[:battle_id]) : @contests %>
+    <% contests.includes(:battle, :payout_type, :category).each do |contest| %>
       <tr>
-        <td><%= link_to contest.id, contest_path(contest) %></td>
-        <td><%= contest.name %></td>
+        <td><%= link_to contest.name, contest_path(contest) %></td>
         <td><%= contest.desc %></td>
         <td><%= contest.points_cap %></td>
         <td><%= contest.entry_fee %></td>
-        <td><%= contest.payout_type_id %></td>
+        <td><%= contest.payout_type.name %></td>
         <td><%= contest.payout_amount %></td>
-        <td><%= contest.category_id %></td>
-        <td><%= contest.user_id %></td>
-        <td><%= contest.battle_id %></td>
-        <td><%=l contest.created_at %></td>
+        <td><%= contest.category.name %></td>
+        <td><%= contest.battle.name %></td>
         <td>
+        <% if(can? :update, contest) %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_contest_path(contest), :class => 'btn btn-mini' %>
+        <% end %>
+        <% if(can? :destroy, contest) %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       contest_path(contest),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>
+        <% end %>
         </td>
       </tr>
     <% end %>

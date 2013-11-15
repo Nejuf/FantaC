@@ -5,7 +5,7 @@
   <%= f.association :positions %>
   <%= f.association :characters %>
   <%= f.error :base %>
-  <input type="hidden">
+  <input type="hidden" name="entry[contest_id]" value="<%= params[:contest_id] %>">
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

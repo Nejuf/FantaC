@@ -15,6 +15,7 @@ class ContestsController < ApplicationController
 
   # GET /contests/new
   def new
+    @battle = Battle.find(params[:battle_id])
     @contest = Contest.new
   end
 
