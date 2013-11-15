@@ -136,18 +136,17 @@ class Portrait < ActiveRecord::Base
     url = ENV['DEFAULT_CHAR_PIC_URL'] + char_name + "_" + affinity + '.jpg'
     # io = open(url, 'User-Agent' => 'ruby')
     begin
-      portrait_image = URI.parse(url)
+      l_uri = URI.parse(url)
+      io = l_uri.open
     rescue
       p "Portrait Warning: Could not find image from character name: #{char_name} at #{url}"
       begin
-        io = open(url)
-        portrait_image = io
+        io = open(url, 'User-Agent' => 'ruby')
       rescue
         p "Portrait Warning: Could not find image from character name on second attempt: #{char_name} at #{url}"
-        io = open( ENV['MISSING_CHAR_PIC_URL'] )
-        portrait_image = io
+        io = open( ENV['MISSING_CHAR_PIC_URL'], 'User-Agent' => 'ruby' )
       end
     end
-    return portrait_image
+    return io
   end
 end

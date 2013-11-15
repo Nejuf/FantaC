@@ -24,9 +24,9 @@ a = Affinity.create!(name: "film")#3
 a = Affinity.create!(name: "book")#4
 # a = Affinity.create!(name: "")
 
-p = PayoutType.create!(name: "gold")
-p = PayoutType.create!(name: "prize")
-# p = PayoutType.create!(name: "")
+pay = PayoutType.create!(name: "gold")
+pay = PayoutType.create!(name: "prize")
+# pay = PayoutType.create!(name: "")
 
 pos = Position.create!(name: "leader")
 pos = Position.create!(name: "right-wing")
@@ -41,15 +41,75 @@ u = User.create!(email: "user2@gmail.com", username: "user2", password: "1234123
 # u = User.create!(email: "user@gmail.com", username: "user", password: "12341234")
 
 c = Character.create!(name: "Link", affinity_id: 2, stat_hp: 10, stat_str: 10, stat_def: 10, stat_spd: 10, tier_id: 1)
+	por = Portrait.create({
+	  :character_id => c.id,
+	  :focusX => 0,
+	  :focusY => 0,
+	  :portrait_image =>  Portrait.load_character_default_image!(c)
+	})
 c = Character.create!(name: "Jack Sparrow", affinity_id: 3, stat_hp: 10, stat_str: 10, stat_def: 10, stat_spd: 10, tier_id: 1)
+	por = Portrait.create({
+	  :character_id => c.id,
+	  :focusX => 0,
+	  :focusY => 0,
+	  :portrait_image =>  Portrait.load_character_default_image!(c)
+	})
 c = Character.create!(name: "Harry Potter", affinity_id: 4, stat_hp: 10, stat_str: 10, stat_def: 10, stat_spd: 10, tier_id: 1)
+	por = Portrait.create({
+	  :character_id => c.id,
+	  :focusX => 0,
+	  :focusY => 0,
+	  :portrait_image =>  Portrait.load_character_default_image!(c)
+	})
 c = Character.create!(name: "Nathan Drake", affinity_id: 2,  tier_id: 1)
+	por = Portrait.create({
+	  :character_id => c.id,
+	  :focusX => 0,
+	  :focusY => 0,
+	  :portrait_image =>  Portrait.load_character_default_image!(c)
+	})
 c = Character.create!(name: "Batman", affinity_id: 4,  tier_id: 1)
+	por = Portrait.create({
+	  :character_id => c.id,
+	  :focusX => 0,
+	  :focusY => 0,
+	  :portrait_image =>  Portrait.load_character_default_image!(c)
+	})
 c = Character.create!(name: "Mr. Rogers", affinity_id: 3,  tier_id: 1)
+	por = Portrait.create({
+	  :character_id => c.id,
+	  :focusX => 0,
+	  :focusY => 0,
+	  :portrait_image =>  Portrait.load_character_default_image!(c)
+	})
 c = Character.create!(name: "Mario", affinity_id: 2,  tier_id: 1)
+	por = Portrait.create({
+	  :character_id => c.id,
+	  :focusX => 0,
+	  :focusY => 0,
+	  :portrait_image =>  Portrait.load_character_default_image!(c)
+	})
 c = Character.create!(name: "Merlin", affinity_id: 4,  tier_id: 1)
+	por = Portrait.create({
+	  :character_id => c.id,
+	  :focusX => 0,
+	  :focusY => 0,
+	  :portrait_image =>  Portrait.load_character_default_image!(c)
+	})
 c = Character.create!(name: "Luke Skywalker", affinity_id: 3,  tier_id: 1)
+	por = Portrait.create({
+	  :character_id => c.id,
+	  :focusX => 0,
+	  :focusY => 0,
+	  :portrait_image =>  Portrait.load_character_default_image!(c)
+	})
 c = Character.create!(name: "Neo", affinity_id: 3,  tier_id: 1)
+	por = Portrait.create({
+	  :character_id => c.id,
+	  :focusX => 0,
+	  :focusY => 0,
+	  :portrait_image =>  Portrait.load_character_default_image!(c)
+	})
 # c = Character.create!(name: "", affinity_id: , stat_hp: , stat_str: , stat_def: , stat_spd: , tier_id: )
 
 b = Battle.create!(name: "The Ultimate Showdown of Ultimate Destiny", desc: "all characters, all affinities, one winner", start_date: Time.now.utc.to_s, end_date: (Time.now + 40.minutes).utc.to_s)
