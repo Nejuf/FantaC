@@ -9,6 +9,7 @@ class Contest < ActiveRecord::Base
   belongs_to :payout_type
   belongs_to :battle
   belongs_to :category
+  belongs_to :user
 
   has_many :entries
   has_many :contest_positions

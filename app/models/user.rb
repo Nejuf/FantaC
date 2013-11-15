@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
  has_many :entries
  has_many :contests
  has_many :characters
+ has_many :battles
 
  before_create :on_before_create
  def on_before_create
