@@ -1,4 +1,5 @@
 class CharactersController < ApplicationController
+  # load_and_authorize_resource
   skip_authorization_check
   before_action :set_character, only: [:show, :edit, :update, :destroy]
 

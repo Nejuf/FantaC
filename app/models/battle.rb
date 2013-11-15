@@ -19,7 +19,7 @@ class Battle < ActiveRecord::Base
   end
 
   def end_passed?
-    DateTime.parse(self.end_date) > DateTime.now
+    DateTime.parse(self.end_date) < DateTime.now
   end
 
 private
