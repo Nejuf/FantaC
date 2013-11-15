@@ -1,4 +1,5 @@
 class EntriesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_entry, only: [:show, :edit, :update, :destroy]
 
   # GET /entries
@@ -25,6 +26,7 @@ class EntriesController < ApplicationController
   # POST /entries.json
   def create
     @entry = Entry.new(entry_params)
+    @entry.user_id = current_user.id
 
     respond_to do |format|
       if @entry.save
@@ -69,6 +71,6 @@ class EntriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def entry_params
-      params[:entry]
+      params[:entry].permit(:name, :desc, :contest_id)
     end
 end

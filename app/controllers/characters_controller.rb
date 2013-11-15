@@ -1,4 +1,5 @@
 class CharactersController < ApplicationController
+  skip_authorization_check
   before_action :set_character, only: [:show, :edit, :update, :destroy]
 
   # GET /characters
@@ -32,17 +33,22 @@ class CharactersController < ApplicationController
   # POST /characters
   # POST /characters.json
   def create
-    @character = Character.new(character_params)
+    portrait_image = params[:character].delete(:portrait_image)
+    char_params = params[:character].permit(:name, :desc, :affinity_id, :tier_id, :stat_hp,
+    :stat_str, :stat_def, :stat_spd, :stat_int, :stat_luck)
+
+    @character = Character.new(char_params)
+    @character.user_id = current_user.id
 
     respond_to do |format|
       if @character.save
 
-        @portrait = Portrait.new
-        @portrait.character_id = @character.id
-        @portrait.focusX = 0;
-        @portrait.focusY = 0;
-        @portrait.portrait_image = params[:character][:portrait_image]
-        @portrait.save!
+        @portrait = Portrait.create({
+          :character_id => @character.id,
+          :focusX => 0,
+          :focusY => 0,
+          :portrait_image => portrait_image
+        })
 
         format.html { redirect_to @portrait, notice: 'Character was successfully created.' }
         format.json { render action: 'show', status: :created, location: @character }
@@ -57,7 +63,11 @@ class CharactersController < ApplicationController
   # PATCH/PUT /characters/1.json
   def update
     respond_to do |format|
-      if @character.update(character_params)
+      portrait_image = params[:character].delete(:portrait_image)
+      char_params = params[:character].permit(:name, :desc, :affinity_id, :tier_id, :stat_hp,
+      :stat_str, :stat_def, :stat_spd, :stat_int, :stat_luck)
+
+      if @character.update(char_params)
         format.html { redirect_to @character, notice: 'Character was successfully updated.' }
         format.json { head :no_content }
       else
@@ -84,8 +94,11 @@ class CharactersController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def character_params
-      params[:character].permit(:name, :desc, :affinity_id, :tier_id, :stat_hp,
-      :stat_str, :stat_def, :stat_spd, :stat_int, :stat_luck)
-    end
+   #  def character_params
+#       debugger
+#       p "test"
+#       #!!.permit() and or character_params is being destructive to params, since adding CanCan
+#       # params[:character].permit(:name, :desc, :affinity_id, :tier_id, :stat_hp,
+# #       :stat_str, :stat_def, :stat_spd, :stat_int, :stat_luck, :portrait_image)
+#     end
 end

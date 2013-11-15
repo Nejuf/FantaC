@@ -1,4 +1,8 @@
 class PortraitsController < ApplicationController
+  # load_and_authorize_resource :character, parent: false
+  # load_and_authorize_resource through: :character, parent: false
+  load_and_authorize_resource
+
   before_action :set_portrait, only: [:show, :edit, :update, :destroy]
 
   # GET /portraits
@@ -25,7 +29,7 @@ class PortraitsController < ApplicationController
   # POST /portraits.json
   def create
     @portrait = Portrait.new(portrait_params)
-
+    debugger
     respond_to do |format|
       if @portrait.save
         format.html { redirect_to @portrait, notice: 'Portrait was successfully created.' }
@@ -70,6 +74,6 @@ class PortraitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def portrait_params
-      params[:portrait].permit(:focusX, :focusY)
+      params[:portrait].permit(:focusX, :focusY, :character_id, :portrait_image)
     end
 end

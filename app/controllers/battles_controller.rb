@@ -26,6 +26,9 @@ class BattlesController < ApplicationController
   # POST /battles.json
   def create
     @battle = Battle.new(battle_params)
+    @battle.user_id = current_user.id
+    @battle.start_date = params[:battle][:start_date]
+    @battle.end_date = params[:battle][:end_date]
 
     respond_to do |format|
       if @battle.save
@@ -70,6 +73,6 @@ class BattlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def battle_params
-      params[:battle]
+      params[:battle].permit(:name, :desc)
     end
 end

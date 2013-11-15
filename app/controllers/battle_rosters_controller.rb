@@ -1,4 +1,5 @@
 class BattleRostersController < ApplicationController
+  load_and_authorize_resource
   before_action :set_battle_roster, only: [:show, :edit, :update, :destroy]
 
   # GET /battle_rosters
@@ -69,6 +70,6 @@ class BattleRostersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def battle_roster_params
-      params[:battle_roster]
+      params[:battle_roster].permit(:battle_id, :character_id)
     end
 end

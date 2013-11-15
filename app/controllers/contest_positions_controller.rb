@@ -1,4 +1,5 @@
 class ContestPositionsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_contest_position, only: [:show, :edit, :update, :destroy]
 
   # GET /contest_positions
@@ -69,6 +70,6 @@ class ContestPositionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contest_position_params
-      params[:contest_position]
+      params[:contest_position].permit(:contest_id, :position_id)
     end
 end

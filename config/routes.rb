@@ -24,6 +24,8 @@ Fantac::Application.routes.draw do
   resources :characters
 
   root to: "info#index"
+  get "/unauthorized", to: "info#unauthorized", as: "unauthorized"
+
   devise_for :users
 
   resources :users , only: [:index, :show]

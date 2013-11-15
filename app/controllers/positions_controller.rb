@@ -1,4 +1,5 @@
 class PositionsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_position, only: [:show, :edit, :update, :destroy]
 
   # GET /positions

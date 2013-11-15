@@ -1,4 +1,5 @@
 class CharacterEntriesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_character_entry, only: [:show, :edit, :update, :destroy]
 
   # GET /character_entries
@@ -69,6 +70,6 @@ class CharacterEntriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def character_entry_params
-      params[:character_entry]
+      params[:character_entry].permit(:character_id, :entry_id, :position_id)
     end
 end

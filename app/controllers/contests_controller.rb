@@ -1,4 +1,5 @@
 class ContestsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_contest, only: [:show, :edit, :update, :destroy]
 
   # GET /contests
@@ -25,6 +26,7 @@ class ContestsController < ApplicationController
   # POST /contests.json
   def create
     @contest = Contest.new(contest_params)
+    @contest.user_id = current_user.id
 
     respond_to do |format|
       if @contest.save
@@ -69,6 +71,7 @@ class ContestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contest_params
-      params[:contest]
+      params[:contest].permit(:name, :desc, :points_cap, :entry_fee, :payout_type_id,
+      :payout_amount, :category_id, :battle_id )
     end
 end

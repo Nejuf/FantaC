@@ -9,9 +9,17 @@ class ApplicationController < ActionController::Base
   #   gon.ENV = ENV
   # end
 
-  check_authorization
+  # CanCan strong_params fix
+  # https://github.com/ryanb/cancan/issues/835#issuecomment-18663815
+  before_filter do
+    resource = controller_name.singularize.to_sym
+    method = "#{resource}_params"
+    params[resource] &&= send(method) if respond_to?(method, true)
+  end
+
+  check_authorization :unless => :devise_controller?
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to Rails.root + '401.html', alert: exception.message
+    redirect_to unauthorized_url, alert: exception.message
   end
 end

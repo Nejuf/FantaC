@@ -1,4 +1,5 @@
 class TiersController < ApplicationController
+  load_and_authorize_resource
   before_action :set_tier, only: [:show, :edit, :update, :destroy]
 
   # GET /tiers
