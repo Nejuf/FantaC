@@ -52,6 +52,7 @@ module Fantac
     config.assets.enabled = true
 
     #Heroku
+    config.assets.initalize_on_precompile = false
     # config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif,
     #                                   "fontawesome-webfont.ttf",
     #                                  "fontawesome-webfont.eot",
