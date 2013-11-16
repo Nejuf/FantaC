@@ -123,7 +123,7 @@ class Portrait < ActiveRecord::Base
         end
         print "success #{reprocess_success}"
         p self.portrait_image.errors
-        debugger
+        # debugger
      p "test"
       end
     end
