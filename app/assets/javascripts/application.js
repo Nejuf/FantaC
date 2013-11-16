@@ -14,7 +14,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require js-routes
+//= require ../../../vendor/assets/javascripts/vendor
 //= require twitter/bootstrap
 //= require turbolinks
-//= require jquery.fancyCountdown
 //= require_tree .

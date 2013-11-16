@@ -77,7 +77,7 @@
           <%= form_for @user, url: user_session_path, html: {class: "navbar-form pull-right"} do |f| -%>
             <%= f.text_field :email, placeholder: "email" %>
             <%= f.password_field :password, placeholder: "password" %>
-            <%= f.submit "Sign in" %>
+            <%= f.submit "Sign in", class: "btn", rel: "nofollow" %>
           <% end -%>
         </li>
       <% end -%>
