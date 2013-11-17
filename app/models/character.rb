@@ -84,4 +84,21 @@ class Character < ActiveRecord::Base
     self.name = self.name.titleize
   end
 
+  def self.book
+    Rails.cache.fetch("characters_book", expires_in: 10.minutes ) do 
+      Character.where(affinity_id: Affinity.id_book)
+    end
+  end
+
+  def self.film
+    Rails.cache.fetch("characters_film", expires_in: 10.minutes ) do 
+      Character.where(affinity_id: Affinity.id_film)
+    end
+  end
+
+  def self.game
+    Rails.cache.fetch("characters_game", expires_in: 10.minutes ) do 
+      Character.where(affinity_id: Affinity.id_game)
+    end
+  end
 end

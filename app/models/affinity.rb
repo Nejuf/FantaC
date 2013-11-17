@@ -13,6 +13,15 @@ class Affinity < ActiveRecord::Base
     nil
   end
 
+  def self.id_book
+    self.getIDByName("book")
+  end
+  def self.id_game
+    self.getIDByName("game")
+  end
+  def self.id_film
+    self.getIDByName("film")
+  end
   def normalize
     name ||= ""
     name = name.downcase

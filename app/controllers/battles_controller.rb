@@ -25,6 +25,7 @@ class BattlesController < ApplicationController
   # POST /battles
   # POST /battles.json
   def create
+    
     @battle = Battle.new(battle_params)
     @battle.user_id = current_user.id
     @battle.start_date = params[:battle][:start_date]

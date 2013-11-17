@@ -15,6 +15,8 @@
 //= require jquery_ujs
 //= require js-routes
 //= require ../../../vendor/assets/javascripts/vendor
+//= require chosen-jquery
+//= require scaffold
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .

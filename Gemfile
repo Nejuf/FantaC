@@ -49,6 +49,8 @@ gem 'debugger', group: [:development, :test]
 gem 'airbrake'
 gem 'aws-sdk'
 gem 'cancan'
+gem 'compass-rails', github: 'Compass/compass-rails' #for Chosen
+gem 'chosen-rails'
 gem 'devise'
 gem 'figaro'
 gem 'gon'
