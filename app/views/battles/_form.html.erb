@@ -2,8 +2,7 @@
 <%= f.error_notification %>
   <%= f.input :name %>
   <%= f.input :desc, label: "Description" %>
-  <%= f.input :end_date, input_html: { class: 'datepicker'} %>
-  <%= f.input :end_date, as: :time %>
+  <%= f.input :end_date, input_html: { class: 'datetimepicker'} %>
   <%= f.error :base %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>

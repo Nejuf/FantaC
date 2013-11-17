@@ -2,5 +2,6 @@
  *= require_self
  *= require jquery-fancyCountdown/jquery.fancyCountdown
  *= require jquery-ui/css/smoothness/jquery-ui-1.10.3.custom
+ *= require jquery-ui/jquery-ui-timepicker-addon.css
  *= require_directory .
  */
