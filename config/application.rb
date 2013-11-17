@@ -78,7 +78,7 @@ module Fantac
 
     #Redis
     if ENV["REDISTOGO_URL"]
-      config = RedisDemoApp::Application.config
+      config = Fantac::Application.config
       uri = URI.parse(ENV["REDISTOGO_URL"])
 
       config.cache_store = [
