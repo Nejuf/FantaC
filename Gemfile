@@ -51,6 +51,7 @@ gem 'aws-sdk'
 gem 'cancan'
 gem 'compass-rails', github: 'Compass/compass-rails' #for Chosen
 gem 'chosen-rails'
+gem 'chronic'
 gem 'devise'
 gem 'figaro'
 gem 'gon'

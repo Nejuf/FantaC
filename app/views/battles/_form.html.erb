@@ -2,7 +2,7 @@
 <%= f.error_notification %>
   <%= f.input :name %>
   <%= f.input :desc, label: "Description" %>
-  <%= f.input :end_date, hint: "Times are UTC-0", input_html: { class: 'datetimepicker'} %>
+  <%= f.input :end_date, hint: "Times are local", input_html: { class: 'datetimepicker'} %>
   <!-- Use Chosen for roster -->
   <%#= f.association :characters, label: "Roster", input_html: { class: 'chosen-select', "data-placeholder": "Choose characters to participate in the battle..."} %>
 
@@ -11,8 +11,8 @@
 		  <abbr title="required">*</abbr> Roster
 		</label>
 	  <div class="controls">
-	  	<input type="hidden" name="battle[character_ids][]" value>
-	  	<select data-placeholder="Choose participating characters." class="select chosen-select" multiple="multiple" tabindex='-1' id="battle_character_ids" name="battle[character_ids][]" style="display: none;">
+	  	<input type="hidden" name="character_ids[]" value>
+	  	<select data-placeholder="Choose participating characters." class="select chosen-select" multiple="multiple" tabindex='-1' id="battle_character_ids" name="character_ids[]" style="display: none;">
 	  		<option value></option>
 		  		<optgroup label="Book">
 		  		<% Character.book.each do |book_char| %>
