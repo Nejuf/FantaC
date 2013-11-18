@@ -89,6 +89,7 @@ group :development, :test do
   gem 'launchy'
   gem 'letter_opener'
   gem 'meta_request'
+  gem 'rails-erd'
   gem 'rails-footnotes'
   gem 'rspec-rails'
 end
