@@ -5,29 +5,23 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:desc) %></th>
-      <th><%= model_class.human_attribute_name(:user_id) %></th>
-      <th><%= model_class.human_attribute_name(:affinity_id) %></th>
-      <th><%= model_class.human_attribute_name(:tier_id) %></th>
-      <th><%= model_class.human_attribute_name(:stat_hp) %></th>
-      <th><%= model_class.human_attribute_name(:stat_str) %></th>
-      <th><%= model_class.human_attribute_name(:stat_def) %></th>
-      <th><%= model_class.human_attribute_name(:stat_spd) %></th>
-      <th><%= model_class.human_attribute_name(:stat_int) %></th>
-      <th><%= model_class.human_attribute_name(:stat_luck) %></th>
+      <th>Name</th>
+      <th>Affinity</th>
+      <th>Tier</th>
+      <th>HP</th>
+      <th>Strength</th>
+      <th>Defense</th>
+      <th>Speed</th>
+      <th>Intelligence</th>
+      <th>Luck</th>
     </tr>
   </thead>
   <tbody>
     <% @characters.each do |character| %>
       <tr>
-        <td><%= link_to character.id, character_path(character) %></td>
-        <td><%= character.name %></td>
-        <td><%= character.desc %></td>
-        <td><%= character.user_id %></td>
-        <td><%= character.affinity_id %></td>
-        <td><%= character.tier_id %></td>
+        <td><%= link_to character.name, character_path(character) %></td>
+        <td><%= character.affinity.name %></td>
+        <td><%= character.tier.name %></td>
         <td><%= character.stat_hp %></td>
         <td><%= character.stat_str %></td>
         <td><%= character.stat_def %></td>

@@ -9,10 +9,10 @@ class CharactersController < ApplicationController
     aff_id = Affinity.getIDByName(params[:affinity])
     @affinity_name = ""
     if aff_id
-      @characters = Character.where(affinity_id: aff_id)
+      @characters = Character.includes(:affinity, :tier).where(affinity_id: aff_id)
       @affinity_name = params[:affinity].capitalize
     else
-      @characters = Character.all
+      @characters = Character.all.includes(:affinity, :tier)
     end
   end
 

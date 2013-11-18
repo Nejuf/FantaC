@@ -29,7 +29,8 @@ class BattlesController < ApplicationController
     @battle.user_id = current_user.id
     @battle.start_date = Time.now.utc
     date_end = Chronic.parse(params[:battle][:end_date])
-    @battle.end_date = date_end.nil? ? nil : date_end.utc
+    @battle.end_date = date_end.nil? ? nil : date_end.utc.to_s
+    debugger
     if params[:character_ids]
       char_ids = params[:character_ids]
       char_ids.shift

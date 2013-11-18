@@ -26,7 +26,7 @@
         <td><%= contest.payout_type.name %></td>
         <td><%= contest.payout_amount %></td>
         <td><%= contest.category.name %></td>
-        <td><%= contest.battle.name %></td>
+        <td><%= link_to contest.battle.name, battle_path(contest.battle) %></td>
         <td>
         <% if(can? :update, contest) %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
@@ -45,6 +45,6 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<%#= link_to t('.new', :default => t("helpers.links.new")),
             new_contest_path,
             :class => 'btn btn-primary' %>
