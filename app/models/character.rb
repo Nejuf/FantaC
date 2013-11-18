@@ -39,7 +39,7 @@ class Character < ActiveRecord::Base
       src = ENV['MISSING_CHAR_PIC_URL']
     end
 
-    str = '<img'
+    str = '<img class=img-polaroid'
     if width > 0
       str << " width=\"#{width}\""
     end
