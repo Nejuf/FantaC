@@ -53,10 +53,11 @@ p, div, span, a {
 }*/
 
 /*Needs !important to have an effect*/
-/*body {
-	background-color: #000000;
-	color: #000000;
-}*/
+body {
+	/*background-color: #000000;
+	color: #000000;*/
+  background: url(/assets/debut_light.png) repeat 0 0;
+}
 
 /* Devise User sign in and sign forms. */
 .border-form-div {
