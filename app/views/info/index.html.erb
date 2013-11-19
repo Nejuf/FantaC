@@ -2,5 +2,9 @@
 	<h1>Welcome to FantaC!</h1>
 	<p class="lead">Can you build the best team of characters?</p>
 	<% play_path = Battle.featured ? battle_path(Battle.featured) : battles_path %>
-	<%= link_to "Play Now", battle_path(Battle.featured), class: "btn btn-primary btn-large" %>
+	<% if user_signed_in? %>
+		<%= link_to "Play Now", battle_path(Battle.featured), class: "btn btn-primary btn-large" %>
+	<% else %>
+		<%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary btn-large" %>
+	<% end %>
 </div>

@@ -6,6 +6,13 @@
   =require twitter-bootstrap-static/fontawesome
   */
 
+/* Fonts */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Droid Serif', Georgia, Times, serif;
+}
+p, div, span, a {
+    font-family: 'Droid Sans', Helvetica, Arial, sans-serif;
+}
 .user-password-navbar {
   width: 100px;
 }
