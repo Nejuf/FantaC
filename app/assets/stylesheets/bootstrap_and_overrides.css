@@ -1,0 +1,162 @@
+/*
+  =require twitter-bootstrap-static/bootstrap
+
+  Use Font Awesome icons (default)
+  To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
+  =require twitter-bootstrap-static/fontawesome
+  */
+
+/* Fonts */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Droid Serif', Georgia, Times, serif;
+}
+p, div, span, a {
+    font-family: 'Droid Sans', Helvetica, Arial, sans-serif;
+}
+.user-password-navbar {
+  width: 100px;
+}
+.user-email-navbar {
+  width: 180px;
+}
+
+.navbar-avatar {
+	float: none;
+	padding: 5px 15px 5px;
+}
+
+.edit-portrait-image img {
+  position: relative;
+}
+
+.edit-portrait-image i {
+  position: absolute;
+}
+
+[class*="span"].centred { /*intentional mis-spelling*/
+  margin-left: auto;
+  margin-right: auto;
+  float: none;
+}
+.centred {
+  margin-left: auto;
+  margin-right: auto;
+}
+#fancyCountdown {
+  /*padding-left: 70px*/
+  width: 440px;
+}
+
+
+/* CSS3 Stand out */
+h1 { 
+  text-shadow: 1px 1px 1px #ccc;
+}
+.pop-out-shadow { 
+  box-shadow: 5px 8px 8px #888;
+}
+
+/*.edit-portrait-image img {
+  position: absolute;
+}*/
+
+/*Needs !important to have an effect*/
+body {
+	/*background-color: #000000;
+	color: #000000;*/
+  background: url(<%= image_path 'debut_light.png' %>) repeat 0 0;
+}
+
+/* Devise User sign in and sign forms. */
+.border-form-div {
+  max-width: 300px;
+  padding: 19px 29px 29px;
+  margin: 0 auto 20px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+          box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+.border-form-div .form-signin-heading,
+.border-form-div .checkbox {
+  margin-bottom: 10px;
+}
+.border-form-div input[type="text"],
+.border-form-div input[type="email"],
+.border-form-div input[type="password"] {
+  font-size: 16px;
+  height: auto;
+  margin-bottom: 15px;
+  padding: 7px 9px;
+}
+
+/* Buttons */
+.btn {
+  background-color: hsl(145, 72%, 73%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fafefc", endColorstr="#88ebb1");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#fafefc), to(#88ebb1));
+  background-image: -moz-linear-gradient(top, #fafefc, #88ebb1);
+  background-image: -ms-linear-gradient(top, #fafefc, #88ebb1);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fafefc), color-stop(100%, #88ebb1));
+  background-image: -webkit-linear-gradient(top, #fafefc, #88ebb1);
+  background-image: -o-linear-gradient(top, #fafefc, #88ebb1);
+  background-image: linear-gradient(#fafefc, #88ebb1);
+  border-color: #88ebb1 #88ebb1 hsl(145, 72%, 66.5%);
+  color: #333 !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.42);
+  -webkit-font-smoothing: antialiased;
+}
+.btn-primary {
+  background-color: hsl(203, 59%, 37%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#58a4d4", endColorstr="#266b96");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#58a4d4), to(#266b96));
+  background-image: -moz-linear-gradient(top, #58a4d4, #266b96);
+  background-image: -ms-linear-gradient(top, #58a4d4, #266b96);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #58a4d4), color-stop(100%, #266b96));
+  background-image: -webkit-linear-gradient(top, #58a4d4, #266b96);
+  background-image: -o-linear-gradient(top, #58a4d4, #266b96);
+  background-image: linear-gradient(#58a4d4, #266b96);
+  border-color: #266b96 #266b96 hsl(203, 59%, 31.5%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.36);
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn-danger {
+  background-color: hsl(16, 59%, 37%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#d47958", endColorstr="#964426");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#d47958), to(#964426));
+  background-image: -moz-linear-gradient(top, #d47958, #964426);
+  background-image: -ms-linear-gradient(top, #d47958, #964426);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d47958), color-stop(100%, #964426));
+  background-image: -webkit-linear-gradient(top, #d47958, #964426);
+  background-image: -o-linear-gradient(top, #d47958, #964426);
+  background-image: linear-gradient(#d47958, #964426);
+  border-color: #964426 #964426 hsl(16, 59%, 31.5%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.36);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Navbar */
+.navbar-inner {
+  background-color: #fafafa;
+
+  background-image: -moz-linear-gradient(top, #effff8, #daede4);
+  background-image: -ms-linear-gradient(top, #effff8, #daede4);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#effff8), to(#daede4));
+  background-image: -webkit-linear-gradient(top, #effff8, #daede4);
+  background-image: -o-linear-gradient(top, #effff8, #daede4);
+  background-image: linear-gradient(top, #effff8, #daede4);
+  background-repeat: repeat-x;
+
+  /* IE8-9 gradient filter */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#effff8', endColorstr='#daede4', GradientType=0);
+}
