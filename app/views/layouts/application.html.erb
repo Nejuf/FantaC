@@ -76,8 +76,8 @@
         <% @user ||= User.new %>
         <li>
           <%= form_for @user, url: user_session_path, html: {class: "navbar-form pull-right"} do |f| -%>
-            <%= f.text_field :email, placeholder: "email" %>
-            <%= f.password_field :password, placeholder: "password" %>
+            <%= f.text_field :email, placeholder: "email", class: "user-email-navbar" %>
+            <%= f.password_field :password, placeholder: "password", class: "user-password-navbar" %>
             <%= f.submit "Sign in", class: "btn", rel: "nofollow" %>
           <% end -%>
         </li>

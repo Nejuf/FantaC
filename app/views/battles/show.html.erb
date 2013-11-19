@@ -34,7 +34,7 @@
     <ul class="thumbnails">
       <% @battle.battle_rosters.includes(:character => :affinity).each do |roster| %>
         <li class="span3">
-              <div class="thumbnail pagination-centered">
+              <div class="thumbnail .thumbnail-character pagination-centered">
                 <%= link_to (roster.character.image_tag :medium), character_path(roster.character) %>
                 <div class="caption">
                   <%= glyph(roster.character.glyph.to_s) %>
