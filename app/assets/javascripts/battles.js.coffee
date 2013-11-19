@@ -2,11 +2,19 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-	jQuery ->
+jQuery ->
+	$('.attention-shake').each ->
+		that = this
+		mouseOver = false
+		$('.attention-shake >').mouseenter ->
+			mouseOver = true
+		$('.attention-shake >').mouseout ->
+			mouseOver = false
 		setInterval ->
-			$('.attention-shake').effect 'shake',
-				direction: 'left'
-				distance: 10
-				times: 2
-			,600
+			if !mouseOver
+				$(that).effect 'shake',
+					direction: 'left'
+					distance: 10
+					times: 2
+				,600
 		,4000

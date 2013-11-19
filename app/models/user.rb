@@ -22,4 +22,7 @@ class User < ActiveRecord::Base
    self.role == role.to_s
  end
 
+ def contest_ids
+   self.entries.pluck(:contest_id)
+ end
 end

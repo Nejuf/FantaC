@@ -15,4 +15,8 @@ class Contest < ActiveRecord::Base
   has_many :contest_positions
   has_many :positions, through: :contest_positions
 
+  def user_entered?(player)
+    player ||= current_user
+    return true if player && player.contest_ids.include?(self.id)
+  end
 end
