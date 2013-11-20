@@ -33,6 +33,13 @@ p, div, span, a {
   position: absolute;
 }
 
+a:hover:not(.btn) { /* Because of the important, without the not, it would cause
+										buttonized anchor tags to have the bottom half transparent.
+										This is because bootstrap modifies background-position. */
+	background-color: transparent !important;
+}
+
+/* Centering */
 [class*="span"].centred { /*intentional mis-spelling*/
   margin-left: auto;
   margin-right: auto;
@@ -73,8 +80,8 @@ h1 {
 
 /*Needs !important to have an effect*/
 body {
-	/*background-color: #000000;
-	color: #000000;*/
+	background-color: #ffffff !important;
+	color: #000000 !important;
   background: url(<%= image_path 'debut_light.png' %>) repeat 0 0;
 }
 
