@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  ROLES = %w[admin moderator member banned]
+  ROLES = %w[admin moderator member guest banned]
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
  before_create :on_before_create
  def on_before_create
    self.role ||= 'member'
+   self.username = self.email if self.username.nil? || self.username.empty? || User.pluck(:username).include?(self.username)
  end
 
  def is?(role)
