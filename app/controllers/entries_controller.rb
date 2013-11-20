@@ -15,6 +15,7 @@ class EntriesController < ApplicationController
 
   # GET /entries/new
   def new
+    params[:contest_id] ||= Battle.featured.main_contest.id
     @contest = Contest.find(params[:contest_id])
     @entry = Entry.new
   end

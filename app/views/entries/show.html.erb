@@ -4,14 +4,12 @@
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dt><strong>Team Name: </strong></dt>
   <dd><%= @entry.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:desc) %>:</strong></dt>
+  <dt><strong>Description:</strong></dt>
   <dd><%= @entry.desc %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-  <dd><%= @entry.user_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:contest_id) %>:</strong></dt>
-  <dd><%= @entry.contest_id %></dd>
+  <dt><strong>Contest: </strong></dt>
+  <dd><%= @entry.contest.name %></dd>
 </dl>
 
 <div class="form-actions">
