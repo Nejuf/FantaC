@@ -95,5 +95,5 @@ Fantac::Application.configure do
   Gon.global.APP_ASSET_HOST = ENV['APP_ASSET_HOST']
   Gon.global.PUBLIC_ASSET_HOST = ENV['PUBLIC_ASSET_HOST']
 
-  # ENV["REDISTOGO_URL"] ||= 'redis://redistogo:eaaa11f0660b6366b3491438a9925ff4@grideye.redistogo.com:9060/'
+  ENV["REDISTOGO_URL"] = 'redis://redistogo:eaaa11f0660b6366b3491438a9925ff4@grideye.redistogo.com:9060/'
 end
