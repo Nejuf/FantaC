@@ -89,6 +89,15 @@
   <%= bootstrap_flash %>
 
 <%= yield %>
-
+	<div class='container'>
+		<footer class="footer">
+		    <div id="copyright">©2013 <a href="http://nejuf.net">Nejuf</a></div>
+		  <nav>
+		    <ul>
+		      <li><%= link_to "Home", root_url %></li>
+		    </ul>
+		  </nav>
+		</footer>
+	</div>
 </body>
 </html>
