@@ -20,6 +20,7 @@ Site URL: http://www.fantac.net
 * Contests
 * Characters
 * Create your own contests
+* Basic Entry building
 
 ##Upcoming Features:
 * Entries (team selection)
