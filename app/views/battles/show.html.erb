@@ -20,11 +20,11 @@
 				<%= link_to "Enter Contests", contests_url(battle_id: @battle.id), class: "btn btn-primary" %>
 			</div>
 			<br>
-			<% unless @battle.main_contest.user_entered? %>
+			<% unless @battle.main_contest.user_entered?(current_user) %>
 				<div class='attention-shake'>
 					<%= link_to "Choose Team!", contest_url(@battle.main_contest), class: 'btn btn-primary btn-large' %>
 				</div>
-			</div>
+			<% end %>
 		</div>
 </div>
 
