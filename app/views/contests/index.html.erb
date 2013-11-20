@@ -7,11 +7,11 @@
     <tr>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th>Description</th>
-      <th><%= model_class.human_attribute_name(:points_cap) %></th>
-      <th><%= model_class.human_attribute_name(:entry_fee) %></th>
-      <th><%= model_class.human_attribute_name(:payout_type) %></th>
-      <th><%= model_class.human_attribute_name(:payout_amount) %></th>
-      <th><%= model_class.human_attribute_name(:category) %></th>
+      <th><%= model_class.human_attribute_name(:points_cap).titleize %></th>
+      <th><%= model_class.human_attribute_name(:entry_fee).titleize %></th>
+      <th><%= model_class.human_attribute_name(:payout_type).titleize %></th>
+      <th><%= model_class.human_attribute_name(:payout_amount).titleize %></th>
+      <th><%= model_class.human_attribute_name(:category).titleize %></th>
       <th>Battle</th>
     </tr>
   </thead>
@@ -19,13 +19,13 @@
     <% contests = params[:battle_id] ? @contests.where(battle_id: params[:battle_id]) : @contests %>
     <% contests.includes(:battle, :payout_type, :category).each do |contest| %>
       <tr>
-        <td><%= link_to contest.name, contest_path(contest) %></td>
+        <td><%= link_to contest.name.titleize, contest_path(contest) %></td>
         <td><%= contest.desc %></td>
         <td><%= contest.points_cap %></td>
         <td><%= contest.entry_fee %></td>
-        <td><%= contest.payout_type.name %></td>
+        <td><%= contest.payout_type.name.titleize %></td>
         <td><%= contest.payout_amount %></td>
-        <td><%= contest.category.name %></td>
+        <td><%= contest.category.name.titleize %></td>
         <td><%= link_to contest.battle.name, battle_path(contest.battle) %></td>
         <td>
         <% if(can? :update, contest) %>

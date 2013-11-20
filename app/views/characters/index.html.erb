@@ -20,8 +20,8 @@
     <% @characters.each do |character| %>
       <tr>
         <td><%= link_to character.name, character_path(character) %></td>
-        <td><%= character.affinity.name %></td>
-        <td><%= character.tier.name %></td>
+        <td><%= character.affinity.name.titleize %></td>
+        <td><%= character.tier.name.titleize %></td>
         <td><%= character.stat_hp %></td>
         <td><%= character.stat_str %></td>
         <td><%= character.stat_def %></td>

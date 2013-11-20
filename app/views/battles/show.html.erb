@@ -3,8 +3,7 @@
 <div class="hero-unit text-center">
   <h1 class='text-center'><%= @battle.name.titleize %></h1>
   <p class="lead"><%= @battle.desc %></p>
-  <%= link_to "Create Contest", new_contest_url(battle_id: @battle.id), class: "btn btn-primary" %>
-  <%= link_to "Enter Contest", contests_url(battle_id: @battle.id), class: "btn btn-primary" %>
+
   <div class="text-center">
     <h2>Battle Time</h2>
   </div>
@@ -14,6 +13,19 @@
         </div>
       </div>
     </div>
+
+		<div>
+		  <%#= link_to "Create Contest", new_contest_url(battle_id: @battle.id), class: "btn btn-primary" %>
+		  <div>
+				<%= link_to "Enter Contests", contests_url(battle_id: @battle.id), class: "btn btn-primary" %>
+			</div>
+			<br>
+			<% unless @battle.main_contest.user_entered?(current_user) %>
+				<div class='attention-shake'>
+					<%= link_to "Choose Team!", contest_url(@battle.main_contest), class: 'btn btn-primary btn-large' %>
+				</div>
+			<% end %>
+		</div>
 </div>
 
 

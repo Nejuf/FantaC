@@ -27,6 +27,10 @@ class Battle < ActiveRecord::Base
     DateTime.parse(self.end_date) < DateTime.now
   end
 
+  def main_contest
+    self.contests.first
+  end
+
 private
 
   def calculate_results

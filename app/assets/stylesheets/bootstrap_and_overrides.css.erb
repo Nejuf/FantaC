@@ -33,6 +33,13 @@ p, div, span, a {
   position: absolute;
 }
 
+a:hover:not(.btn) { /* Because of the important, without the not, it would cause
+										buttonized anchor tags to have the bottom half transparent.
+										This is because bootstrap modifies background-position. */
+	background-color: transparent !important;
+}
+
+/* Centering */
 [class*="span"].centred { /*intentional mis-spelling*/
   margin-left: auto;
   margin-right: auto;
@@ -47,12 +54,23 @@ p, div, span, a {
   width: 440px;
 }
 
+/* Centers Thumbnails */
+.thumbnails {
+	text-align: center;
+}
+
+.thumbnails li {
+	float: none;
+	display: inline-block;
+	*display: inline;/* IE7 */
+	zoom: 1;
+}
 
 /* CSS3 Stand out */
-h1 { 
+h1 {
   text-shadow: 1px 1px 1px #ccc;
 }
-.pop-out-shadow { 
+.pop-out-shadow {
   box-shadow: 5px 8px 8px #888;
 }
 
@@ -62,12 +80,12 @@ h1 {
 
 /*Needs !important to have an effect*/
 body {
-	/*background-color: #000000;
-	color: #000000;*/
+	background-color: #ffffff !important;
+	color: #000000 !important;
   background: url(<%= image_path 'debut_light.png' %>) repeat 0 0;
 }
 
-/* Devise User sign in and sign forms. */
+/* Devise User register/login/edit/etc forms. */
 .border-form-div {
   max-width: 300px;
   padding: 19px 29px 29px;
@@ -159,4 +177,34 @@ body {
 
   /* IE8-9 gradient filter */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#effff8', endColorstr='#daede4', GradientType=0);
+}
+
+/* footer */
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #999;
+}
+
+footer a {
+  color: #555;
+}
+
+footer a:hover {
+  color: #222;
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 10px;
 }

@@ -1,37 +1,24 @@
 <%- model_class = Contest -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+<div class="page-header text-center">
+  <h1><%=t '.title', :default => @contest.name.titleize %></h1>
+	<p class="lead"><%= @contest.desc %></p>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @contest.name %></dd>
-  <dt><strong>Description:</strong></dt>
-  <dd><%= @contest.desc %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:points_cap) %>:</strong></dt>
-  <dd><%= @contest.points_cap %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:entry_fee) %>:</strong></dt>
-  <dd><%= @contest.entry_fee %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:payout_type_id) %>:</strong></dt>
-  <dd><%= @contest.payout_type.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:category_id) %>:</strong></dt>
-  <dd><%= @contest.category.name %></dd>
-  <dt><strong>Creator:</strong></dt>
-  <dd><%= @contest.user ? @contest.user.username : "???" %></dd>
-  <dt><strong>Battle:</strong></dt>
-  <dd><%= link_to @contest.battle.name, battle_path(@contest.battle) %></dd>
-  <dt><strong>Positions:</strong></dt>
-  <dd>
-    <ul>
-      <% @contest.positions.each do |position| %>
-        <li><%= position.name %></li>
-      <% end %>
-    </ul>
-  </dd>
+<div class="text-center">
+  <p><strong><%= model_class.human_attribute_name(:points_cap).titleize %>:</strong> <%= @contest.points_cap %></p>
+  <p><strong><%= model_class.human_attribute_name(:entry_fee).titleize %>:</strong> <%= @contest.entry_fee %></p>
+  <p><strong><%= model_class.human_attribute_name(:payout_type_id).titleize %>:</strong> <%= @contest.payout_type.name.titleize %></p>
+  <p><strong><%= model_class.human_attribute_name(:category_id).titleize %>:</strong> <%= @contest.category.name.titleize %></p>
+  <p><strong>Creator:</strong> <%= @contest.user ? @contest.user.username : "???" %></p>
+  <p><strong>Battle:</strong> <%= link_to @contest.battle.name.titleize, battle_path(@contest.battle) %></p>
+  <p><strong>Positions:</strong></p>
+  <% @contest.positions.each do |position| %>
+    <li><%= position.name.titleize %></li>
+  <% end %>
 
 </dl>
 
-<div class="form-actions">
+<div class="form-actions text-center">
 <%= link_to "Enter", new_entry_path(contest_id: @contest.id), class: 'btn btn-primary btn-large' %>
   <%= link_to t('.back', :default => t("helpers.links.back")),
               contests_path, :class => 'btn'  %>
