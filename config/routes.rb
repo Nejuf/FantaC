@@ -19,6 +19,7 @@ Fantac::Application.routes.draw do
 
   resources :contests
 
+  get 'battles/featured', to: 'battles#featured'
   resources :battles
 
   resources :characters

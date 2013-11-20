@@ -77,6 +77,14 @@ class BattlesController < ApplicationController
     end
   end
 
+  # GET /battles/1
+  # GET /battles/1.json
+  def featured
+    params[:id] = Battle.featured
+    set_battle
+    render :show
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_battle
