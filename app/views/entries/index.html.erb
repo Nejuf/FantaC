@@ -5,33 +5,30 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:desc) %></th>
-      <th><%= model_class.human_attribute_name(:user_id) %></th>
-      <th><%= model_class.human_attribute_name(:contest_id) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th>Team Name</th>
+      <th>Description</th>
+      <th>Contest</th>
+      <th>Battle</th>
     </tr>
   </thead>
   <tbody>
     <% @entries.each do |entry| %>
       <tr>
-        <td><%= link_to entry.id, entry_path(entry) %></td>
-        <td><%= entry.name %></td>
+        <td><%= link_to (entry.name.empty? ? "???" : entry.name), entry_path(entry) %></td>
         <td><%= entry.desc %></td>
-        <td><%= entry.user_id %></td>
-        <td><%= entry.contest_id %></td>
-        <td><%=l entry.created_at %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_entry_path(entry), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      entry_path(entry),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
-        </td>
+        <td><%= link_to entry.contest.name.titleize, contest_path(entry.contest) %></td>
+        <td><%= link_to entry.contest.battle.name.titleize, battle_path(entry.contest.battle) %></td>
+				<% if can?(:edit, entry) || can?(:destroy, entry) %>
+	        <td>
+	          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+	                      edit_entry_path(entry), :class => 'btn btn-mini' %>
+	          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+	                      entry_path(entry),
+	                      :method => :delete,
+	                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+	                      :class => 'btn btn-mini btn-danger' %>
+	        </td>
+				<% end %>
       </tr>
     <% end %>
   </tbody>
