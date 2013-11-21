@@ -5,7 +5,7 @@ class EntriesController < ApplicationController
   # GET /entries
   # GET /entries.json
   def index
-    @entries = Entry.all
+    @entries = Entry.includes(:contest).all
   end
 
   # GET /entries/1
@@ -17,7 +17,13 @@ class EntriesController < ApplicationController
   def new
     params[:contest_id] ||= Battle.featured.main_contest.id
     @contest = Contest.find(params[:contest_id])
-    @entry = Entry.new
+    prev_entry = Entry.find_by(user_id: current_user.id, contest_id: @contest.id)
+    if prev_entry
+      redirect_to edit_entry_url(prev_entry), notice: "You already have an entry for this contest.  Edit it here."
+    else
+      @entry = Entry.new(params[:entry])
+      render :new
+    end
   end
 
   # GET /entries/1/edit
@@ -35,7 +41,8 @@ class EntriesController < ApplicationController
         format.html { redirect_to @entry, notice: 'Entry was successfully created.' }
         format.json { render action: 'show', status: :created, location: @entry }
       else
-        format.html { render action: 'new' }
+        flash[:error] = @entry.errors.full_messages
+        format.html{ redirect_to new_entry_url }
         format.json { render json: @entry.errors, status: :unprocessable_entity }
       end
     end
