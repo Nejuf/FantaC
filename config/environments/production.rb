@@ -52,7 +52,18 @@ Fantac::Application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # Use a different cache store in production.
-  config.cache_store = :redis_store
+  if ENV["REDISTOGO_URL"]
+    uri = URI.parse(ENV["REDISTOGO_URL"])
+
+    config.cache_store = [
+      :redis_store, {
+        :host => uri.host,
+        :port => uri.port,
+        :password => uri.password,
+        :namespace => "cache"
+      }
+    ]
+  end
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = "http://assets.example.com"
@@ -94,6 +105,4 @@ Fantac::Application.configure do
   ENV['PUBLIC_ASSET_HOST'] = "https://s3-us-west-2.amazonaws.com/fantac-public/"
   Gon.global.APP_ASSET_HOST = ENV['APP_ASSET_HOST']
   Gon.global.PUBLIC_ASSET_HOST = ENV['PUBLIC_ASSET_HOST']
-
-  # ENV["REDISTOGO_URL"] ||= 'redis://redistogo:eaaa11f0660b6366b3491438a9925ff4@grideye.redistogo.com:9060/'
 end

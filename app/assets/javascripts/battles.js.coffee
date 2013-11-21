@@ -3,6 +3,14 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
+	isActive = true
+
+	window.onfocus = ->
+		isActive = true
+
+	window.onblur = ->
+		isActive = false
+
 	$('.attention-shake').each ->
 		that = this
 		mouseOver = false
@@ -11,7 +19,7 @@ jQuery ->
 		$('.attention-shake >').mouseout ->
 			mouseOver = false
 		setInterval ->
-			if !mouseOver
+			if !mouseOver and isActive
 				$(that).effect 'shake',
 					direction: 'left'
 					distance: 10

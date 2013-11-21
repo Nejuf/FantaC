@@ -9,6 +9,7 @@ class Ability
       can :manage, :all
     elsif ((user.is? :member) || (user.is? :moderator))
       can :read, :all
+      can :featured, Battle
       can :create, [Contest, Entry, Character, User, Portrait]
       can :update, [Contest, Entry, Character, User], user_id: user.id
       can :update, :destroy, Portrait do |portrait|
@@ -17,6 +18,7 @@ class Ability
       can :destroy, [Entry, User], user_id: user.id
     else
       can :read, :all
+      can :featured, Battle
     end
   end
 end
