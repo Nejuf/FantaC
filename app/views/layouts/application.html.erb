@@ -40,6 +40,19 @@
   <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
 
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-528ee4ce2dcddfcc"></script>
+  <script type="text/javascript">
+    addthis.layers({
+      'theme' : 'transparent',
+      'share' : {
+        'position' : 'right',
+        'numPreferredServices' : 3,
+        'services' : 'facebook, google, twitter',
+        'offset' : {'top' : '50px'}
+      }   
+    });
+  </script>
 </head>
 <body>
   <%= nav_bar static: :top, brand: "FantaC", brand_link: "/", responsive: true do%>
