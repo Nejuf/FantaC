@@ -69,7 +69,7 @@ gem 'redis-rails'
 # gem 'therubyracer'
 gem 'simple_form'
 # gem 'twitter-bootstrap-rails'
-gem 'twitter-bootstrap-rails', git: "git@github.com:Nejuf/twitter-bootstrap-rails.git"
+gem 'twitter-bootstrap-rails', github: "Nejuf/twitter-bootstrap-rails.git"
 # gem 'twitter-bootstrap-rails', path: "D:/Desktop/twitter-bootstrap-rails"
 
 #Heroku https://devcenter.heroku.com/articles/rails4
