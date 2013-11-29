@@ -55,7 +55,13 @@
   </script>
 </head>
 <body>
-  <%= nav_bar static: :top, brand: "FantaC", brand_link: "/", responsive: true do%>
+  <% @alpha_logo = capture do  %>
+    <div class="alpha-logo">
+      <object type="image/svg+xml" data=<%= asset_path "alpha.svg" %> ></object>
+    </div>
+  <% end %>
+  <%= nav_bar static: :top, brand: "FantaC", brand_link: "/", brand_html_right: @alpha_logo, responsive: false do%>
+  
     <%= menu_group do %>
       <%= menu_item "Battles", battles_path %>
       <%= menu_item "Contests", contests_path %>
@@ -99,6 +105,7 @@
       <% end -%>
     <% end %>
   <% end %>
+
   <%= bootstrap_flash %>
 
 <%= yield %>
