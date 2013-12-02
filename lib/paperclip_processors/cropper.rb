@@ -1,13 +1,9 @@
 module Paperclip
   class Cropper < Thumbnail
     def transformation_command
-      if crop_command
-        # crop_command + super.sub(/ -crop \S+/, '')
-        c = crop_command
-      else
-        c = super
-      end
-      c
+      # crop_command + super.sub(/ -crop \S+/, '')
+      c = crop_command
+      c || super
     end
 
     def crop_command

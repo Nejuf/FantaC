@@ -53,7 +53,7 @@ class CharactersController < ApplicationController
           :focusY => 0,
           :portrait_image => portrait_image
         })
-
+        
         format.html { redirect_to @portrait, notice: 'Character was successfully created.' }
         format.json { render action: 'show', status: :created, location: @character }
       else

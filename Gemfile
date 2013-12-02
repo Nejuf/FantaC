@@ -59,8 +59,8 @@ gem 'gravatar_image_tag'
 gem 'js-routes'
 gem 'omniauth'
 gem 'omniauth-facebook'
-# gem "paperclip", git: "http://github.com/Nejuf/paperclip.git"
-gem 'paperclip'
+# gem 'paperclip'
+gem "paperclip", github: "Nejuf/paperclip"
 gem 'uuidtools'
 gem 'redis-rails'
 
@@ -70,7 +70,6 @@ gem 'redis-rails'
 gem 'simple_form'
 # gem 'twitter-bootstrap-rails'
 gem 'twitter-bootstrap-rails', github: "Nejuf/twitter-bootstrap-rails"
-# gem 'twitter-bootstrap-rails', path: "D:/Desktop/twitter-bootstrap-rails"
 
 #Heroku https://devcenter.heroku.com/articles/rails4
 #Heroku http://stackoverflow.com/questions/15354539/heroku-does-not-compile-files-under-assets-piplines-in-rails-4

@@ -5,8 +5,19 @@ GIT
     compass-rails (2.0.alpha.0)
       compass (>= 0.12.2, < 0.14)
 
-PATH
-  remote: D:/Desktop/twitter-bootstrap-rails
+GIT
+  remote: git://github.com/Nejuf/paperclip.git
+  revision: b28d2de4f1c7fd1c4c7756eef2d98ee0cc5bd5db
+  specs:
+    paperclip (3.5.2)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
+
+GIT
+  remote: git://github.com/Nejuf/twitter-bootstrap-rails.git
+  revision: f330333e4e2e328496e236722d653906676599dc
   specs:
     twitter-bootstrap-rails (2.2.8)
       actionpack (>= 3.1)
@@ -200,11 +211,6 @@ GEM
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
     orm_adapter (0.4.0)
-    paperclip (3.5.2)
-      activemodel (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      cocaine (~> 0.5.3)
-      mime-types
     pg (0.17.0)
     pg (0.17.0-x86-mingw32)
     polyglot (0.3.3)
@@ -327,6 +333,7 @@ GEM
     uuidtools (2.1.4)
     warden (1.2.3)
       rack (>= 1.0)
+    win32console (1.3.2)
     win32console (1.3.2-x86-mingw32)
     xpath (2.0.0)
       nokogiri (~> 1.3)
@@ -366,7 +373,7 @@ DEPENDENCIES
   meta_request
   omniauth
   omniauth-facebook
-  paperclip
+  paperclip!
   pg
   rails (= 4.0.1)
   rails-erd
