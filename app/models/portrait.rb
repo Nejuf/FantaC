@@ -93,6 +93,10 @@ class Portrait < ActiveRecord::Base
   end
 
   def url(style)
+    unless STYLES.include?
+      raise ArgumentError, "Unrecognized portrait style: #{style}"
+    end
+
     if(portrait_image)
       portrait_image.url(style)
     else
