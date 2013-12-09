@@ -71,7 +71,16 @@ class CharactersController < ApplicationController
       char_params = params[:character].permit(:name, :desc, :affinity_id, :tier_id, :stat_hp,
       :stat_str, :stat_def, :stat_spd, :stat_int, :stat_luck)
 
+      debugger
+      puts "test"
       if @character.update(char_params)
+
+        unless portrait_image.nil?
+          @portrait = @character.portrait_main
+          @portrait.portrait_image = portrait_image
+          @portrait.save
+        end
+
         format.html { redirect_to @character, notice: 'Character was successfully updated.' }
         format.json { head :no_content }
       else
