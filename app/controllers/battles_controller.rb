@@ -89,6 +89,7 @@ class BattlesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_battle
       @battle = Battle.find(params[:id])
+      @battle_rosters = @battle.battle_rosters.includes(character: :affinity)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

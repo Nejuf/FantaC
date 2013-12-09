@@ -31,22 +31,36 @@ class Character < ActiveRecord::Base
     self.portraits.first #TODO specify a main portrait
   end
 
-  def image_tag(size=:small, width=0, height=0)
-    alt = name
+  def image_tag(size=:small, options={})
+    defaults = {
+      width: 0,
+      height: 0,
+      polaroid: true,
+      alt: self.name,
+      classes: ""
+    }
+
+    options = defaults.merge(options)
+
     if portrait_main && portrait_main.portrait_image
       src = portrait_main.portrait_image.url(size)
     else
       src = ENV['MISSING_CHAR_PIC_URL']
     end
 
-    str = '<img class=img-polaroid'
-    if width > 0
-      str << " width=\"#{width}\""
+    classes = options[:classes]
+    if options[:polaroid]
+      classes << " img-polaroid"
     end
-    if height > 0
-      str << " height=\"#{height}\""
+
+    str = '<img class=#{classes}'
+    if options[:width] > 0
+      str << " width=\"#{options[:width]}\""
     end
-    str << " alt=\"#{alt}\""
+    if options[:height] > 0
+      str << " height=\"#{options[:height]}\""
+    end
+    str << " alt=\"#{options[:alt]}\""
     str << " src=\"#{src}\""
     str << '>'
 

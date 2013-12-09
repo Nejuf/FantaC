@@ -1,12 +1,21 @@
 <%- model_class = Battle -%>
 
 <div class="hero-unit text-center">
-  <h1 class='text-center'><%= @battle.name.titleize %></h1>
-  <p class="lead"><%= @battle.desc %></p>
-
-  <div class="text-center">
-    <h2>Battle Time</h2>
+  <div class="hero-back">
+    <div id="characterScroll">
+      <% scroll_image_count = @battle_rosters.count > 10 ? 10 : @battle_rosters.length %>
+      <% @battle_rosters.sample(scroll_image_count).each do |roster| %>
+        <%= roster.character.image_tag :profile, polaroid: false %>
+      <% end %>
+    </div>
   </div>
+  <div class="hero-front">
+    <h1 class='text-center'><%= @battle.name.titleize %></h1>
+    <p class="lead"><%= @battle.desc %></p>
+
+    <div class="text-center">
+      <h2>Battle Time</h2>
+    </div>
     <div class="row centred">
       <div class="span12 centred">
         <div id="fancyCountdown" class="centred">
@@ -26,6 +35,7 @@
 				</div>
 			<% end %>
 		</div>
+  </div>
 </div>
 
 
@@ -44,7 +54,7 @@
 <div id="battle-roster">
   <div class="row">
     <ul class="thumbnails">
-      <% @battle.battle_rosters.includes(:character => :affinity).each do |roster| %>
+      <% @battle_rosters.each do |roster| %>
         <li class="span3">
               <div class="thumbnail .thumbnail-character pagination-centered pop-out-shadow">
                 <%= link_to (roster.character.image_tag :medium), character_path(roster.character) %>
@@ -64,6 +74,8 @@
 </div>
 <script type="text/javascript">
   $(document).ready(function(){
+
+    //----FancyCountdown
     <% date = DateTime.parse(@battle.end_date) %>
 
     $('#fancyCountdown').fancyCountdown({
@@ -95,5 +107,13 @@
   // $('#stop').click(function(){
   //   $.fancyCountdown.stop();
   // });
+
+  //----SmoothDivScroll
+  $(document).ready(function () {
+    $("#characterScroll").smoothDivScroll({
+      autoScrollingMode: "always",
+      autoScrollingDirection: "endlessLoopRight"
+    });
+  });
 });
 </script>
