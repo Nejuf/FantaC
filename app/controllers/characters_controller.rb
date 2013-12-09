@@ -71,8 +71,6 @@ class CharactersController < ApplicationController
       char_params = params[:character].permit(:name, :desc, :affinity_id, :tier_id, :stat_hp,
       :stat_str, :stat_def, :stat_spd, :stat_int, :stat_luck)
 
-      debugger
-      puts "test"
       if @character.update(char_params)
 
         unless portrait_image.nil?
