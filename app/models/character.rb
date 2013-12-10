@@ -53,7 +53,7 @@ class Character < ActiveRecord::Base
       classes << " img-polaroid"
     end
 
-    str = '<img class=#{classes}'
+    str = "<img class=#{classes}"
     if options[:width] > 0
       str << " width=\"#{options[:width]}\""
     end

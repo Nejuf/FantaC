@@ -57,7 +57,7 @@
       <% @battle_rosters.each do |roster| %>
         <li class="span3">
               <div class="thumbnail .thumbnail-character pagination-centered pop-out-shadow">
-                <%= link_to (roster.character.image_tag :medium), character_path(roster.character) %>
+                <%= link_to (roster.character.image_tag :medium, portrait: true), character_path(roster.character) %>
                 <div class="caption">
                   <%= glyph(roster.character.glyph.to_s) %>
                   <%= link_to roster.character.name, character_path(roster.character) %>
