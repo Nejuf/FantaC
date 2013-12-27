@@ -16,41 +16,33 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="span3">
+      <div class="affinity-logo">
+        <% @affinity_logo_name = @character.affinity.name.downcase %>
+        <% @affinity_logo_name = 'default' unless ['game', 'film', 'book'].include?(@affinity_logo_name) %>
+        <object class='affinity-logo-medium' type="image/svg+xml" data=<%= asset_path "affinity_logo_#{@affinity_logo_name}.svg" %> ></object>
+      </div>
+    </div>
+    <div class="span6">
+      <h2>Biography</h2>
+      <article class="character-bio">
+        <%= @character.desc.empty? ?  'This character is shrouded in mystery...' : @character.desc %>
+      </article>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span12">
+      <h2>Portrait</h2>
+      <%= @character.image_tag %>
+      <%= @character.image_tag :medium %>
+      <%= @character.image_tag :large %>
+      <%= @character.image_tag :profile %>
+      <%= link_to "Edit Portrait", edit_portrait_path(@character.portrait_main), class: 'btn' %>
+    </div>
+  </div>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @character.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:desc) %>:</strong></dt>
-  <dd><%= @character.desc %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-  <dd><%= @character.user_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:affinity_id) %>:</strong></dt>
-  <dd><%= @character.affinity_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:tier_id) %>:</strong></dt>
-  <dd><%= @character.tier_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:series_id) %>:</strong></dt>
-  <dd><%= @character.series_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:stat_hp) %>:</strong></dt>
-  <dd><%= @character.stat_hp %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:stat_str) %>:</strong></dt>
-  <dd><%= @character.stat_str %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:stat_def) %>:</strong></dt>
-  <dd><%= @character.stat_def %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:stat_spd) %>:</strong></dt>
-  <dd><%= @character.stat_spd %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:stat_int) %>:</strong></dt>
-  <dd><%= @character.stat_int %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:stat_luck) %>:</strong></dt>
-  <dd><%= @character.stat_luck %></dd>
-</dl>
-
-
-<%= @character.image_tag %>
-<%= @character.image_tag :medium %>
-<%= @character.image_tag :large %>
-<%= @character.image_tag :profile %>
-<%= link_to "Edit Portrait", edit_portrait_path(@character.portrait_main), class: 'btn' %>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),

@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   viewBox="0 0 498.89477 451.13864"
+   version="1.0"
+   inkscape:version="0.48.4 r9939"
+   width="100%"
+   height="100%"
+   sodipodi:docname="affinity_logo_game.svg">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="640"
+     inkscape:window-height="480"
+     id="namedview58"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.4609375"
+     inkscape:cx="249.38971"
+     inkscape:cy="205.56624"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg2" />
+  <defs
+     id="defs4">
+    <clipPath
+       id="clipPath6153"
+       clipPathUnits="userSpaceOnUse">
+      <rect
+         id="rect6155"
+         height="40.884998"
+         width="112.59"
+         y="29.247999"
+         x="-17.926001"
+         style="fill:#1a1a1a;stroke:#000000;stroke-linecap:round;stroke-linejoin:round" />
+    </clipPath>
+    <filter
+       id="filter15047"
+       color-interpolation-filters="sRGB">
+      <feGaussianBlur
+         id="feGaussianBlur15049"
+         stdDeviation="0.26601997" />
+    </filter>
+    <filter
+       id="filter16244"
+       y="-0.19122"
+       width="1.0456001"
+       height="1.3824"
+       x="-0.022794001"
+       color-interpolation-filters="sRGB">
+      <feGaussianBlur
+         id="feGaussianBlur16246"
+         stdDeviation="0.33972594" />
+    </filter>
+    <filter
+       id="filter16314"
+       color-interpolation-filters="sRGB">
+      <feGaussianBlur
+         id="feGaussianBlur16316"
+         stdDeviation="0.12684216" />
+    </filter>
+    <linearGradient
+       id="linearGradient3483"
+       y2="59.381001"
+       gradientUnits="userSpaceOnUse"
+       x2="-78.32"
+       y1="63.229"
+       x1="-80.468002">
+      <stop
+         id="stop17743"
+         stop-color="#d8d8d8"
+         offset="0" />
+      <stop
+         id="stop17745"
+         stop-color="#a0a0a0"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3485"
+       y2="45.915001"
+       gradientUnits="userSpaceOnUse"
+       x2="-80.788002"
+       y1="21.207001"
+       x1="-200.37">
+      <stop
+         id="stop17735"
+         stop-color="#adadad"
+         offset="0" />
+      <stop
+         id="stop17737"
+         stop-color="#efefef"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3487"
+       y2="54.433998"
+       gradientUnits="userSpaceOnUse"
+       x2="48.089001"
+       y1="63.969002"
+       x1="51.396999">
+      <stop
+         id="stop12933"
+         offset="0" />
+      <stop
+         id="stop12935"
+         stop-color="#7e7e7e"
+         offset="1" />
+    </linearGradient>
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(-6.6102853,-10.4276)">
+    <g
+       id="g3448"
+       transform="matrix(3.968,0,0,3.968,2.2193,20.546)">
+      <path
+         id="path17426"
+         d="m 28.533,59.6 c -4.565,-8.635 2.544,-19.51 12.29,-20.879 9.787,-1.375 19.87,9.113 22.099,11.614 2.228,2.501 15.16,5.444 20.533,-4.708 C 90.135,27.739 78.628,13.656 70.933,-1.2"
+         inkscape:connector-curvature="0"
+         style="fill:none;stroke:#000000;stroke-width:2.70000005;stroke-linecap:round" />
+      <g
+         id="g17348"
+         transform="matrix(0.88403,-0.19959,0.19959,0.88403,178.31,15.422)">
+        <path
+           id="path17350"
+           d="m -199.93,8.4478 h 117.01 c 1.106,0 9.998,4.8922 9.998,6.0002 v 47.981 c 0,1.108 -0.892,2 -2,2 h -116.77 c -1.11,0 -10.2,-4.015 -10.2,-5.123 l -0.04,-48.858 c 0,-1.1082 0.89,-2.0002 2,-2.0002 z"
+           inkscape:connector-curvature="0"
+           style="fill:url(#linearGradient3483);stroke:#000000;stroke-width:1.07229996;stroke-linecap:round;stroke-linejoin:round" />
+        <rect
+           id="rect17352"
+           rx="0.55615002"
+           ry="0.55615002"
+           height="51.980999"
+           width="120.77"
+           y="8.4987001"
+           x="-201.92999"
+           style="fill:url(#linearGradient3485);stroke:#000000;stroke-width:1.07229996;stroke-linecap:round;stroke-linejoin:round" />
+        <rect
+           id="rect17354"
+           height="40.884998"
+           width="112.59"
+           y="15.381"
+           x="-198.19"
+           style="fill:#1a1a1a" />
+        <g
+           id="g17356"
+           transform="translate(-184.27,-13.867)"
+           clip-path="url(#clipPath6153)">
+          <rect
+             id="rect17358"
+             style="color:#000000;fill:#999999"
+             rx="0.55615002"
+             ry="0.55615002"
+             height="6.073"
+             width="35.634998"
+             y="26.849001"
+             x="20.191999" />
+          <rect
+             id="rect17360"
+             style="color:#000000;fill:#999999"
+             rx="0.55615002"
+             ry="0.55615002"
+             height="6.073"
+             width="35.634998"
+             y="35.264"
+             x="20.191999" />
+          <rect
+             id="rect17362"
+             style="color:#000000;fill:#999999"
+             rx="0.55615002"
+             ry="0.55615002"
+             height="6.073"
+             width="35.634998"
+             y="43.679001"
+             x="20.191999" />
+          <rect
+             id="rect17364"
+             style="color:#000000;fill:#cccccc"
+             rx="0.55615002"
+             ry="0.55615002"
+             height="12.146"
+             width="35.634998"
+             y="52.094002"
+             x="20.191999" />
+          <rect
+             id="rect17366"
+             style="color:#000000;fill:#999999"
+             rx="0.55615002"
+             ry="0.55615002"
+             height="6.073"
+             width="35.634998"
+             y="66.582001"
+             x="20.191999" />
+          <rect
+             id="rect17368"
+             style="opacity:0.42308003;color:#000000;fill:none;stroke:url(#linearGradient3487);stroke-width:0.40000001;stroke-linecap:round;stroke-linejoin:round"
+             rx="0.27807999"
+             ry="0.27807999"
+             height="10.013"
+             width="34.035"
+             y="53.160999"
+             x="20.992001" />
+        </g>
+        <g
+           id="g17370"
+           transform="matrix(1.047,0,0,1,-183,-14.533)"
+           style="fill:#8a8a8a;filter:url(#filter16244)">
+          <rect
+             id="rect17372"
+             style="color:#000000"
+             rx="0.53119999"
+             ry="0.55615002"
+             height="3.5532"
+             width="13.808"
+             y="56.851002"
+             x="19.52" />
+          <rect
+             id="rect17374"
+             style="color:#000000"
+             rx="0.53119999"
+             ry="0.55615002"
+             height="3.5532"
+             width="13.808"
+             y="56.851002"
+             x="35.52" />
+        </g>
+        <path
+           id="path17376"
+           style="color:#000000;stroke:#bcbcbc;stroke-linecap:round;stroke-linejoin:round"
+           d="m -185.1,25.289 v 8.118 h -8.12 v 8.146 h 8.12 v 8.118 h 8.11 v -8.118 h 8.12 v -8.146 h -8.12 v -8.118 h -8.11 z"
+           inkscape:connector-curvature="0" />
+        <path
+           id="path17378"
+           style="color:#000000;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;filter:url(#filter16314)"
+           d="m -185.77,24.622 v 8.118 h -8.12 v 8.146 h 8.12 v 8.118 h 8.12 v -8.118 h 8.12 V 32.74 h -8.12 v -8.118 h -8.12 z"
+           inkscape:connector-curvature="0" />
+        <rect
+           id="rect17380"
+           style="color:#000000;fill:#cccccc"
+           rx="0.27807999"
+           ry="0.27807999"
+           height="13.565"
+           width="13.565"
+           y="36.967999"
+           x="-124.89" />
+        <rect
+           id="rect17382"
+           style="color:#000000;fill:#cccccc"
+           rx="0.27807999"
+           ry="0.27807999"
+           height="13.565"
+           width="13.565"
+           y="36.967999"
+           x="-109.33" />
+        <path
+           id="path17384"
+           style="color:#000000;fill:#7f7f7f;fill-opacity:0.59563;filter:url(#filter15047)"
+           d="m 66.715,58.728 a 4.7815,4.7815 0 1 1 -9.563,0 4.7815,4.7815 0 1 1 9.563,0 z"
+           transform="matrix(1.0241,1.0241,-0.81702,0.81702,-134.35,-68.589)"
+           inkscape:connector-curvature="0" />
+        <path
+           id="path17386"
+           style="color:#000000;fill:#ff0000;stroke:#d00000;stroke-width:0.53750002;stroke-linecap:round;stroke-linejoin:round"
+           d="m 66.715,58.728 a 4.7815,4.7815 0 1 1 -9.563,0 4.7815,4.7815 0 1 1 9.563,0 z"
+           transform="matrix(1.1628,0,0,1.1628,-190.12,-24.537)"
+           inkscape:connector-curvature="0" />
+        <path
+           id="path17388"
+           style="color:#000000;fill:#7f7f7f;fill-opacity:0.59563;filter:url(#filter15047)"
+           d="m 66.715,58.728 a 4.7815,4.7815 0 1 1 -9.563,0 4.7815,4.7815 0 1 1 9.563,0 z"
+           transform="matrix(1.0241,1.0241,-0.81702,0.81702,-118.82,-68.522)"
+           inkscape:connector-curvature="0" />
+        <path
+           id="path17390"
+           style="color:#000000;fill:#ff0000;stroke:#d00000;stroke-width:0.53750002;stroke-linecap:round;stroke-linejoin:round"
+           d="m 66.715,58.728 a 4.7815,4.7815 0 1 1 -9.563,0 4.7815,4.7815 0 1 1 9.563,0 z"
+           transform="matrix(1.1628,0,0,1.1628,-174.57,-24.537)"
+           inkscape:connector-curvature="0" />
+        <path
+           id="path17392"
+           style="color:#000000;fill:#ff0000;stroke:#d00000;stroke-width:0.53750002;stroke-linecap:round;stroke-linejoin:round"
+           d="m 66.715,58.728 a 4.7815,4.7815 0 1 1 -9.563,0 4.7815,4.7815 0 1 1 9.563,0 z"
+           transform="matrix(1.1628,0,0,1.1628,-190.79,-25.203)"
+           inkscape:connector-curvature="0" />
+        <path
+           id="path17394"
+           style="color:#000000;fill:#ff0000;stroke:#d00000;stroke-width:0.53750002;stroke-linecap:round;stroke-linejoin:round"
+           d="m 66.715,58.728 a 4.7815,4.7815 0 1 1 -9.563,0 4.7815,4.7815 0 1 1 9.563,0 z"
+           transform="matrix(1.1628,0,0,1.1628,-175.23,-25.203)"
+           inkscape:connector-curvature="0" />
+        <g
+           id="g17396"
+           transform="translate(-180.68,-13.867)">
+          <rect
+             id="rect17398"
+             style="color:#000000"
+             rx="0.55615002"
+             ry="0.55615002"
+             height="3.5532"
+             width="13.808"
+             y="56.851002"
+             x="19.52" />
+          <rect
+             id="rect17400"
+             style="color:#000000"
+             rx="0.55615002"
+             ry="0.55615002"
+             height="3.5532"
+             width="13.808"
+             y="56.851002"
+             x="35.52" />
+        </g>
+        <g
+           id="g17402"
+           transform="translate(-180.95,-14.133)">
+          <rect
+             id="rect17404"
+             style="color:#000000"
+             rx="0.55615002"
+             ry="0.55615002"
+             height="3.5532"
+             width="13.808"
+             y="56.851002"
+             x="19.52" />
+          <rect
+             id="rect17406"
+             style="color:#000000"
+             rx="0.55615002"
+             ry="0.55615002"
+             height="3.5532"
+             width="13.808"
+             y="56.851002"
+             x="35.52" />
+        </g>
+        <path
+           id="text17408"
+           d="m -84.526,72.301 v 1.65 h 0.977 c 0.328,0 0.57,-0.068 0.727,-0.203 0.159,-0.136 0.238,-0.344 0.238,-0.624 0,-0.281 -0.079,-0.488 -0.238,-0.621 -0.157,-0.135 -0.399,-0.202 -0.727,-0.202 h -0.977 m 0,-1.851 v 1.357 h 0.902 c 0.298,0 0.519,-0.056 0.663,-0.166 0.147,-0.113 0.221,-0.284 0.221,-0.513 0,-0.227 -0.074,-0.397 -0.221,-0.509 -0.144,-0.113 -0.365,-0.169 -0.663,-0.169 h -0.902 m -0.609,-0.501 h 1.556 c 0.465,0 0.822,0.097 1.074,0.29 0.251,0.193 0.377,0.467 0.377,0.823 0,0.275 -0.065,0.494 -0.193,0.657 -0.129,0.163 -0.318,0.264 -0.567,0.305 0.299,0.064 0.532,0.199 0.696,0.404 0.167,0.203 0.251,0.457 0.251,0.763 0,0.402 -0.137,0.712 -0.41,0.931 -0.274,0.22 -0.663,0.329 -1.167,0.329 h -1.617 v -4.502"
+           transform="scale(1.3586,0.73605)"
+           inkscape:connector-curvature="0"
+           style="fill:#ff0000" />
+        <path
+           id="text17412"
+           d="m -75.987,67.225 -0.786,2.134 h 1.576 l -0.79,-2.134 m -0.327,-0.571 h 0.658 l 1.634,4.287 h -0.603 l -0.391,-1.1 h -1.932 l -0.391,1.1 h -0.612 l 1.637,-4.287"
+           transform="scale(1.2938,0.77293)"
+           inkscape:connector-curvature="0"
+           style="fill:#ff0000" />
+      </g>
+    </g>
+  </g>
+  <metadata
+     id="metadata56">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/publicdomain/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>Old School Game Controller</dc:title>
+        <dc:date>2007-07-18T04:06:09</dc:date>
+        <dc:description>A drawing of a retro-style video game controller, resembling one you would find with a Nintendo™ NES system.</dc:description>
+        <dc:source>http://openclipart.org/detail/4435/old-school-game-controller-by-bhspitmonkey-4435</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>BHSPitMonkey</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>controller</rdf:li>
+            <rdf:li>game</rdf:li>
+            <rdf:li>how i did it</rdf:li>
+            <rdf:li>image</rdf:li>
+            <rdf:li>media</rdf:li>
+            <rdf:li>png</rdf:li>
+            <rdf:li>public domain</rdf:li>
+            <rdf:li>svg</rdf:li>
+            <rdf:li>video game</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>
