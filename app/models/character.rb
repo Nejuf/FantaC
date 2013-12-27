@@ -17,6 +17,7 @@ class Character < ActiveRecord::Base
   belongs_to :user
   belongs_to :tier
   belongs_to :affinity
+  belongs_to :series
 
   has_many :battle_rosters
   has_many :battles, through: :battle_rosters

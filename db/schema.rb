@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131114200656) do
+ActiveRecord::Schema.define(version: 20131227220340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,10 +87,12 @@ ActiveRecord::Schema.define(version: 20131114200656) do
     t.integer  "stat_luck",   default: 0,  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "series_id"
   end
 
   add_index "characters", ["affinity_id"], name: "index_characters_on_affinity_id", using: :btree
   add_index "characters", ["name"], name: "index_characters_on_name", using: :btree
+  add_index "characters", ["series_id"], name: "index_characters_on_series_id", using: :btree
   add_index "characters", ["stat_def"], name: "index_characters_on_stat_def", using: :btree
   add_index "characters", ["stat_hp"], name: "index_characters_on_stat_hp", using: :btree
   add_index "characters", ["stat_int"], name: "index_characters_on_stat_int", using: :btree
@@ -177,6 +179,17 @@ ActiveRecord::Schema.define(version: 20131114200656) do
   end
 
   add_index "positions", ["name"], name: "index_positions_on_name", unique: true, using: :btree
+
+  create_table "series", force: true do |t|
+    t.string   "name",        default: "", null: false
+    t.integer  "affinity_id"
+    t.text     "desc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "series", ["affinity_id"], name: "index_series_on_affinity_id", using: :btree
+  add_index "series", ["name"], name: "index_series_on_name", using: :btree
 
   create_table "tiers", force: true do |t|
     t.string   "name",       default: "", null: false

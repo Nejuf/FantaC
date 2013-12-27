@@ -1,6 +1,6 @@
 <%- model_class = Character -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h1><%=h @character.name.titleize %><%= h " - #{@character.series.name}" if @character.series %></h1>
 </div>
 
 <div class="container">
@@ -29,6 +29,8 @@
   <dd><%= @character.affinity_id %></dd>
   <dt><strong><%= model_class.human_attribute_name(:tier_id) %>:</strong></dt>
   <dd><%= @character.tier_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:series_id) %>:</strong></dt>
+  <dd><%= @character.series_id %></dd>
   <dt><strong><%= model_class.human_attribute_name(:stat_hp) %>:</strong></dt>
   <dd><%= @character.stat_hp %></dd>
   <dt><strong><%= model_class.human_attribute_name(:stat_str) %>:</strong></dt>
