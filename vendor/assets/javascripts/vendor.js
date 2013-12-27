@@ -4,4 +4,6 @@
 //= require jquery-smoothDivScroll/jquery.kinetic
 //= require jquery-smoothDivScroll/jquery.mousewheel
 //= require jquery-smoothDivScroll/jquery.smoothDivScroll-1.3
+//= require RadarChart
+//= require d3.v3
 //= require_directory .
