@@ -164,6 +164,9 @@ GEM
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-turbolinks (2.0.1)
+      railties (>= 3.1.0)
+      turbolinks
     js-routes (0.9.4)
       rails (>= 3.2)
     jshint_on_rails (1.0.3)
@@ -366,6 +369,7 @@ DEPENDENCIES
   guard-rspec
   jbuilder (~> 1.2)
   jquery-rails
+  jquery-turbolinks
   js-routes
   jshint_on_rails
   launchy
