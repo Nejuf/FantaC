@@ -46,7 +46,7 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 # Use debugger
 gem 'debugger', group: [:development, :test]
 
-gem 'airbrake'
+# gem 'airbrake'
 gem 'aws-sdk'
 gem 'cancan'
 gem 'compass-rails', github: 'Compass/compass-rails' #for Chosen

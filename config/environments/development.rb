@@ -41,7 +41,7 @@ Fantac::Application.configure do
     #                 :receiver => 'your_account@jabber.org',
     #                 :show_online_status => true }
     # Bullet.rails_logger = true
-    Bullet.airbrake = true
+    Bullet.airbrake = false
     Bullet.add_footer = true
     Bullet.raise = true
     # Bullet.add_whitelist :type => :n_plus_one_query, :class_name => "Post", :association => :comments
