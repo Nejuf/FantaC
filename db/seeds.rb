@@ -24,6 +24,19 @@ a = Affinity.create!(name: "film")#3
 a = Affinity.create!(name: "book")#4
 # a = Affinity.create!(name: "")
 
+ser = Series.create!(name: "The Legend of Zelda", affinity_id: 2 , desc: "A popular series...")#1
+ser = Series.create!(name: "Mario", affinity_id: 2 , desc: "A popular series...")#2
+ser = Series.create!(name: "Uncharted", affinity_id: 2, desc: "A popular series...")#3
+ser = Series.create!(name: "Mr. Rogers Neighborhood", affinity_id: 3, desc: "A popular series...")#4
+ser = Series.create!(name: "Star Wars", affinity_id: 3, desc: "A popular series...")#5
+ser = Series.create!(name: "Pirates of the Caribbean", affinity_id: 3, desc: "A popular series...")#6
+ser = Series.create!(name: "The Matrix", affinity_id: 3, desc: "A popular series...")#7
+ser = Series.create!(name: "Batman", affinity_id: 4, desc: "A popular series...")#8
+ser = Series.create!(name: "Naruto", affinity_id: 4, desc: "A popular series...")#9
+ser = Series.create!(name: "King Arthur", affinity_id: 4, desc: "A popular series...")#10
+ser = Series.create!(name: "Harry Potter", affinity_id: 4, desc: "A popular series...")#11
+# ser = Series.create!(name: "", affinity_id: , desc: "A popular series...")#
+
 pay = PayoutType.create!(name: "gold")
 pay = PayoutType.create!(name: "prize")
 # pay = PayoutType.create!(name: "")
@@ -40,70 +53,70 @@ u.save!
 u = User.create!(email: "user2@gmail.com", username: "user2", password: "12341234")
 # u = User.create!(email: "user@gmail.com", username: "user", password: "12341234")
 
-c = Character.create!(name: "Link", affinity_id: 2, stat_hp: 10, stat_str: 10, stat_def: 10, stat_spd: 10, tier_id: 1)
+c = Character.create!(name: "Link", affinity_id: 2, stat_hp: 10, stat_str: 10, stat_def: 10, stat_spd: 10, tier_id: 1, series_id: 1)
 	por = Portrait.create({
 	  :character_id => c.id,
 	  :focusX => 0,
 	  :focusY => 0,
 	  :portrait_image =>  Portrait.load_character_default_image!(c)
 	})
-c = Character.create!(name: "Jack Sparrow", affinity_id: 3, stat_hp: 10, stat_str: 10, stat_def: 10, stat_spd: 10, tier_id: 1)
+c = Character.create!(name: "Jack Sparrow", affinity_id: 3, stat_hp: 10, stat_str: 10, stat_def: 10, stat_spd: 10, tier_id: 1, series_id: 6)
 	por = Portrait.create({
 	  :character_id => c.id,
 	  :focusX => 0,
 	  :focusY => 0,
 	  :portrait_image =>  Portrait.load_character_default_image!(c)
 	})
-c = Character.create!(name: "Harry Potter", affinity_id: 4, stat_hp: 10, stat_str: 10, stat_def: 10, stat_spd: 10, tier_id: 1)
+c = Character.create!(name: "Harry Potter", affinity_id: 4, stat_hp: 10, stat_str: 10, stat_def: 10, stat_spd: 10, tier_id: 1, series_id: 11)
 	por = Portrait.create({
 	  :character_id => c.id,
 	  :focusX => 0,
 	  :focusY => 0,
 	  :portrait_image =>  Portrait.load_character_default_image!(c)
 	})
-c = Character.create!(name: "Nathan Drake", affinity_id: 2,  tier_id: 1)
+c = Character.create!(name: "Nathan Drake", affinity_id: 2,  tier_id: 1, series_id: 3)
 	por = Portrait.create({
 	  :character_id => c.id,
 	  :focusX => 0,
 	  :focusY => 0,
 	  :portrait_image =>  Portrait.load_character_default_image!(c)
 	})
-c = Character.create!(name: "Batman", affinity_id: 4,  tier_id: 1)
+c = Character.create!(name: "Batman", affinity_id: 4,  tier_id: 1, series_id: 8)
 	por = Portrait.create({
 	  :character_id => c.id,
 	  :focusX => 0,
 	  :focusY => 0,
 	  :portrait_image =>  Portrait.load_character_default_image!(c)
 	})
-c = Character.create!(name: "Mr. Rogers", affinity_id: 3,  tier_id: 1)
+c = Character.create!(name: "Mr. Rogers", affinity_id: 3,  tier_id: 1, series_id: 4)
 	por = Portrait.create({
 	  :character_id => c.id,
 	  :focusX => 0,
 	  :focusY => 0,
 	  :portrait_image =>  Portrait.load_character_default_image!(c)
 	})
-c = Character.create!(name: "Mario", affinity_id: 2,  tier_id: 1)
+c = Character.create!(name: "Mario", affinity_id: 2,  tier_id: 1, series_id: 2)
 	por = Portrait.create({
 	  :character_id => c.id,
 	  :focusX => 0,
 	  :focusY => 0,
 	  :portrait_image =>  Portrait.load_character_default_image!(c)
 	})
-c = Character.create!(name: "Merlin", affinity_id: 4,  tier_id: 1)
+c = Character.create!(name: "Merlin", affinity_id: 4,  tier_id: 1, series_id: 10)
 	por = Portrait.create({
 	  :character_id => c.id,
 	  :focusX => 0,
 	  :focusY => 0,
 	  :portrait_image =>  Portrait.load_character_default_image!(c)
 	})
-c = Character.create!(name: "Luke Skywalker", affinity_id: 3,  tier_id: 1)
+c = Character.create!(name: "Luke Skywalker", affinity_id: 3,  tier_id: 1, series_id: 5)
 	por = Portrait.create({
 	  :character_id => c.id,
 	  :focusX => 0,
 	  :focusY => 0,
 	  :portrait_image =>  Portrait.load_character_default_image!(c)
 	})
-c = Character.create!(name: "Neo", affinity_id: 3,  tier_id: 1)
+c = Character.create!(name: "Neo", affinity_id: 3,  tier_id: 1, series_id: 7)
 	por = Portrait.create({
 	  :character_id => c.id,
 	  :focusX => 0,

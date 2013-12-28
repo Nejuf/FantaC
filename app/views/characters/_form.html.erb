@@ -2,6 +2,7 @@
 <%= f.error_notification %>
   <%= f.input :name %>
   <%= f.input :desc, label: "Description" %>
+  <%= f.association :series %>
   <%= f.association :affinity %>
   <%= f.association :tier %>
   <%= f.input :stat_hp, label: "Health Points", collection: 0..100 %>

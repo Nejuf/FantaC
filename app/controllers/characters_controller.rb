@@ -36,7 +36,7 @@ class CharactersController < ApplicationController
   def create
     portrait_image = params[:character].delete(:portrait_image)
     char_params = params[:character].permit(:name, :desc, :affinity_id, :tier_id, :stat_hp,
-    :stat_str, :stat_def, :stat_spd, :stat_int, :stat_luck)
+    :stat_str, :stat_def, :stat_spd, :stat_int, :stat_luck, :series_id)
 
     @character = Character.new(char_params)
     @character.user_id = current_user.id
@@ -69,7 +69,7 @@ class CharactersController < ApplicationController
     respond_to do |format|
       portrait_image = params[:character].delete(:portrait_image)
       char_params = params[:character].permit(:name, :desc, :affinity_id, :tier_id, :stat_hp,
-      :stat_str, :stat_def, :stat_spd, :stat_int, :stat_luck)
+      :stat_str, :stat_def, :stat_spd, :stat_int, :stat_luck, :series_id)
 
       if @character.update(char_params)
 
