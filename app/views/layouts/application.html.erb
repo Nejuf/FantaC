@@ -8,9 +8,11 @@
   <link href="http://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">
   <% if Gon.gon %>
-    <%= include_gon(init: false) %>
+    <!-- <%= Gon %> -->
+    <!-- <%= Gon.gon %> -->
+    <%#= include_gon(init: false) %>
   <% else %>
-    <%= include_gon(init: true) %>
+    <%#= include_gon(init: true) %>
   <% end %>
 
   <title><%= content_for?(:title) ? yield(:title) : "FantaC" %></title>
