@@ -7,7 +7,7 @@
   <!-- <link href="<%#= asset_path "bootstrap-responsive.css" %>" rel="stylesheet"> -->
   <link href="http://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">
-  
+  <%= include_gon %>
 
   <title><%= content_for?(:title) ? yield(:title) : "FantaC" %></title>
   <%= csrf_meta_tags %>
