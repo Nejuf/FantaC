@@ -359,7 +359,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   figaro
-  gon
+  gon (= 4.1.1)
   gravatar_image_tag
   guard-rspec
   jbuilder (~> 1.2)
