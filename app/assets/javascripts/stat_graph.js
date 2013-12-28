@@ -4,8 +4,7 @@ jQuery(function(){
 		var w = 300,
 		h = 300;
 
-		//var character = gon.global.character;
-		var character;
+		var character = gon.global.character;
 
 		var legendTitle = "";
 
