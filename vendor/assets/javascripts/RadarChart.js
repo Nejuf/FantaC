@@ -50,7 +50,7 @@ var RadarChart = {
 
 	var tooltip;
 	
-	//Circular segments
+	//Web segments
 	var levelCount = cfg.showOuterLevel ? cfg.levels : cfg.levels - 1;
 	for(var j=0; j<levelCount; j++){
 	  var levelFactor = cfg.factor*radius*((j+1)/cfg.levels);
@@ -116,8 +116,16 @@ var RadarChart = {
 		.attr("x", function(d, i){return cfg.w/2*(1-cfg.factorLegend*Math.sin(i*cfg.radians/total))-60*Math.sin(i*cfg.radians/total);})
 		.attr("y", function(d, i){return cfg.h/2*(1-Math.cos(i*cfg.radians/total))-20*Math.cos(i*cfg.radians/total);});
 
- 
+ //Draw data polygon
+	var tweenInTime = 1200;
+	var tweenInDelay = 2000;
+	var pointZero = [
+		cfg.w/2*(1-(parseFloat(Math.max(0, 0))/cfg.maxValue)*cfg.factor*Math.sin(0*cfg.radians/total)), 
+		cfg.h/2*(1-(parseFloat(Math.max(0, 0))/cfg.maxValue)*cfg.factor*Math.cos(0*cfg.radians/total))
+	];
+ 	var polygonCount = 0;
 	d.forEach(function(y, x){
+		polygonCount++;
 	  dataValues = [];
 	  g.selectAll(".nodes")
 		.data(y, function(j, i){
@@ -137,7 +145,7 @@ var RadarChart = {
 					 .attr("points",function(d) {
 						 var str="";
 						 for(var pti=0;pti<d.length;pti++){
-							 str=str+d[pti][0]+","+d[pti][1]+" ";
+							 str=str+pointZero[0]+","+pointZero[1]+" ";
 						 }
 						 return str;
 					  })
@@ -156,13 +164,27 @@ var RadarChart = {
 										g.selectAll("polygon")
 										 .transition(200)
 										 .style("fill-opacity", cfg.opacityArea);
-					 });
+					 })
+					.transition()
+					.delay(function(d,i){
+						return (polygonCount-1) * tweenInTime + tweenInDelay;
+					})
+					.duration(tweenInTime)
+					.attr("points", function(d){
+						 var str="";
+						 for(var pti=0;pti<d.length;pti++){
+							 str=str+d[pti][0]+","+d[pti][1]+" ";
+						 }
+						 return str;
+					});
 	  series++;
 	});
 	series=0;
 
-
+//Draw data circles & add tooltips
+var shapeCount = 0;
 	d.forEach(function(y, x){
+		shapeCount++;
 	  g.selectAll(".nodes")
 		.data(y).enter()
 		.append("svg:circle")
@@ -170,14 +192,10 @@ var RadarChart = {
 		.attr('r', cfg.radius)
 		.attr("alt", function(j){return Math.max(j.value, 0)})
 		.attr("cx", function(j, i){
-		  dataValues.push([
-			cfg.w/2*(1-(parseFloat(Math.max(j.value, 0))/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total)), 
-			cfg.h/2*(1-(parseFloat(Math.max(j.value, 0))/cfg.maxValue)*cfg.factor*Math.cos(i*cfg.radians/total))
-		]);
-		return cfg.w/2*(1-(Math.max(j.value, 0)/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total));
+			return cfg.w/2*(1-(Math.max(0, 0)/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total));
 		})
 		.attr("cy", function(j, i){
-		  return cfg.h/2*(1-(Math.max(j.value, 0)/cfg.maxValue)*cfg.factor*Math.cos(i*cfg.radians/total));
+		  return cfg.h/2*(1-(Math.max(0, 0)/cfg.maxValue)*cfg.factor*Math.cos(i*cfg.radians/total));
 		})
 		.attr("data-id", function(j){return j.axis})
 		.style("fill", cfg.color(series)).style("fill-opacity", .9)
@@ -208,11 +226,25 @@ var RadarChart = {
 						.transition(200)
 						.style("fill-opacity", cfg.opacityArea);
 				  })
-		.append("svg:title")
-		.text(function(j){return Math.max(j.value, 0)});
+		.transition()
+		.delay(function(d,i){
+			return (shapeCount-1) * tweenInTime + tweenInDelay;
+		})
+		.duration(tweenInTime)
+		.attr("cx", function(j, i){
+			return cfg.w/2*(1-(Math.max(j.value, 0)/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total));
+		})
+		.attr("cy", function(j, i){
+		  return cfg.h/2*(1-(Math.max(j.value, 0)/cfg.maxValue)*cfg.factor*Math.cos(i*cfg.radians/total));
+		});
+		
+		// .append("svg:title")
+		// .text(function(j){return Math.max(j.value, 0)})
+		
 
 	  series++;
 	});
+
 	//Tooltip
 	tooltip = g.append('text')
 			   .style('opacity', 0)
