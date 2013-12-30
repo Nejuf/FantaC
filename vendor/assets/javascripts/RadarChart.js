@@ -119,12 +119,14 @@ var RadarChart = {
  //Draw data polygon
 	var tweenInTime = 1200;
 	var tweenInDelay = 2000;
+	var transitioningPolygons = 0;
 	var pointZero = [
 		cfg.w/2*(1-(parseFloat(Math.max(0, 0))/cfg.maxValue)*cfg.factor*Math.sin(0*cfg.radians/total)), 
 		cfg.h/2*(1-(parseFloat(Math.max(0, 0))/cfg.maxValue)*cfg.factor*Math.cos(0*cfg.radians/total))
 	];
  	var polygonCount = 0;
 	d.forEach(function(y, x){
+		transitioningPolygons++;
 		polygonCount++;
 	  dataValues = [];
 	  g.selectAll(".nodes")
@@ -151,20 +153,6 @@ var RadarChart = {
 					  })
 					 .style("fill", function(j, i){return cfg.color(series)})
 					 .style("fill-opacity", cfg.opacityArea)
-					 .on('mouseover', function (d){
-										z = "polygon."+d3.select(this).attr("class");
-										g.selectAll("polygon")
-										 .transition(200)
-										 .style("fill-opacity", 0.1); 
-										g.selectAll(z)
-										 .transition(200)
-										 .style("fill-opacity", .7);
-									  })
-					 .on('mouseout', function(){
-										g.selectAll("polygon")
-										 .transition(200)
-										 .style("fill-opacity", cfg.opacityArea);
-					 })
 					.transition()
 					.delay(function(d,i){
 						return (polygonCount-1) * tweenInTime + tweenInDelay;
@@ -176,6 +164,26 @@ var RadarChart = {
 							 str=str+d[pti][0]+","+d[pti][1]+" ";
 						 }
 						 return str;
+					})
+					.each("end", function(){
+						transitioningPolygons--;
+						d3.select(this)
+						.on('mouseover', function (d){
+							if(transitioningPolygons > 0){return;}
+										z = "polygon."+d3.select(this).attr("class");
+										g.selectAll("polygon")
+										 .transition(200)
+										 .style("fill-opacity", 0.1); 
+										g.selectAll(z)
+										 .transition(200)
+										 .style("fill-opacity", .7);
+									  })
+					 .on('mouseout', function(){
+					 	if(transitioningPolygons > 0){return;}
+										g.selectAll("polygon")
+										 .transition(200)
+										 .style("fill-opacity", cfg.opacityArea);
+					 });
 					});
 	  series++;
 	});
@@ -199,7 +207,21 @@ var shapeCount = 0;
 		})
 		.attr("data-id", function(j){return j.axis})
 		.style("fill", cfg.color(series)).style("fill-opacity", .9)
-		.on('mouseover', function (d){
+		.transition()
+		.delay(function(d,i){
+			return (shapeCount-1) * tweenInTime + tweenInDelay;
+		})
+		.duration(tweenInTime)
+		.attr("cx", function(j, i){
+			return cfg.w/2*(1-(Math.max(j.value, 0)/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total));
+		})
+		.attr("cy", function(j, i){
+		  return cfg.h/2*(1-(Math.max(j.value, 0)/cfg.maxValue)*cfg.factor*Math.cos(i*cfg.radians/total));
+		})
+		.each("end", function(){
+			d3.select(this)
+				.on('mouseover', function (d){
+					if(transitioningPolygons > 0){return;}
 					newX =  parseFloat(d3.select(this).attr('cx')) - 10;
 					newY =  parseFloat(d3.select(this).attr('cy')) - 5;
 					
@@ -218,24 +240,15 @@ var shapeCount = 0;
 						.transition(200)
 						.style("fill-opacity", .7);
 				  })
-		.on('mouseout', function(){
+				.on('mouseout', function(){
+					if(transitioningPolygons > 0){return;}
 					tooltip
 						.transition(200)
 						.style('opacity', 0);
 					g.selectAll("polygon")
 						.transition(200)
 						.style("fill-opacity", cfg.opacityArea);
-				  })
-		.transition()
-		.delay(function(d,i){
-			return (shapeCount-1) * tweenInTime + tweenInDelay;
-		})
-		.duration(tweenInTime)
-		.attr("cx", function(j, i){
-			return cfg.w/2*(1-(Math.max(j.value, 0)/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total));
-		})
-		.attr("cy", function(j, i){
-		  return cfg.h/2*(1-(Math.max(j.value, 0)/cfg.maxValue)*cfg.factor*Math.cos(i*cfg.radians/total));
+				  });
 		});
 		
 		// .append("svg:title")
