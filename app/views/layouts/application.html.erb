@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <%= include_gon rescue '<!-- Error adding Gon. -->'.html_safe %>
+  <%= 
+    begin
+      include_gon 
+    rescue StandardError => e
+      "<!-- Error adding Gon. #{e.to_s.html_safe} -->".html_safe 
+    end
+  %>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <!-- <meta name="viewport" content="width=device-width,initial-scale=1"> -->
@@ -55,7 +61,13 @@
   </script>
 </head>
 <body>
-  <%= include_gon rescue '<!-- Error adding Gon. -->'.html_safe %>
+  <%= 
+    begin
+      include_gon 
+    rescue StandardError => e
+      "<!-- Error adding Gon. #{e.to_s.html_safe} -->".html_safe 
+    end
+  %>
   <% @alpha_logo = capture do  %>
     <div class="alpha-logo">
       <object type="image/svg+xml" data=<%= asset_path "alpha.svg" %> ></object>
