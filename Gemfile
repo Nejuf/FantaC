@@ -87,7 +87,6 @@ group :development, :test do
   gem 'faker'
   # gem 'jslint_on_rails'
   gem 'jshint_on_rails'
-  gem 'launchy'
   gem 'letter_opener'
   gem 'meta_request'
   gem 'rails-erd'
@@ -97,6 +96,8 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'faker'
   gem 'guard-rspec'
+  gem 'launchy'
   gem 'shoulda-matchers'
 end

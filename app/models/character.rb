@@ -6,7 +6,7 @@ class Character < ActiveRecord::Base
     presence: true
 
   validates :name, length: { in: 1..80 }
-  validates :name, uniqueness: { scope: :affinity_id }
+  validates :name, uniqueness: { scope: :series_id }
 
   validates  :stat_hp, :stat_str, :stat_def,
     :stat_spd, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
@@ -89,6 +89,8 @@ class Character < ActiveRecord::Base
     self.stat_str ||= 0
     self.stat_def ||= 0
     self.stat_spd ||= 0
+    self.stat_int ||= 0
+    self.stat_luck ||= 0
   end
 
   def on_before_save

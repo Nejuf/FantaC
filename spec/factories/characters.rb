@@ -2,14 +2,17 @@
 
 FactoryGirl.define do
   factory :character do
-    name "MyString"
-    desc "MyText"
-    user_id 1
-    affinity 1
-    tier_id 1
-    stat_hp 1
-    stat_str 1
-    stat_def 1
-    stat_spd 1
+    name { Faker::Name.name }
+    desc { "This character is shrouded in mystery...\nWhat potential lies in store?" }
+    user_id { 1 }
+    affinity_id { [1,2,3].sample }
+    tier_id { [1,2,3,4].sample }
+    series_id { nil }
+    stat_hp { (100*rand).floor }
+    stat_str { (100*rand).floor }
+    stat_def { (100*rand).floor }
+    stat_spd { (100*rand).floor }
+    stat_int { (100*rand).floor }
+    stat_luck { (100*rand).floor }
   end
 end

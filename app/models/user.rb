@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          # :confirmable,
          :lockable, :omniauthable
-         #TODO uncomment confirmable before release
+         #TODO uncomment confirmable after exiting alpha release
  has_many :entries
  has_many :contests
  has_many :characters
