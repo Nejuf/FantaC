@@ -20,15 +20,32 @@ require 'spec_helper'
 
 describe CharactersController do
 
+  login_user
+
   # This should return the minimal set of attributes required to create a valid
   # Character. As you add validations to Character, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { {  } }
+  let(:valid_attributes) do 
+    char = FactoryGirl.attributes_for(:character) 
+    char.delete :user_id
+    char.each do |k,v|
+      char[k] = v.to_s
+    end
+    char.stringify_keys
+  end
+  let(:new_attributes) do 
+    char = FactoryGirl.attributes_for(:character) 
+    char.delete :user_id
+    char.each do |k,v|
+      char[k] = v.to_s
+    end
+    char.stringify_keys
+  end
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # CharactersController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  let(:valid_session) { session }
 
   describe "GET index" do
     it "assigns all characters as @characters" do
@@ -106,8 +123,8 @@ describe CharactersController do
         # specifies that the Character created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Character.any_instance.should_receive(:update).with({ "these" => "params" })
-        put :update, {:id => character.to_param, :character => { "these" => "params" }}, valid_session
+        Character.any_instance.should_receive(:update).with(new_attributes)
+        put :update, {:id => character.to_param, :character => new_attributes}, valid_session
       end
 
       it "assigns the requested character as @character" do
