@@ -151,6 +151,8 @@ GEM
     guard-rspec (4.0.3)
       guard (>= 2.1.1)
       rspec (~> 2.14)
+    haml (4.0.4)
+      tilt
     hashie (2.0.5)
     hike (1.2.3)
     httpauth (0.2.0)
@@ -362,6 +364,7 @@ DEPENDENCIES
   gon (= 4.1.1)
   gravatar_image_tag
   guard-rspec
+  haml
   jbuilder (~> 1.2)
   jquery-rails
   jquery-turbolinks
