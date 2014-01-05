@@ -1,0 +1,22 @@
+- model_class = Battle
+.page-header
+  %h1
+    = t '.title', :default => model_class.model_name.human.pluralize.titleize
+    !
+%table.table.table-striped
+  %thead
+    %tr
+      <!-- <th><%= model_class.human_attribute_name(:id) %></th> -->
+      %th= model_class.human_attribute_name(:name)
+      %th Description
+      %th Date with Destiny
+  %tbody
+    - @battles.each do |battle|
+      %tr
+        %td= link_to battle.name, battle_path(battle)
+        %td= battle.desc
+        %td= battle.end_date
+
+= link_to "Create a Battle",
+            new_battle_path,
+            :class => 'btn btn-primary'

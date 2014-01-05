@@ -1,0 +1,97 @@
+- model_class = Battle
+
+.hero-unit.text-center
+	.hero-back
+		#characterScroll
+			- scroll_image_count = @battle_rosters.count > 10 ? 10 : @battle_rosters.length
+			- @battle_rosters.sample(scroll_image_count).each do |roster|
+				= roster.character.image_tag :profile, polaroid: false
+	.hero-front
+		%h1.text-center= @battle.name.titleize
+		%p.lead= @battle.desc
+
+		.text-center
+			%h2 Battle Time
+		.row.centred
+			.span12.centred
+				#fancyCountdown.centred
+
+		%div
+			-# <%#= link_to "Create Contest", new_contest_url(battle_id: @battle.id), class: "btn btn-primary" %>
+			%div
+				= link_to "Enter Contests", contests_url(battle_id: @battle.id), class: "btn btn-primary"
+			%br/
+			- unless @battle.main_contest.user_entered?(current_user)
+				.attention-shake
+					= link_to "Choose Team!", contest_url(@battle.main_contest), class: 'btn btn-primary btn-large'
+
+
+- if user_signed_in? && @battle.user_id == current_user.id
+	.form-actions
+		= link_to t('.edit', :default => t("helpers.links.edit")),
+			edit_battle_path(@battle), :class => 'btn'
+		= link_to t('.destroy', :default => t("helpers.links.destroy")),
+			battle_path(@battle),
+			:method => 'delete',
+			:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+			:class => 'btn btn-danger'
+
+#battle-roster
+	.row
+		%ul.thumbnails
+			- @battle_rosters.each do |roster|
+				%li.span3
+					.thumbnail.thumbnail-character.pagination-centered.pop-out-shadow
+						= link_to (roster.character.image_tag :medium, portrait: true), character_path(roster.character) 
+						.caption
+							= glyph(roster.character.glyph.to_s)
+							= link_to roster.character.name, character_path(roster.character)
+						- if @battle.results
+							%div 
+								Points: 
+								= @battle.results[roster.character.name]
+									
+:erb
+	<script>
+		$(document).ready(function(){
+
+			//----FancyCountdown
+			<% date = DateTime.parse(@battle.end_date) %>
+
+			$('#fancyCountdown').fancyCountdown({
+				year: <%= date.year %>,
+				month: <%= date.month %>,
+				day: <%= date.day %>,
+				hour: <%= date.hour %>,
+				minute: <%= date.minute %>,
+				second: <%= date.second %>,
+				timezone: 0,
+				dayDigitsAmount: 2,
+				digits: { days:false, hours:true, minutes:true, seconds:true },
+				<% if date > DateTime.now %>
+					callback: onTargetReached,
+				<% end %>
+				overlayImageUrl: gon.global.APP_ASSET_HOST+"fancyCountdown/overlay.png"
+			});
+
+			function onTargetReached(){
+				$(window).off('blur', $.fancyCountdown.stop);
+				$(window).off('focus',$.fancyCountdown.start);
+				console.log("target time reached");
+				location.reload(true);
+			}
+			// $('#start').click(function(){
+			//   $.fancyCountdown.start();
+			// });
+			//
+			// $('#stop').click(function(){
+			//   $.fancyCountdown.stop();
+			// });
+
+			//----SmoothDivScroll
+			$("#characterScroll").smoothDivScroll({
+				autoScrollingMode: "always",
+				autoScrollingDirection: "endlessLoopRight"
+			});
+		});
+	</script>
