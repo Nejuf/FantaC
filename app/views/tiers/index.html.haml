@@ -1,0 +1,28 @@
+- model_class = Tier
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human.pluralize.titleize
+%table.table.table-striped
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:name)
+      %th= model_class.human_attribute_name(:created_at)
+      %th= t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @tiers.each do |tier|
+      %tr
+        %td= link_to tier.id, tier_path(tier)
+        %td= tier.name
+        %td= l tier.created_at
+        %td
+          = link_to t('.edit', :default => t("helpers.links.edit")), |
+            edit_tier_path(tier), :class => 'btn btn-mini'           |
+          -#
+          = link_to t('.destroy', :default => t("helpers.links.destroy")),                                               |
+            tier_path(tier),                                                                                             |
+            :method => :delete,                                                                                          |
+            :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, |
+            :class => 'btn btn-mini btn-danger'
+= link_to t('.new', :default => t("helpers.links.new")), |
+  new_tier_path,                                         |
+  :class => 'btn btn-primary'                            |
