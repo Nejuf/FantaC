@@ -1,0 +1,5 @@
+- model_class = Entry
+.page-header
+  %h1
+    Edit Entry for #{link_to @entry.contest.name.titleize, contest_path(@entry.contest)}
+= render :partial => 'form'

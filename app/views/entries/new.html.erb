@@ -1,5 +1,0 @@
-<%- model_class = Entry -%>
-<div class="page-header">
-  <h1>New Entry into <em><%= link_to "#{h @contest.name.titleize}".html_safe, contest_path(@contest) %></em></h1>
-</div>
-<%= render :partial => 'form' %>
