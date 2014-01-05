@@ -32,6 +32,9 @@ Fantac::Application.configure do
   #Bullet
   config.after_initialize do
     Bullet.enable = true
+    # Bullet.n_plus_one_query_enable = false
+    Bullet.unused_eager_loading_enable = false
+    # Bullet.counter_cache_enable = false
     Bullet.alert = true
     Bullet.bullet_logger = true
     Bullet.console = true
@@ -45,7 +48,7 @@ Fantac::Application.configure do
     Bullet.add_footer = true
     Bullet.raise = true
     # Bullet.add_whitelist :type => :n_plus_one_query, :class_name => "Post", :association => :comments
-    # Bullet.add_whitelist :type => :unused_eager_loading, :class_name => "Post", :association => :comments
+    # Bullet.add_whitelist :type => :unused_eager_loading, :class_name => "Character", :association => :affinity
     # Bullet.add_whitelist :type => :counter_cache, :class_name => "Country", :association => :cities
   end
 

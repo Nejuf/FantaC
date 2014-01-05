@@ -1,0 +1,33 @@
+= simple_form_for @battle, :html => { :class => 'form-horizontal' } do |f|
+	= f.error_notification
+	= f.input :name
+	= f.input :desc, label: "Description"
+	= f.input :end_date, hint: "Times are local", input_html: { class: 'datetimepicker'}
+	/ Use Chosen for roster
+	-# = f.association :characters, label: "Roster", input_html: { class: 'chosen-select', "data-placeholder": "Choose characters to participate in the battle..."}
+
+	.control-group.require.battle_character_ids
+	%label.string.required.control-label(for="battle_character_ids")
+		%abbr(title="required") *
+		Roster
+	.controls
+		%input(type="hidden" name="character_ids[]" value=true)
+		%select.select.chosen-select(data-placeholder="Choose participating characters." multiple="multiple" tabindex='-1' id="battle_character_ids" name="character_ids[]" style="display: none;")
+			%option(value=true)
+				%optgroup(label="Book")
+					- Character.book.each do |book_char|
+						%option(value="#{book_char.id}")
+							= book_char.name
+				%optgroup(label="Film")
+					- Character.film.each do |film_char|
+						%option(value="#{film_char.id}")
+							= film_char.name
+				%optgroup(label="Game")
+					- Character.game.each do |game_char|
+						%option(value="#{game_char.id}")
+							= game_char.name
+	= f.error :base
+	.form-actions
+		= f.button :submit, :class => 'btn-primary'
+		= link_to t('.cancel', :default => t("helpers.links.cancel")),
+		            battles_path, :class => 'btn'
