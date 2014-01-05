@@ -1,0 +1,42 @@
+- model_class = Character
+.page-header
+  %h1
+    = h @character.name.titleize
+    = h " - #{@character.series.name}" if @character.series
+.container
+  .row
+    .span3
+      = @character.image_tag :profile
+    .span6
+      - Gon.global.character = @character
+      #stat_body
+        #stat_chart
+  .row
+    .span3
+      .affinity-logo
+        - @affinity_logo_name = @character.affinity.name.downcase
+        - @affinity_logo_name = 'default' unless ['game', 'film', 'book'].include?(@affinity_logo_name)
+        %object.affinity-logo-medium{data: "<haml_loud", type: "image/svg+xml"} asset_path "affinity_logo_\#{@affinity_logo_name}.svg"  &gt;
+    .span6
+      %h2 Biography
+      %article.character-bio= @character.desc.empty? ?  'This character is shrouded in mystery...' : @character.desc
+  .row
+    .span12
+      %h2 Portrait
+      = @character.image_tag
+      = @character.image_tag :medium
+      = @character.image_tag :large
+      = @character.image_tag :profile
+      = link_to "Edit Portrait", edit_portrait_path(@character.portrait_main), class: 'btn'
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), |
+    characters_path, :class => 'btn'                         |
+  - if can? :update, @character
+    = link_to t('.edit', :default => t("helpers.links.edit")), |
+      edit_character_path(@character), :class => 'btn'         |
+  - if can? :destroy, @character
+    = link_to t('.destroy', :default => t("helpers.links.destroy")),                                               |
+      character_path(@character),                                                                                  |
+      :method => 'delete',                                                                                         |
+      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, |
+      :class => 'btn btn-danger'                                                                                   |
