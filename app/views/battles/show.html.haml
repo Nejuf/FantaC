@@ -93,5 +93,9 @@
 				autoScrollingMode: "always",
 				autoScrollingDirection: "endlessLoopRight"
 			});
+			if(window._loaded){
+				$('#characterScroll').data('thomaskahnSmoothDivScroll').recalculateScrollableArea();
+				$('#characterScroll').data('thomaskahnSmoothDivScroll').startAutoScrolling();
+			}
 		});
 	</script>
