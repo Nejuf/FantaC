@@ -1,11 +1,7 @@
 - model_class = Battle
 
-.hero-unit.text-center
+.hero-unit.hero-unit-compact.text-center
 	.hero-back
-		#characterScroll
-			- scroll_image_count = @battle_rosters.count > 10 ? 10 : @battle_rosters.length
-			- @battle_rosters.sample(scroll_image_count).each do |roster|
-				= roster.character.image_tag :profile, polaroid: false
 	.hero-front
 		%h1.text-center= @battle.name.titleize
 		%p.lead= @battle.desc
@@ -35,7 +31,10 @@
 			:method => 'delete',
 			:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
 			:class => 'btn btn-danger'
-
+#characterScroll
+	- scroll_image_count = @battle_rosters.count > 10 ? 10 : @battle_rosters.length
+	- @battle_rosters.sample(scroll_image_count).each do |roster|
+		= roster.character.image_tag :profile, polaroid: false
 #battle-roster
 	.row
 		%ul.thumbnails
