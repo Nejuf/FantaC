@@ -57,6 +57,7 @@
 			//----FancyCountdown
 			<% date = DateTime.parse(@battle.end_date) %>
 
+			$('#fancyCountdown').empty();
 			$('#fancyCountdown').fancyCountdown({
 				year: <%= date.year %>,
 				month: <%= date.month %>,
