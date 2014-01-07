@@ -1,0 +1,11 @@
+.border-form-div
+  %h2 Sign up
+  = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+    = f.error_notification
+    .form-inputs
+      = f.input :email, :autofocus => true, placeholder: "E-mail address", label: false
+      = f.input :password, placeholder: "Password", label: false
+      = f.input :password_confirmation, placeholder: "Password confirmation", label: false
+    .form-actions
+      = f.button :submit, "Sign up", class: "btn btn-primary"
+  = render "devise/shared/links"
