@@ -16,7 +16,7 @@
       .affinity-logo
         - @affinity_logo_name = @character.affinity.name.downcase
         - @affinity_logo_name = 'default' unless ['game', 'film', 'book'].include?(@affinity_logo_name)
-        %object.affinity-logo-medium{data: "<haml_loud", type: "image/svg+xml"} asset_path "affinity_logo_\#{@affinity_logo_name}.svg"  &gt;
+        %object.affinity-logo-medium{data: "#{asset_path 'affinity_logo_' + @affinity_logo_name + '.svg' }", type: "image/svg+xml"} 
     .span6
       %h2 Biography
       %article.character-bio= @character.desc.empty? ?  'This character is shrouded in mystery...' : @character.desc
