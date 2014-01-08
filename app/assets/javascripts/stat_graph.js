@@ -14,14 +14,15 @@ jQuery(function(){
 		var LegendOptions = ['*Average',character.name];
 
 		//Data
+		var ave_stats = gon.global.char_stat_ave;
 		var d = [
 				  [
-					{axis:"Health",value:50},
-					{axis:"Strength",value:50},
-					{axis:"Defense",value:50},
-					{axis:"Speed",value:50},
-					{axis:"Intelligence",value:50},
-					{axis:"Luck",value:50}
+					{axis:"Health",value: ave_stats["stat_hp"] || 0},
+					{axis:"Strength",value:ave_stats["stat_str"] || 0},
+					{axis:"Defense",value:ave_stats["stat_def"] || 0},
+					{axis:"Speed",value:ave_stats["stat_spd"] || 0},
+					{axis:"Intelligence",value:ave_stats["stat_int"] || 0},
+					{axis:"Luck",value:ave_stats["stat_luck"] || 0}
 				  ],[
 					{axis:"Health",value: character.stat_hp },
 					{axis:"Strength",value: character.stat_str },

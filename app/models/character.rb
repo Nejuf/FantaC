@@ -118,4 +118,17 @@ class Character < ActiveRecord::Base
       Character.where(affinity_id: Affinity.id_game)
     end
   end
+
+  def self.average_stats
+    default = {
+      stat_hp: 0,
+      stat_str: 0,
+      stat_def: 0,
+      stat_spd: 0,
+      stat_int: 0,
+      stat_luck: 0
+    }
+    
+    Rails.cache.read("character_averages") || default
+  end
 end

@@ -9,6 +9,7 @@
       = @character.image_tag :profile
     .span6
       - Gon.global.character = @character
+      - Gon.global.char_stat_ave = Character.average_stats
       #stat_body
         #stat_chart
   .row
