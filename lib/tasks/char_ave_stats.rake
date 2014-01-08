@@ -4,7 +4,7 @@ namespace :cache do
 	task :char_average_stats => :environment do
 
 		affinities = Hash.new
-		Affinity.pluck(:id).map do |affinity_id|
+		Affinity.pluck(:id).each do |affinity_id|
 			affinities[affinity_id] = Hash[
 				:stat_hp, 0, 
 				:stat_str, 0, 
@@ -32,6 +32,7 @@ namespace :cache do
 		affinities.each do |aff_id, stat_hash|
 			hash = Hash.new
 			count = stat_hash[:count]
+			count = 1 if count == 0
 			hash[:stat_hp] = stat_hash[:stat_hp]/count
 			hash[:stat_str] = stat_hash[:stat_str]/count
 			hash[:stat_def] = stat_hash[:stat_def]/count
@@ -52,12 +53,14 @@ namespace :cache do
 
 
 		total_averages = Hash.new
-		total_averages[:stat_hp] = total_stats[:stat_hp]/total_stats[:count]
-		total_averages[:stat_str] = total_stats[:stat_str]/total_stats[:count]
-		total_averages[:stat_def] = total_stats[:stat_def]/total_stats[:count]
-		total_averages[:stat_spd] = total_stats[:stat_spd]/total_stats[:count]
-		total_averages[:stat_int] = total_stats[:stat_int]/total_stats[:count]
-		total_averages[:stat_luck] = total_stats[:stat_luck]/total_stats[:count]
+		count = total_stats[:count]
+		count = 1 if count == 0
+		total_averages[:stat_hp] = total_stats[:stat_hp]/count
+		total_averages[:stat_str] = total_stats[:stat_str]/count
+		total_averages[:stat_def] = total_stats[:stat_def]/count
+		total_averages[:stat_spd] = total_stats[:stat_spd]/count
+		total_averages[:stat_int] = total_stats[:stat_int]/count
+		total_averages[:stat_luck] = total_stats[:stat_luck]/count
 
 		Rails.cache.write("character_totals", total_stats)
 		Rails.cache.write("character_averages", total_averages)
