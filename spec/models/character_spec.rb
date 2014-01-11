@@ -29,7 +29,7 @@ describe Character do
 		it 'validates numericality of stats' do
 			@stats.each do |stat|
 				should validate_numericality_of(stat).only_integer
-				# should validate_numericality_of(stat).is_greater_than_or_equal_to(0)
+				should validate_numericality_of(stat).is_greater_than_or_equal_to(0)
 			end
 		end
 
