@@ -8,7 +8,7 @@ class Character < ActiveRecord::Base
   validates :name, length: { in: 1..80 }
   validates :name, uniqueness: { scope: :series_id }
 
-  validates  :stat_hp, :stat_str, :stat_def,
+  validates  :stat_hp, :stat_str, :stat_def, :stat_int, :stat_luck,
     :stat_spd, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   after_initialize :ensure_defaults
