@@ -22,8 +22,9 @@ class Affinity < ActiveRecord::Base
   def self.id_film
     self.id_by_name("film")
   end
+
   def normalize
-    name ||= ""
-    name = name.downcase
+    self.name ||= ""
+    self.name = self.name.downcase
   end
 end
