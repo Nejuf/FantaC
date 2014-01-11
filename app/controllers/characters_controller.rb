@@ -6,7 +6,7 @@ class CharactersController < ApplicationController
   # GET /characters
   # GET /characters.json
   def index
-    aff_id = Affinity.getIDByName(params[:affinity])
+    aff_id = Affinity.id_by_name(params[:affinity])
     @affinity_name = ""
     if aff_id
       @characters = Character.includes(:affinity, :tier).where(affinity_id: aff_id)

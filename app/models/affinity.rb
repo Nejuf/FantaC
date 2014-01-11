@@ -5,7 +5,7 @@ class Affinity < ActiveRecord::Base
 
   before_save :normalize
 
-  def self.getIDByName(name)
+  def self.id_by_name(name)
     if name
       aff = Affinity.find_by(name: name.downcase)
       return aff.id if aff
@@ -14,13 +14,13 @@ class Affinity < ActiveRecord::Base
   end
 
   def self.id_book
-    self.getIDByName("book")
+    self.id_by_name("book")
   end
   def self.id_game
-    self.getIDByName("game")
+    self.id_by_name("game")
   end
   def self.id_film
-    self.getIDByName("film")
+    self.id_by_name("film")
   end
   def normalize
     name ||= ""
